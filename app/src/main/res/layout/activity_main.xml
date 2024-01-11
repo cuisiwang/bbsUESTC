@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/login_linearlayout_with_logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/start_logo_iv"
+            android:layout_width="130sp"
+            android:layout_height="130sp"
+            android:layout_gravity="center"
+            android:src="@mipmap/logo" />
+
+        <LinearLayout
+            android:id="@+id/login_linearlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10sp"
+                android:text="清水河畔"
+                android:textColor="#1890FF"
+                android:textSize="23sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5sp"
+                android:text="电子科技大学官方论坛"
+                android:textColor="#8A8A8A"
+                android:textSize="14sp" />
+            
+            <EditText
+                android:id="@+id/username_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="username"
+                android:layout_marginTop="70sp"
+                android:layout_marginHorizontal="62sp"
+                android:background="#EFEFEF"
+                android:textSize="24sp"
+                android:paddingVertical="3sp"
+                android:paddingLeft="4sp" />
+
+            <EditText
+                android:id="@+id/password_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="password"
+                android:layout_marginTop="17sp"
+                android:layout_marginHorizontal="62sp"
+                android:background="#EFEFEF"
+                android:textSize="24sp"
+                android:paddingVertical="3sp"
+                android:paddingLeft="4sp" />
+
+            <RadioButton
+                android:id="@+id/auto_login_rb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="60sp"
+                android:layout_marginTop="10sp"
+                android:textColor="#8A8A8A"
+                android:textSize="15sp"
+                android:text="自动登陆"
+                android:gravity="center_vertical"/>
+
+            <Button
+                android:id="@+id/login_bt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="62sp"
+                android:layout_marginTop="25sp"
+                android:text="登陆"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/find_password_signup_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="找回密码 · 注册"
+                android:layout_gravity="center"
+                android:textColor="#8A8A8A"
+                android:layout_marginTop="120sp"/>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
