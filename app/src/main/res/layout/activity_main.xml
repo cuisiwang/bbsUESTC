@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,6 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="100sp"/>
 
         <ImageView
             android:id="@+id/start_logo_iv"
@@ -45,32 +49,54 @@
                 android:text="电子科技大学官方论坛"
                 android:textColor="#8A8A8A"
                 android:textSize="14sp" />
-            
-            <EditText
-                android:id="@+id/username_et"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:hint="username"
-                android:layout_marginTop="70sp"
-                android:layout_marginHorizontal="62sp"
-                android:background="#EFEFEF"
-                android:textSize="24sp"
-                android:paddingVertical="3sp"
-                android:paddingLeft="4sp" />
 
-            <EditText
-                android:id="@+id/password_et"
+
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:hint="password"
-                android:layout_marginTop="17sp"
                 android:layout_marginHorizontal="62sp"
-                android:background="#EFEFEF"
-                android:textSize="24sp"
-                android:paddingVertical="3sp"
-                android:paddingLeft="4sp" />
+                android:layout_marginTop="70sp"
+                android:hint="用户名"
+                app:startIconDrawable="@drawable/login_user_icon"
+                app:startIconScaleType="centerInside"
+                app:boxCornerRadiusBottomEnd="10sp"
+                app:boxCornerRadiusBottomStart="10sp"
+                app:boxCornerRadiusTopEnd="10sp"
+                app:boxCornerRadiusTopStart="10sp"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/login_username_tf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="62sp"
+                android:layout_marginTop="17sp"
+                android:hint="密码"
+                app:endIconMode="password_toggle"
+                app:startIconDrawable="@drawable/login_password_icon"
+                app:startIconScaleType="centerInside"
+                app:boxCornerRadiusBottomEnd="10sp"
+                app:boxCornerRadiusBottomStart="10sp"
+                app:boxCornerRadiusTopEnd="10sp"
+                app:boxCornerRadiusTopStart="10sp"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/login_password_tf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <RadioButton
                 android:id="@+id/auto_login_rb"
@@ -103,9 +129,5 @@
 
 
         </LinearLayout>
-
-
     </LinearLayout>
-
-
-</LinearLayout>
+</ScrollView>
