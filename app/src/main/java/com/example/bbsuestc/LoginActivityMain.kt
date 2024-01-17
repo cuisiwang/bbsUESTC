@@ -2,6 +2,7 @@ package com.example.bbsuestc
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -70,7 +71,8 @@ class LoginActivityMain : AppCompatActivity() {
     }
 
     private fun login() {
-        TODO("Not yet implemented")
+        val intent = Intent(this,HomeActivity::class.java)
+        startActivity(intent)
     }
 
     private fun startForgetPasswordActivity(){
