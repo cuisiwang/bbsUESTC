@@ -27,6 +27,6 @@
         android:id="@+id/additional_frag4"
         android:name="com.example.bbsuestc.ui.frag4.Fragment4"
         android:label="fragment4"
-        tools:layout="@layout/fragment_dashboard"/>
+        tools:layout="@layout/fragment_4"/>
 
 </navigation>

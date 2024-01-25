@@ -7,15 +7,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.bbsuestc.databinding.FragmentNotificationsBinding
+import com.example.bbsuestc.R
 
 class NotificationsFragment : Fragment() {
-
-    private var _binding: FragmentNotificationsBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,18 +19,16 @@ class NotificationsFragment : Fragment() {
         val notificationsViewModel =
             ViewModelProvider(this).get(NotificationsViewModel::class.java)
 
-        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        val view: View = inflater.inflate(R.layout.fragment_notifications,container,false)
 
-        val textView: TextView = binding.textNotifications
+        val textView: TextView = view.findViewById(R.id.text_notifications)
         notificationsViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
-        return root
+        return view
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
     }
 }

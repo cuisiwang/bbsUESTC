@@ -11,17 +11,24 @@
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="9"
+        android:layout_weight="10"
         app:defaultNavHost="true"
         app:navGraph="@navigation/mobile_navigation" />
 
+<View
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:background="@color/grey"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="?android:attr/windowBackground"
+        android:background="@color/white"
+        app:itemTextColor="@color/primaryBlue"
+        app:itemBackground="@drawable/home_bottomview_bg"
+        app:itemIconTint="@color/home_bottomview_icon"
         app:menu="@menu/bottom_nav_menu" />
 
 </LinearLayout>
