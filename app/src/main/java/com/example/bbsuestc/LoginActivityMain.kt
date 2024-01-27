@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.TextView
@@ -14,6 +15,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 
 
 class LoginActivityMain : AppCompatActivity() {
+
+    var logoCenterY : Float = 0.0F
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_main)
@@ -25,10 +28,11 @@ class LoginActivityMain : AppCompatActivity() {
         val loginBt : Button = findViewById(R.id.login_bt)
         val forgetPassword : TextView = findViewById(R.id.find_password_tv)  //忘记密码，注册
 
-        val originalY : Float = logoLayout.y
+        logoLayout.post{
+            initializeLogo(logoLayout)
+        }
 
-        initializeLogo(logoLayout)
-        logoLayout.setOnClickListener { loginAnimation(logoLayout,loginLayout, originalY) }
+        logoLayout.setOnClickListener { loginAnimation(logoLayout,loginLayout) }
 
         autoLoginBt.setOnClickListener {
             if (isAutoLogin){
@@ -46,23 +50,24 @@ class LoginActivityMain : AppCompatActivity() {
 
     }
 
-    //关于加载动画，可以考虑动态改变顶部空view的大小，而不是凭空移动布局
-
     private fun initializeLogo(logoLayout: LinearLayout) {
         val screenHeight: Int = resources.displayMetrics.heightPixels
-        val moveDownDistance: Float = screenHeight/2f-500
-        val moveDownAnimation: ObjectAnimator = ObjectAnimator.ofFloat(logoLayout, "translationY", 0f, moveDownDistance)
+        val logo : ImageView = findViewById(R.id.start_logo_iv)
+        val logoHeight = logo.height
+        val header : View = findViewById(R.id.login_header_view)
+        val headerHeight = header.height
+
+        logoCenterY = (screenHeight-logoHeight)/2f - headerHeight
+        val moveDownAnimation: ObjectAnimator = ObjectAnimator.ofFloat(logoLayout, "translationY", 0f, logoCenterY)
         moveDownAnimation.duration = 0
         moveDownAnimation.start()
     }
 
-    private fun loginAnimation(logoLayout: LinearLayout, loginLayout: LinearLayout, orignialY: Float) {
-        val screenHeight: Int = resources.displayMetrics.heightPixels
-        val startY: Float = screenHeight/2f-500
-        val moveUpAnimation: ObjectAnimator = ObjectAnimator.ofFloat(logoLayout, "translationY", startY,orignialY)
+    private fun loginAnimation(logoLayout: LinearLayout, loginLayout: LinearLayout,) {
+        val moveUpAnimation: ObjectAnimator = ObjectAnimator.ofFloat(logoLayout, "translationY", logoCenterY,0F)
         val loginLayoutVisible : ObjectAnimator = ObjectAnimator.ofFloat(loginLayout, "alpha",0f,1f)
         loginLayoutVisible.duration = 400
-        moveUpAnimation.duration = 400 // 设置动画持续时间
+        moveUpAnimation.duration = 400
         AnimatorSet().apply {
             loginLayout.visibility = View.VISIBLE
             play(moveUpAnimation).with(loginLayoutVisible)

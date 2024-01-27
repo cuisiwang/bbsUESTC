@@ -10,4 +10,8 @@ class HomeViewModel : ViewModel() {
         value = "This is home Fragment"
     }
     val text: LiveData<String> = _text
+
+    public fun changeText(){
+        _text.value = "Value in viewModel permanently changed."
+    }
 }
