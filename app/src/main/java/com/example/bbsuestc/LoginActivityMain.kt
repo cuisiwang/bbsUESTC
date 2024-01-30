@@ -87,12 +87,13 @@ class LoginActivityMain : AppCompatActivity() {
             layoutInflater.inflate(R.layout.dialog_home_find_password, null)
         forgetPasswordDialog.setContentView(bottomSheetView)
 
-        val forgetPasswordTV : TextView = bottomSheetView.findViewById(R.id.forgetPasswordTv)
-        val signupTV : TextView = bottomSheetView.findViewById(R.id.signupTv)
+        val forgetPasswordTV : TextView = bottomSheetView.findViewById(R.id.dialog_forget_password_tv)
+        val signupTV : TextView = bottomSheetView.findViewById(R.id.dialog_signup_tv)
         val cancelTV : TextView = bottomSheetView.findViewById(R.id.cancelTv)
 
         forgetPasswordTV.setOnClickListener {
-            // TODO: 启动对应activity
+            val intent = Intent(this,ForegetPasswordActivity::class.java)
+            startActivity(intent)
         }
 
         signupTV.setOnClickListener {

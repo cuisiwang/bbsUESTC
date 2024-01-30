@@ -13,6 +13,9 @@
         android:theme="@style/Theme.BbsUESTC"
         tools:targetApi="31">
         <activity
+            android:name=".ForegetPasswordActivity"
+            android:exported="false" />
+        <activity
             android:name=".HomeActivity"
             android:exported="false"
             android:label="@string/title_activity_home" />
