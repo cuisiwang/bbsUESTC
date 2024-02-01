@@ -1,10 +1,10 @@
-package com.example.bbsuestc.ui.dashboard
+package com.example.bbsuestc.homeActivity.plates
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class DashboardViewModel : ViewModel() {
+class PlatesViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is dashboard Fragment"

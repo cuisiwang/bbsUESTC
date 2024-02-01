@@ -11,6 +11,7 @@ import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.bbsuestc.homeActivity.HomeActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
 
@@ -76,7 +77,7 @@ class LoginActivityMain : AppCompatActivity() {
     }
 
     private fun login() {
-        val intent = Intent(this,HomeActivity::class.java)
+        val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
         finish()
     }
@@ -97,7 +98,8 @@ class LoginActivityMain : AppCompatActivity() {
         }
 
         signupTV.setOnClickListener {
-            // TODO: 启动对应activity
+            val intent = Intent(this,SignupActivity::class.java)
+            startActivity(intent)
         }
 
         cancelTV.setOnClickListener {

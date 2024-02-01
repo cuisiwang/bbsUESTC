@@ -1,4 +1,4 @@
-package com.example.bbsuestc.ui.home
+package com.example.bbsuestc.homeActivity.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -23,7 +23,8 @@ class HomeFragment : Fragment() {
 
         val textView: TextView = root.findViewById(R.id.text_home)
         homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+            textView.text = it  //这里的.text指的是TextView控件的text属性，可以对应的修改textSize一类的属性
+            textView.textSize=it.length/1F
         }
 
         textView.setOnClickListener { homeViewModel.changeText() }

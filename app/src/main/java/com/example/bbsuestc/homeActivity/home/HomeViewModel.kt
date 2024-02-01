@@ -1,4 +1,4 @@
-package com.example.bbsuestc.ui.home
+package com.example.bbsuestc.homeActivity.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -1,10 +1,11 @@
-package com.example.bbsuestc
+package com.example.bbsuestc.homeActivity
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.bbsuestc.R
 
 class HomeActivity : AppCompatActivity() {
 
@@ -13,7 +14,7 @@ class HomeActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_home)
 
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        val navView: BottomNavigationView = findViewById(R.id.activity_home_bottom_navview)
         navView.isItemActiveIndicatorEnabled = false
 
         val navController = findNavController(R.id.nav_host_fragment_activity_home)

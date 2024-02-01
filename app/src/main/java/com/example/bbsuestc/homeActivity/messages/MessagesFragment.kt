@@ -1,4 +1,4 @@
-package com.example.bbsuestc.ui.notifications
+package com.example.bbsuestc.homeActivity.messages
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.bbsuestc.R
 
-class NotificationsFragment : Fragment() {
+class MessagesFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -17,11 +17,11 @@ class NotificationsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val notificationsViewModel =
-            ViewModelProvider(this).get(NotificationsViewModel::class.java)
+            ViewModelProvider(this).get(MessagesViewModel::class.java)
 
-        val view: View = inflater.inflate(R.layout.fragment_notifications,container,false)
+        val view: View = inflater.inflate(R.layout.fragment_messages,container,false)
 
-        val textView: TextView = view.findViewById(R.id.text_notifications)
+        val textView: TextView = view.findViewById(R.id.text_messages)
         notificationsViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }

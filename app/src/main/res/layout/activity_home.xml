@@ -21,7 +21,7 @@
     android:background="@color/grey"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/nav_view"
+        android:id="@+id/activity_home_bottom_navview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
