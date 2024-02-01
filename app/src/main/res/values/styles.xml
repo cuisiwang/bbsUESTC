@@ -9,6 +9,7 @@
 
     <style name="default_button_style" parent="Widget.AppCompat.Button">
         <item name="android:background">@drawable/default_button_bg</item>
+        <item name="android:textSize">17sp</item>
     </style>
 
 
