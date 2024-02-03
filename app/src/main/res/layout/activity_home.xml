@@ -27,7 +27,7 @@
         android:layout_weight="1"
         android:background="@color/white"
         app:itemTextColor="@color/primaryBlue"
-        app:itemBackground="@drawable/home_bottomview_bg"
+        app:itemBackground="@drawable/bg_home_bottomview"
         app:itemIconTint="@color/home_bottomview_icon"
         app:menu="@menu/bottom_nav_menu" />
 

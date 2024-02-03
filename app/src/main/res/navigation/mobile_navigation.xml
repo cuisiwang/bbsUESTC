@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_home_blank">
 
     <fragment
         android:id="@+id/navigation_home"
@@ -29,4 +29,9 @@
         android:label="我的"
         tools:layout="@layout/fragment_my"/>
 
+    <fragment
+        android:id="@+id/navigation_home_blank"
+        android:name="com.example.bbsuestc.homeActivity.home.BlankFragment"
+        android:label="空白Fragment"
+        tools:layout="@layout/fragment_blank"/>
 </navigation>

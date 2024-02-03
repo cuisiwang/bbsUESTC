@@ -2,13 +2,13 @@
 <resources>
 
     <style name="default_edit_text" parent="Widget.AppCompat.EditText">
-        <item name="android:background">@drawable/default_edittext_bg</item>
+        <item name="android:background">@drawable/bg_default_edittext</item>
         <item name="android:paddingLeft">15dp</item>
         <item name="android:paddingVertical">12dp</item>
     </style>
 
     <style name="default_button_style" parent="Widget.AppCompat.Button">
-        <item name="android:background">@drawable/default_button_bg</item>
+        <item name="android:background">@drawable/bg_default_button</item>
         <item name="android:textSize">17sp</item>
     </style>
 
