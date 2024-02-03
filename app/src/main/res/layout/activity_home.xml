@@ -6,19 +6,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <fragment
-        android:id="@+id/nav_host_fragment_activity_home"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/activity_home_vp_nav_host"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/mobile_navigation" />
-
-<View
-    android:layout_width="match_parent"
-    android:layout_height="1dp"
-    android:background="@color/grey"/>
+        android:layout_weight="13"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/activity_home_bottom_navview"
@@ -27,6 +23,7 @@
         android:layout_weight="1"
         android:background="@color/white"
         app:itemTextColor="@color/primaryBlue"
+        app:itemIconSize="18dp"
         app:itemBackground="@drawable/bg_home_bottomview"
         app:itemIconTint="@color/home_bottomview_icon"
         app:menu="@menu/bottom_nav_menu" />
