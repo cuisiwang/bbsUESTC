@@ -45,9 +45,7 @@ class HomeFragment : Fragment() {
 
         toolbarTL = root.findViewById(R.id.home_toolbar_contents_tl)
         contentVP = root.findViewById(R.id.home_content_vp)
-        contentVP.apply {
-            adapter = HomeContentVPAdapter(this@HomeFragment)
-        }
+        contentVP.adapter = HomeContentVPAdapter(this)
 
         val titles = arrayOf("热门", "最新回复", "最新发表", "精华", "统计数据")
         TabLayoutMediator(toolbarTL, contentVP) { tab, position ->
