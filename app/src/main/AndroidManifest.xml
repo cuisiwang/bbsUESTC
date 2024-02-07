@@ -21,6 +21,8 @@
         <activity
             android:name=".homeActivity.HomeActivity"
             android:exported="false"
+            android:windowSoftInputMode="adjustResize"
+            tools:ignore="LockedOrientationActivity"
             android:label="@string/title_activity_home" />
         <activity
             android:name=".LoginActivityMain"

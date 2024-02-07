@@ -45,10 +45,10 @@ class HomeActivity : AppCompatActivity() {
 
     private fun switchToFragment(itemId: Int) {
         when(itemId){
-            R.id.navigation_home -> viewPager.currentItem = 0
-            R.id.navigation_plates -> viewPager.currentItem = 1
-            R.id.navigation_messages -> viewPager.currentItem = 2
-            R.id.navigation_my -> viewPager.currentItem = 3
+            R.id.navigation_home -> viewPager.setCurrentItem(0,false)
+            R.id.navigation_plates -> viewPager.setCurrentItem(1,false)
+            R.id.navigation_messages -> viewPager.setCurrentItem(2,false)
+            R.id.navigation_my -> viewPager.setCurrentItem(3,false)
         }
     }
 
