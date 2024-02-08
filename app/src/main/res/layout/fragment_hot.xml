@@ -6,17 +6,13 @@
     tools:context=".homeActivity.home.homeContents.hot.HotFragment"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="热门"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/hot_header_services_rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"/>
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/hot_posts_content_rv"
+        android:id="@+id/hot_posts_rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"/>
