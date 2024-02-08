@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.example.bbsuestc.R
 
 class PlatesFragment : Fragment() {
@@ -17,14 +20,18 @@ class PlatesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val platesViewModel =
-            ViewModelProvider(this).get(PlatesViewModel::class.java)
+            ViewModelProvider(this)[PlatesViewModel::class.java]
 
         val root: View = inflater.inflate(R.layout.fragment_plates,container,false)
 
-        val textView: TextView = root.findViewById(R.id.text_plates)
-        platesViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        val plateGroupsRecyclerView = root.findViewById<RecyclerView>(R.id.plate_groups_RV)
+        val layoutManager = LinearLayoutManager(this.context)
+        val plateParentAdapter = PlateParentAdapter(platesViewModel.plateGroups)
+        plateGroupsRecyclerView.apply {
+            setLayoutManager(layoutManager)
+            adapter = plateParentAdapter
         }
+
         return root
     }
 
