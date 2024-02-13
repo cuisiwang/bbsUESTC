@@ -1,4 +1,4 @@
-package com.example.bbsuestc.homeActivity.home.homeContents.hot.postsContent
+package com.example.bbsuestc.recyclerViewContents.postsContent
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
-import com.example.bbsuestc.homeActivity.home.homeContents.hot.headerServices.HeaderServicesAdapter
 
 class PostsContentAdapter(private val data : ArrayList<PostsItem>) : RecyclerView.Adapter<PostsContentAdapter.ViewHolder>() {
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -22,19 +21,19 @@ class PostsContentAdapter(private val data : ArrayList<PostsItem>) : RecyclerVie
         var postReplys : TextView
 
         init {
-            userIcon = itemView.findViewById(R.id.hot_posts_user_icon_iv)
-            userID = itemView.findViewById(R.id.hot_posts_userID_tv)
-            postTime = itemView. findViewById(R.id.hot_posts_time_tv)
-            postTitle = itemView.findViewById(R.id.hot_posts_title_tv)
-            postContent = itemView.findViewById(R.id.hot_posts_content_tv)
-            postPlate = itemView.findViewById(R.id.hot_posts_plates_tv)
-            postViewers = itemView.findViewById(R.id.hot_posts_viewers_tv)
-            postReplys = itemView.findViewById(R.id.hot_posts_replys_tv)
+            userIcon = itemView.findViewById(R.id.posts_user_icon_iv)
+            userID = itemView.findViewById(R.id.posts_userID_tv)
+            postTime = itemView. findViewById(R.id.posts_time_tv)
+            postTitle = itemView.findViewById(R.id.posts_title_tv)
+            postContent = itemView.findViewById(R.id.posts_content_tv)
+            postPlate = itemView.findViewById(R.id.posts_plates_tv)
+            postViewers = itemView.findViewById(R.id.posts_viewers_tv)
+            postReplys = itemView.findViewById(R.id.posts_replys_tv)
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_hot_posts_content,parent,false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_posts_content,parent,false)
         )
     }
 

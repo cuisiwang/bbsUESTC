@@ -1,17 +1,18 @@
 package com.example.bbsuestc.homeActivity.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.example.bbsuestc.R
+import com.example.bbsuestc.searchActivity.SearchActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -43,7 +44,9 @@ class HomeFragment : Fragment() {
 
         searchET = root.findViewById(R.id.home_toolbar_search_iv)
         searchET.setOnClickListener{
-            Toast.makeText(context, "此处点击逻辑改为启动搜索的Activity", Toast.LENGTH_SHORT).show()}
+            val intent = Intent(activity, SearchActivity::class.java)
+            startActivity(intent)
+        }
 
         toolbarTL = root.findViewById(R.id.home_toolbar_contents_tl)
         contentVP = root.findViewById(R.id.home_content_vp)
