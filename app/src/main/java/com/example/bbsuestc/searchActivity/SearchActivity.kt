@@ -1,18 +1,24 @@
 package com.example.bbsuestc.searchActivity
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethod
+import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
 import com.example.bbsuestc.recyclerViewContents.postsContent.PostsContentAdapter
 import com.example.bbsuestc.recyclerViewContents.postsContent.PostsItem
+import com.example.bbsuestc.recyclerViewContents.usersContent.UsersContentAdapter
+import com.example.bbsuestc.recyclerViewContents.usersContent.UsersItem
 
 class SearchActivity : AppCompatActivity() {
 
@@ -50,8 +56,19 @@ class SearchActivity : AppCompatActivity() {
     }
 
 
-    private fun search(searchType: String, searchContent: String){
-        search.clearFocus()
+    private fun search(searchType: String, searchText: String){
+        //隐藏键盘，失去焦点
+        searchContent.clearFocus()
+        val imm: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        this.currentFocus?.let {
+            imm.hideSoftInputFromWindow(it.windowToken, 0)
+        }
+
+        if (searchText == ""){
+            Toast.makeText(this, "搜索内容不能为空！", Toast.LENGTH_SHORT).show()
+            return
+        }
+        resultContent.adapter = null
 
         var resultNumbers = 0
         if(searchType == "帖子"){
@@ -67,9 +84,18 @@ class SearchActivity : AppCompatActivity() {
             }
             resultContent.layoutManager = LinearLayoutManager(this)
             resultContent.adapter = PostsContentAdapter(data)
-            resultNumbers = 10
+            resultNumbers = data.size
         }else{
             //模拟搜索用户返回结果
+            val data = arrayListOf<UsersItem>()
+            for(i in 0..20){
+                data.add(
+                    UsersItem("","这是发帖人ID","这是一条个人简介")
+                )
+            }
+            resultContent.layoutManager = LinearLayoutManager(this)
+            resultContent.adapter = UsersContentAdapter(data)
+            resultNumbers = data.size
         }
         resultNumber.text = "找到${resultNumbers}条结果"
         resultNumber.visibility = View.VISIBLE

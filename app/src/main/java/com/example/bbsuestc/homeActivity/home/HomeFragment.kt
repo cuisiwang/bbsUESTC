@@ -1,5 +1,6 @@
 package com.example.bbsuestc.homeActivity.home
 
+import com.example.bbsuestc.utils.adjustScrollSensitivity
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -51,6 +52,7 @@ class HomeFragment : Fragment() {
         toolbarTL = root.findViewById(R.id.home_toolbar_contents_tl)
         contentVP = root.findViewById(R.id.home_content_vp)
         contentVP.adapter = HomeContentVPAdapter(this)
+        contentVP.adjustScrollSensitivity(contentVP,2)
 
         val titles = arrayOf("热门", "最新回复", "最新发表", "精华", "统计数据")
         TabLayoutMediator(toolbarTL, contentVP) { tab, position ->
