@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.example.bbsuestc.R
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -21,6 +22,7 @@ class HomeFragment : Fragment() {
     private lateinit var headerIV : ImageView
     private lateinit var toolbarTL : TabLayout
     private lateinit var contentVP : ViewPager2
+    private lateinit var newPostFAB : FloatingActionButton
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,6 +53,11 @@ class HomeFragment : Fragment() {
         TabLayoutMediator(toolbarTL, contentVP) { tab, position ->
             tab.setText(titles[position])
         }.attach()
+
+        newPostFAB = root.findViewById(R.id.home_new_post_fab)
+        newPostFAB.setOnClickListener{
+            Toast.makeText(context, "应跳转发帖Activity", Toast.LENGTH_SHORT).show()
+        }
         return root
     }
 
