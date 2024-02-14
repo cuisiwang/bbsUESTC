@@ -1,5 +1,6 @@
 package com.example.bbsuestc.homeActivity.plates
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.example.bbsuestc.R
+
 
 class PlateParentAdapter(val plateGroups: List<PlateGroup>): Adapter<PlateParentAdapter.ViewHolder>()  {
 
