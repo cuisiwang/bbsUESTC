@@ -5,9 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".homeActivity.home.homeContents.digest.DigestFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/digest_posts_rv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="精华" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"/>
 
 </FrameLayout>

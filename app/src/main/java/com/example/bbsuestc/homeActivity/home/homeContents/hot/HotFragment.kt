@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
+import com.example.bbsuestc.homeActivity.home.homeContents.digest.DigestFragment
 import com.example.bbsuestc.homeActivity.home.homeContents.hot.headerServices.HeaderServicesAdapter
 import com.example.bbsuestc.recyclerViewContents.postsContent.PostsContentAdapter
 import com.example.bbsuestc.recyclerViewContents.postsContent.PostsItem
@@ -51,6 +52,10 @@ class HotFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this).get(HotViewModel::class.java)
+    }
+
+    companion object {
+        fun newInstance() = HotFragment()
     }
 
 }

@@ -57,17 +57,17 @@ class SearchActivity : AppCompatActivity() {
 
 
     private fun search(searchType: String, searchText: String){
-        //隐藏键盘，失去焦点
-        searchContent.clearFocus()
-        val imm: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        this.currentFocus?.let {
-            imm.hideSoftInputFromWindow(it.windowToken, 0)
-        }
-
         if (searchText == ""){
             Toast.makeText(this, "搜索内容不能为空！", Toast.LENGTH_SHORT).show()
             return
         }
+        //隐藏键盘，失去焦点
+        val imm: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        this.currentFocus?.let {
+            imm.hideSoftInputFromWindow(it.windowToken, 0)
+        }
+        searchContent.clearFocus()
+
         resultContent.adapter = null
 
         var resultNumbers = 0
