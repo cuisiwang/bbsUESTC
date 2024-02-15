@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="用户1"
-            android:textSize="20sp"
+            android:textSize="17sp"
             android:textColor="@color/black"/>
         <TextView
             android:id="@+id/users_description_tv"

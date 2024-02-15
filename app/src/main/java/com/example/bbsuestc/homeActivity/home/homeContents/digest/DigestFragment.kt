@@ -21,7 +21,7 @@ class DigestFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_new_release, container, false)
+        val root = inflater.inflate(R.layout.fragment_digest, container, false)
         //data应该从ViewModel里获取
         postsContent = root.findViewById(R.id.digest_posts_rv)
         val data = arrayListOf<PostsItem>()

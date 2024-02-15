@@ -53,7 +53,7 @@ class HomeFragment : Fragment() {
         contentVP = root.findViewById(R.id.home_content_vp)
         contentVP.adapter = HomeContentVPAdapter(this)
         contentVP.adjustScrollSensitivity(contentVP,2)
-        contentVP.offscreenPageLimit =  3
+        contentVP.offscreenPageLimit =  4
 
         val titles = arrayOf("热门", "最新回复", "最新发表", "精华", "统计数据")
         TabLayoutMediator(toolbarTL, contentVP) { tab, position ->
