@@ -1,4 +1,4 @@
-package com.example.bbsuestc.homeActivity.home.homeContents.hot.postsContent
+package com.example.bbsuestc.recyclerViewContents.postsContent
 
 data class PostsItem(
     val posterIcon : String,

@@ -9,9 +9,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
+import com.example.bbsuestc.homeActivity.home.homeContents.digest.DigestFragment
 import com.example.bbsuestc.homeActivity.home.homeContents.hot.headerServices.HeaderServicesAdapter
-import com.example.bbsuestc.homeActivity.home.homeContents.hot.postsContent.PostsContentAdapter
-import com.example.bbsuestc.homeActivity.home.homeContents.hot.postsContent.PostsItem
+import com.example.bbsuestc.recyclerViewContents.postsContent.PostsContentAdapter
+import com.example.bbsuestc.recyclerViewContents.postsContent.PostsItem
 
 class HotFragment : Fragment() {
 
@@ -39,10 +40,10 @@ class HotFragment : Fragment() {
             data.add(
                 PostsItem("","这是发帖人ID","2022-12-22","这是帖子的标题",
                     "这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容",
-                    "校园生活",114514,191))
+                    "校园生活",114514,191)
+            )
         }
-        val layoutmanager = LinearLayoutManager(activity)
-        postsContent.layoutManager = layoutmanager
+        postsContent.layoutManager = LinearLayoutManager(activity)
         postsContent.adapter = PostsContentAdapter(data)
 
         return root
@@ -51,6 +52,10 @@ class HotFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this).get(HotViewModel::class.java)
+    }
+
+    companion object {
+        fun newInstance() = HotFragment()
     }
 
 }

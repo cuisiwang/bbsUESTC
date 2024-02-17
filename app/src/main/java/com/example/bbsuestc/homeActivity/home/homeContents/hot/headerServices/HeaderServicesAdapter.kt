@@ -26,7 +26,7 @@ class HeaderServicesAdapter(private val mContext: Context?) :
 
     override fun getItemCount(): Int {
         // 返回列表项数量
-        return 6
+        return 7
     }
 
     // 内部ViewHolder类
@@ -41,6 +41,7 @@ class HeaderServicesAdapter(private val mContext: Context?) :
                 add("网上报修")
                 add("一卡通查询")
                 add("校车时刻表")
+                add("统计数据")
             }
         }
     }
