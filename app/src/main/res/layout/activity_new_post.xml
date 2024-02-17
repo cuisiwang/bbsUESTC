@@ -6,125 +6,132 @@
     android:layout_height="match_parent"
     tools:context=".newPostActivity.NewPostActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/transparent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_scrollFlags="scroll|enterAlways">
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/new_post_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:contentInsetStart="0dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/new_post_toolbar_back_iv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="18dp"
-                        android:scaleType="center"
-                        android:src="@drawable/ic_back"
-                        android:layout_alignParentStart="true"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_centerInParent="true"
-                        android:gravity="center_vertical|center_horizontal"
-                        android:text="发帖"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/header_text_size" />
-
-                    <TextView
-                        android:id="@+id/new_post_toolbar_post_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentBottom="true"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/primaryBlue"
-                        android:layout_marginEnd="18dp"
-                        android:textSize="18sp"
-                        android:text="发表" />
-                </RelativeLayout>
-            </androidx.appcompat.widget.Toolbar>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/grey" />
-        </LinearLayout>
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.core.widget.NestedScrollView
+    <!--可以参考layout文件：activity_create_post-->
+    <!--使用了这个组件：am.widget.smoothinputlayout.SmoothInputLayout,替换下面这个LinearLayout-->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+        android:orientation="vertical">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <LinearLayout
+            android:layout_height="wrap_content">
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBarLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="板块，主题待做" />
-                <EditText
-                    android:id="@+id/new_post_title_et"
+                android:background="@color/transparent">
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
-                    android:background="@color/transparent"
-                    android:hint="输入标题"
-                    android:inputType="text"
-                    android:lines="1" />
+                    android:orientation="vertical"
+                    app:layout_scrollFlags="scroll|enterAlways">
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginHorizontal="15dp"
-                    android:background="@color/grey" />
+                    <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/new_post_toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        app:contentInsetStart="0dp">
 
-                <EditText
-                    android:id="@+id/new_post_content_et"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
-                    android:background="@color/transparent"
-                    android:hint="输入正文"
-                    android:inputType="text" />
-            </LinearLayout>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
 
+                            <ImageView
+                                android:id="@+id/new_post_toolbar_back_iv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="18dp"
+                                android:scaleType="center"
+                                android:src="@drawable/ic_back"
+                                android:layout_alignParentStart="true"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:gravity="center_vertical|center_horizontal"
+                                android:text="发帖"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/header_text_size" />
+
+                            <TextView
+                                android:id="@+id/new_post_toolbar_post_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentBottom="true"
+                                android:gravity="center_vertical"
+                                android:textColor="@color/primaryBlue"
+                                android:layout_marginEnd="18dp"
+                                android:textSize="18sp"
+                                android:text="发表" />
+                        </RelativeLayout>
+                    </androidx.appcompat.widget.Toolbar>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/grey" />
+                </LinearLayout>
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/appBarLayout"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="板块，主题待做" />
+                        <EditText
+                            android:id="@+id/new_post_title_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="15dp"
+                            android:background="@color/transparent"
+                            android:hint="输入标题"
+                            android:inputType="text"
+                            android:lines="1" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginHorizontal="15dp"
+                            android:background="@color/grey" />
+
+<!--                        这里可能要借鉴原app的组件，Edittext不够用-->
+                        <EditText
+                            android:id="@+id/new_post_content_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="15dp"
+                            android:background="@color/transparent"
+                            android:hint="输入正文"
+                            android:gravity="top"
+                            android:inputType="textMultiLine"
+                            android:minLines="5"
+                            android:maxLines="10" />
+                    </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
+                android:layout_height="40dp"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:background="@color/secondaryBlue">
 
             </LinearLayout>
-
         </RelativeLayout>
 
-    </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

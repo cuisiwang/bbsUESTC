@@ -26,7 +26,7 @@ class HeaderServicesAdapter(private val mContext: Context?) :
 
     override fun getItemCount(): Int {
         // 返回列表项数量
-        return 6
+        return 7
     }
 
     // 内部ViewHolder类
