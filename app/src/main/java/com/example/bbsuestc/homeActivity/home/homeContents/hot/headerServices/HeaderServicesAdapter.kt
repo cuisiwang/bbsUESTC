@@ -41,6 +41,7 @@ class HeaderServicesAdapter(private val mContext: Context?) :
                 add("网上报修")
                 add("一卡通查询")
                 add("校车时刻表")
+                add("统计数据")
             }
         }
     }

@@ -13,11 +13,6 @@ import com.example.bbsuestc.recyclerViewContents.postsContent.PostsContentAdapte
 import com.example.bbsuestc.recyclerViewContents.postsContent.PostsItem
 
 class NewReplyFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = NewReplyFragment()
-    }
-
     private lateinit var postsContent : RecyclerView
     private lateinit var viewModel: NewReplyViewModel
 
@@ -44,6 +39,11 @@ class NewReplyFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this).get(NewReplyViewModel::class.java)
+    }
+
+
+    companion object {
+        fun newInstance() = NewReplyFragment()
     }
 
 }

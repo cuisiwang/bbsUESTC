@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.example.bbsuestc.R
+import com.example.bbsuestc.newPostActivity.NewPostActivity
 import com.example.bbsuestc.searchActivity.SearchActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
@@ -53,16 +54,17 @@ class HomeFragment : Fragment() {
         contentVP = root.findViewById(R.id.home_content_vp)
         contentVP.adapter = HomeContentVPAdapter(this)
         contentVP.adjustScrollSensitivity(contentVP,2)
-        contentVP.offscreenPageLimit =  4
+        contentVP.offscreenPageLimit =  3
 
-        val titles = arrayOf("热门", "最新回复", "最新发表", "精华", "统计数据")
+        val titles = arrayOf("热门", "最新回复", "最新发表", "精华")
         TabLayoutMediator(toolbarTL, contentVP) { tab, position ->
             tab.setText(titles[position])
         }.attach()
 
         newPostFAB = root.findViewById(R.id.home_new_post_fab)
         newPostFAB.setOnClickListener{
-            Toast.makeText(context, "应跳转发帖Activity", Toast.LENGTH_SHORT).show()
+            val intent = Intent(activity, NewPostActivity::class.java)
+            startActivity(intent)
         }
         return root
     }

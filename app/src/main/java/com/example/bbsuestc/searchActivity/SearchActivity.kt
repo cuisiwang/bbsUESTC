@@ -70,7 +70,7 @@ class SearchActivity : AppCompatActivity() {
 
         resultContent.adapter = null
 
-        var resultNumbers = 0
+        val resultNumbers :Int
         if(searchType == "帖子"){
             //模拟搜索帖子返回的结果
             //data应该从ViewModel里获取

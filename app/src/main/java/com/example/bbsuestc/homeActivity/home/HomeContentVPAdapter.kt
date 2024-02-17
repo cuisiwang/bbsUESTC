@@ -10,14 +10,13 @@ import com.example.bbsuestc.homeActivity.home.homeContents.statics.StaticsFragme
 
 class HomeContentVPAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
     override fun getItemCount(): Int {
-        return 5
+        return 4
     }
 
     override fun createFragment(position: Int): Fragment = when(position){
-        0 -> HotFragment()
-        1 -> NewReplyFragment()
-        2 -> NewReleaseFragment()
-        3 -> DigestFragment()
-        else -> StaticsFragment()
+        0 -> HotFragment.newInstance()
+        1 -> NewReplyFragment.newInstance()
+        2 -> NewReleaseFragment.newInstance()
+        else -> DigestFragment.newInstance()
     }
 }
