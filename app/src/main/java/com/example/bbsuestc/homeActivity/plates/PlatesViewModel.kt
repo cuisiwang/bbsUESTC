@@ -1,8 +1,8 @@
 package com.example.bbsuestc.homeActivity.plates
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.bbsuestc.recyclerViewContents.platesContent.Plate
+import com.example.bbsuestc.recyclerViewContents.platesContent.PlateGroup
 
 class PlatesViewModel : ViewModel() {
 

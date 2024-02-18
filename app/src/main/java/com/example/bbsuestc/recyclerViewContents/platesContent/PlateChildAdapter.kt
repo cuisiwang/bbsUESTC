@@ -1,4 +1,4 @@
-package com.example.bbsuestc.homeActivity.plates
+package com.example.bbsuestc.recyclerViewContents.platesContent
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.example.bbsuestc.R
+import com.example.bbsuestc.plateDetailActivity.PlateDetailActivity
 
 //intent key所用常量
 const val KEY_PLATE_ID = "plate_id"

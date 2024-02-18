@@ -1,6 +1,5 @@
-package com.example.bbsuestc.homeActivity.plates
+package com.example.bbsuestc.recyclerViewContents.platesContent
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
