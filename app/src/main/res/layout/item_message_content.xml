@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/message_icon_iv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/bg_circle_gray"
+            android:layout_marginTop="9dp"
+            android:layout_marginBottom="7dp">
+
+        </ImageView>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp">
+            <TextView
+                android:id="@+id/message_user_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="河畔用户1"
+                android:textStyle="bold"
+                android:layout_marginTop="9dp">
+
+            </TextView>
+            <TextView
+                android:id="@+id/message_user_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="这是一条信息这是一条信息这是一条信息这是一条信息这是一条信息这是一条信息"
+                android:lines="1"
+                android:textColor="#9F9C9C"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                >
+
+            </TextView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/message_user_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12-1"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"
+                android:textStyle="normal"
+                android:layout_marginTop="9dp">
+
+            </TextView>
+            <TextView
+                android:id="@+id/message_user_read_cnt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                android:text="1"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/bg_red_circle"
+                android:textColor="@color/white"
+                android:layout_marginTop="12dp">
+
+            </TextView>
+        </LinearLayout>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginLeft="78dp"
+        android:background="@color/grey"/>
+</LinearLayout>

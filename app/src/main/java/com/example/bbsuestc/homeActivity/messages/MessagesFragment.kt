@@ -1,16 +1,27 @@
 package com.example.bbsuestc.homeActivity.messages
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
+import com.example.bbsuestc.recyclerViewContents.MessageContent.MessageContentAdapter
+import com.example.bbsuestc.recyclerViewContents.MessageContent.MessageItem
+import com.example.bbsuestc.recyclerViewContents.postsContent.PostsItem
 
 class MessagesFragment : Fragment() {
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -21,12 +32,24 @@ class MessagesFragment : Fragment() {
 
         val view: View = inflater.inflate(R.layout.fragment_messages,container,false)
 
-        val textView: TextView = view.findViewById(R.id.text_messages)
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+//        val textView: TextView = view.findViewById(R.id.text_messages)
+//        notificationsViewModel.text.observe(viewLifecycleOwner) {
+//            textView.text = it
+//        }
+        val toolbar:Toolbar=view.findViewById(R.id.toolbar_message)
+        val rv:RecyclerView=view.findViewById(R.id.friendRv)
+        //做一个数据
+        val data = arrayListOf<MessageItem>()
+        for(i in 1..100){
+            data.add(MessageItem("","河畔用户1","12-01","有一条信息有一条信息有一条信息有一条信息有一条信息有一条信息",3))
         }
+        rv.adapter= MessageContentAdapter(data)
+        rv.layoutManager=LinearLayoutManager(activity)
+        toolbar.inflateMenu(R.menu.message_menu)
+        toolbar.setOverflowIcon(getResources().getDrawable(R.drawable.ic_add))
         return view
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
