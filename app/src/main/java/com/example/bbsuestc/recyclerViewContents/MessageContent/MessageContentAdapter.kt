@@ -41,7 +41,18 @@ class MessageContentAdapter(private val data:ArrayList<MessageItem>):
         holder.messageContent.setText(data[position].messageContent)
         holder.userID.setText(data[position].userID)
         holder.time.setText(data[position].time)
-        holder.unreadCount.setText(data[position].unreadCount.toString())
+        //判断未读信息的条数，以设置合理的显示
+        if(data[position].unreadCount==0){
+            holder.unreadCount.visibility=View.GONE
+        }
+        else if(data[position].unreadCount>99){
+            holder.unreadCount.visibility=View.VISIBLE;
+            holder.unreadCount.setText("99+")
+        }
+        else{
+            holder.unreadCount.visibility=View.VISIBLE;
+            holder.unreadCount.setText(data[position].unreadCount.toString())
+        }
     }
 
     override fun getItemCount(): Int {

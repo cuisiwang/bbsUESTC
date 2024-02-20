@@ -40,8 +40,8 @@ class MessagesFragment : Fragment() {
         val rv:RecyclerView=view.findViewById(R.id.friendRv)
         //做一个数据
         val data = arrayListOf<MessageItem>()
-        for(i in 1..100){
-            data.add(MessageItem("","河畔用户1","12-01","有一条信息有一条信息有一条信息有一条信息有一条信息有一条信息",3))
+        for(i in 0..130){
+            data.add(MessageItem("","河畔用户1","12-01","有一条信息有一条信息有一条信息有一条信息有一条信息有一条信息",i))
         }
         rv.adapter= MessageContentAdapter(data)
         rv.layoutManager=LinearLayoutManager(activity)
