@@ -21,7 +21,7 @@ import com.example.bbsuestc.recyclerViewContents.postsContent.PostsItem
 
 class MessagesFragment : Fragment() {
 
-    @SuppressLint("UseCompatLoadingForDrawables")
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -32,12 +32,8 @@ class MessagesFragment : Fragment() {
 
         val view: View = inflater.inflate(R.layout.fragment_messages,container,false)
 
-//        val textView: TextView = view.findViewById(R.id.text_messages)
-//        notificationsViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
-        val toolbar:Toolbar=view.findViewById(R.id.toolbar_message)
-        val rv:RecyclerView=view.findViewById(R.id.friendRv)
+//        val toolbar:Toolbar=view.findViewById(R.id.toolbar_message) TODO: 参考别的类，将控件声明独立到方法外
+//        val rv:RecyclerView=view.findViewById(R.id.friendRv)
         //做一个数据
         val data = arrayListOf<MessageItem>()
         for(i in 0..130){
@@ -45,8 +41,8 @@ class MessagesFragment : Fragment() {
         }
         rv.adapter= MessageContentAdapter(data)
         rv.layoutManager=LinearLayoutManager(activity)
-        toolbar.inflateMenu(R.menu.message_menu)
-        toolbar.setOverflowIcon(getResources().getDrawable(R.drawable.ic_add))
+//        toolbar.inflateMenu(R.menu.message_menu)  TODO：使用spinner
+//        toolbar.overflowIcon = resources.getDrawable(R.drawable.ic_add)
         return view
     }
 
