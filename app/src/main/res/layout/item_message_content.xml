@@ -2,7 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:paddingTop="10dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -10,41 +12,32 @@
         <ImageView
             android:id="@+id/message_icon_iv"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@drawable/bg_circle_gray"
-            android:layout_marginTop="9dp"
-            android:layout_marginBottom="7dp">
-
-        </ImageView>
+            android:src="@drawable/bg_circle_imageview"/>
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4"
             android:orientation="vertical"
-            android:layout_marginLeft="10dp">
+            android:layout_marginLeft="2dp">
             <TextView
                 android:id="@+id/message_user_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="河畔用户1"
-                android:textStyle="bold"
-                android:layout_marginTop="9dp">
-
-            </TextView>
+                android:gravity="center_vertical"
+                tools:text="河畔用户1"
+                android:textSize="17sp"
+                android:textStyle="bold"/>
             <TextView
                 android:id="@+id/message_user_message"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="这是一条信息这是一条信息这是一条信息这是一条信息这是一条信息这是一条信息"
+                tools:text="这是一条信息这是一条信息这是一条信息这是一条信息这是一条信息这是一条信息"
                 android:lines="1"
-                android:textColor="#9F9C9C"
-                android:layout_marginTop="4dp"
-                android:ellipsize="end"
-                >
-
-            </TextView>
-
+                android:textColor="@color/secondaryGrey"
+                android:paddingTop="3dp"
+                android:ellipsize="end"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
@@ -56,32 +49,44 @@
                 android:id="@+id/message_user_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="12-1"
-                android:gravity="center_horizontal"
-                android:layout_gravity="center_horizontal"
-                android:textStyle="normal"
-                android:layout_marginTop="9dp">
+                tools:text="12-1"
+                android:layout_gravity="center_horizontal">
 
             </TextView>
             <TextView
                 android:id="@+id/message_user_read_cnt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:text="1"
-                android:gravity="center_horizontal"
+                android:visibility="invisible"
+                tools:visibility="visible"
+                tools:text="1"
+                android:gravity="center"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/bg_red_circle"
+                android:background="@drawable/ic_message_dot"
                 android:textColor="@color/white"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="5dp"
                 >
 
             </TextView>
         </LinearLayout>
     </LinearLayout>
-    <View
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginLeft="78dp"
-        android:background="@color/grey"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        >
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="5"
+            android:background="@color/grey"
+            />
+    </LinearLayout>
+
 </LinearLayout>

@@ -15,7 +15,7 @@ class MessageContentAdapter(private val data:ArrayList<MessageItem>):
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): MessageContentAdapter.innerholder {
+    ): innerholder {
 
         val view:View=LayoutInflater.from(parent.context).inflate(R.layout.item_message_content,parent,false)
         return innerholder(view)
@@ -36,27 +36,24 @@ class MessageContentAdapter(private val data:ArrayList<MessageItem>):
         }
     }
 
-    override fun onBindViewHolder(holder: MessageContentAdapter.innerholder, position: Int) {
+    override fun onBindViewHolder(holder: innerholder, position: Int) {
 
         holder.messageContent.setText(data[position].messageContent)
         holder.userID.setText(data[position].userID)
         holder.time.setText(data[position].time)
         //判断未读信息的条数，以设置合理的显示
         if(data[position].unreadCount==0){
-            holder.unreadCount.visibility=View.GONE
+            holder.unreadCount.visibility=View.INVISIBLE
         }
         else if(data[position].unreadCount>99){
             holder.unreadCount.visibility=View.VISIBLE;
-            holder.unreadCount.setText("99+")
+            holder.unreadCount.text = "99+"
         }
         else{
             holder.unreadCount.visibility=View.VISIBLE;
-            holder.unreadCount.setText(data[position].unreadCount.toString())
+            holder.unreadCount.text = data[position].unreadCount.toString()
         }
     }
 
-    override fun getItemCount(): Int {
-
-        return data.size
-    }
+    override fun getItemCount() = data.size
 }

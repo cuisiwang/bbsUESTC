@@ -15,7 +15,6 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -33,32 +32,22 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
                 android:src="@drawable/ic_add"
-                android:layout_marginEnd="18dp" />
-            <Spinner
-                android:id="@+id/message_toolbar_spinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentBottom="true"
-                android:entries="@array/message_add_items"
-                android:visibility="invisible"
-                >
-
-            </Spinner>
+                android:layout_marginEnd="8dp"
+                android:paddingHorizontal="10dp"/>
+            <View
+                android:id="@+id/message_toolbar_blank_hook"
+                android:layout_width="100dp"
+                android:layout_height="0dp"
+                android:layout_toStartOf="@id/message_toolbar_add_iv"/>
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
 
-<!--    TODO: 将这个地方改为LinearLayout，提示：图表和下方文字可以使用一个竖向的LinearLayout作为一项-->
-<!--    想挑战自己的话，试着将这样一个布局自定义一个控件，可以简化xml中的内容-->
-<!--    TODO: 参考别的模块，重新命名id，不允许出现拼音-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/message_interact_rv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_message">
+        android:baselineAligned="false"
+        android:paddingVertical="20dp"
+        android:paddingHorizontal="8dp">
          <LinearLayout
              android:layout_width="0dp"
              android:layout_height="wrap_content"
@@ -95,6 +84,8 @@
                  android:layout_height="wrap_content"
                  android:text="好友"
                  android:layout_gravity="center_horizontal"
+                 android:layout_marginTop="4dp"
+                 android:textColor="@color/secondaryGrey"
                  />
          </LinearLayout>
         <LinearLayout
@@ -135,7 +126,6 @@
                         android:background="@drawable/bg_oval_red"
                         android:layout_gravity="right"
                         android:layout_marginLeft="50dp"
-
                         />
             </FrameLayout>
             <TextView
@@ -144,7 +134,9 @@
                 android:layout_height="wrap_content"
                 android:text="互动消息"
                 android:gravity="center"
-                android:layout_gravity="center_horizontal"/>
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/secondaryGrey"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
@@ -189,7 +181,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="帖子相关"
-                 />
+                android:layout_marginTop="4dp"
+                android:textColor="@color/secondaryGrey" />
 
         </LinearLayout>
 
@@ -238,72 +231,15 @@
             android:layout_height="wrap_content"
             android:text="系统消息"
             android:layout_gravity="center_horizontal"
-             />
+            android:layout_marginTop="4dp"
+            android:textColor="@color/secondaryGrey" />
         </LinearLayout>
-<!--        <TextView-->
-<!--            android:id="@+id/friends_message_cnt"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="65dp"-->
-<!--            android:text="20"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:gravity="center_horizontal"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintVertical_bias="0.266"-->
-<!--            android:background="@drawable/bg_oval_red"-->
-<!--            android:visibility="gone"/>-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/hudong_cnt"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="149dp"-->
-<!--            android:text="20"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintVertical_bias="0.266"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:gravity="center_horizontal"-->
-<!--            android:background="@drawable/bg_oval_red"/>-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/tiezi_cnt"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="264dp"-->
-<!--            android:background="@drawable/bg_oval_red"-->
-<!--            android:gravity="center_horizontal"-->
-<!--            android:text="20"-->
-<!--            android:textColor="@color/white"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintVertical_bias="0.256" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/system_cnt"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="317dp"-->
-<!--            android:text="20"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintVertical_bias="0.26"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:gravity="center_horizontal"-->
-<!--            android:background="@drawable/bg_oval_red"-->
-<!--            android:visibility="gone"/>-->
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/message_interact_rv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp" />
+        android:layout_height="wrap_content"/>
 
 
 </LinearLayout>
