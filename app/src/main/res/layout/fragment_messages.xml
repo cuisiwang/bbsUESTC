@@ -36,7 +36,7 @@
                 android:paddingHorizontal="10dp"/>
             <View
                 android:id="@+id/message_toolbar_blank_hook"
-                android:layout_width="100dp"
+                android:layout_width="120dp"
                 android:layout_height="0dp"
                 android:layout_toStartOf="@id/message_toolbar_add_iv"/>
         </RelativeLayout>
