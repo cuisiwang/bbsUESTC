@@ -3,12 +3,10 @@ package com.example.bbsuestc.homeActivity.messages
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.TextView
 
@@ -21,15 +19,20 @@ import com.example.bbsuestc.R
 import com.example.bbsuestc.friendActivity.FriendActivity
 import com.example.bbsuestc.recyclerViewContents.MessageContent.MessageContentAdapter
 import com.example.bbsuestc.recyclerViewContents.MessageContent.MessageItem
+import com.example.bbsuestc.systemMessageActivity.SystemMessageActivity
 
 class MessagesFragment : Fragment() {
-    private lateinit var toolbar: Toolbar
-    private lateinit var rv:RecyclerView
-    private lateinit var message_toolbar_iv:ImageView
+    private lateinit var messageToolBar: Toolbar
+    private lateinit var messageListRv:RecyclerView
+    private lateinit var messageToolbarIv:ImageView
+    //private lateinit var message_toolbar_spinner:Spinner
     //好友
-    private lateinit var message_friend_iv:ImageView
+    private lateinit var messageFriendIv:ImageView
     private lateinit var view: View
-    override fun onCreateView( 
+    //系统消息
+    private lateinit var messageSystemIv:ImageView
+    private lateinit var messageList:ArrayList<MessageItem>
+    override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,32 +42,39 @@ class MessagesFragment : Fragment() {
 
         view = inflater.inflate(R.layout.fragment_messages,container,false)
 
-        toolbar=view.findViewById(R.id.toolbar_message)
-        rv=view.findViewById(R.id.message_interact_rv)
-        message_toolbar_iv=view.findViewById(R.id.message_toolbar_add_iv)
-        message_friend_iv = view.findViewById(R.id.message_friends_ic)
-//        message_toolbar_spinner=view.findViewById(R.id.message_toolbar_spinner)
+        messageToolBar=view.findViewById(R.id.toolbar_message)
+        messageListRv=view.findViewById(R.id.message_interact_rv)
+        messageToolbarIv=view.findViewById(R.id.message_toolbar_add_iv)
+        messageFriendIv = view.findViewById(R.id.message_friends_ic)
+
+        messageFriendIv=view.findViewById(R.id.message_friends_ic)
+
+        messageSystemIv=view.findViewById(R.id.message_system_ic)
         //做一个数据
-        val data = arrayListOf<MessageItem>()
-        for(i in 0..130){
-            data.add(MessageItem("","河畔用户1","12-01","有一条信息有一条信息有一条信息有一条信息有一条信息有一条信息",i))
-        }
-        rv.adapter= MessageContentAdapter(data)
-        rv.layoutManager=LinearLayoutManager(activity)
+        messageList = arrayListOf<MessageItem>()
+        //从viewModel中得到数据
+        messageList = notificationsViewModel.messageList.value!!
+        messageListRv.adapter= MessageContentAdapter(messageList)
+        messageListRv.layoutManager=LinearLayoutManager(activity)
         //点击图片，激活spinner
-        message_toolbar_iv.setOnClickListener{
+        messageToolbarIv.setOnClickListener{
             showPopupWindow()
         }
         //点击friend跳转
-        message_friend_iv.setOnClickListener{
+        messageFriendIv.setOnClickListener{
             val intent = Intent(activity, FriendActivity::class.java)
+            startActivity(intent)
+        }
+        //点击系统消息
+        messageSystemIv.setOnClickListener{
+            val intent = Intent(activity, SystemMessageActivity::class.java)
             startActivity(intent)
         }
         return view
     }
 
     private fun showPopupWindow() {
-        val pwLayout = LayoutInflater.from(context).inflate(R.layout.popup_window_message,toolbar,false)
+        val pwLayout = LayoutInflater.from(context).inflate(R.layout.popup_window_message,messageToolBar,false)
         val addFriendTv : TextView = pwLayout.findViewById(R.id.message_add_friend_pw_tv)
         val newChatTv : TextView = pwLayout.findViewById(R.id.message_new_chat_pw_tv)
         val pw = PopupWindow(context)
