@@ -19,6 +19,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.ScrollView
+import android.widget.Toast
 import com.alibaba.fastjson.JSONObject
 import com.bumptech.glide.Glide
 import com.example.bbsuestc.R
@@ -60,7 +61,7 @@ class RichContentEdittext @JvmOverloads constructor(
 
     //文字相关属性，初始提示信息，文字大小和颜色
     private val textInitHint = "输入正文"
-    private val textHint = "请输入内容"
+    private val textHint = ""
     private val textSize = 17
     private val textColor = getContext().getColor(R.color.black)
     private val textLineSpace = 10
@@ -223,10 +224,10 @@ class RichContentEdittext @JvmOverloads constructor(
         val layout =
             inflater.inflate(R.layout.widget_content_editor_imageview, null) as RelativeLayout
         layout.tag = viewTagIndex++
-        val closeView = layout.findViewById<View>(R.id.content_editor_img_close)
+        val closeView : ImageView= layout.findViewById(R.id.content_editor_img_close)
         closeView.tag = layout.tag
         closeView.setOnClickListener(btnListener)
-        val imageView = layout.findViewById<ShapeableImageView>(R.id.content_editor_imageView)
+        val imageView : ShapeableImageView= layout.findViewById(R.id.content_editor_imageView)
         imageView.setOnClickListener(btnListener)
         return layout
     }
@@ -345,8 +346,7 @@ class RichContentEdittext @JvmOverloads constructor(
         try {
             imagePaths.add(imagePath)
             val imageLayout = createImageLayout()
-            val imageView =
-                imageLayout.findViewById<ShapeableImageView>(R.id.content_editor_imageView)
+            val imageView : ShapeableImageView = imageLayout.findViewById(R.id.content_editor_imageView)
             Glide.with(context).load(imagePath).into(imageView)
             imageView.tag = imagePath
             imageView.scaleType = ImageView.ScaleType.CENTER_CROP //裁剪居中
@@ -392,7 +392,7 @@ class RichContentEdittext @JvmOverloads constructor(
      * description: 根据view的宽度，动态缩放bitmap尺寸
      * @param width view的宽度
      */
-    fun getScaledBitmap(filePath: String?, width: Int): Bitmap? {
+    private fun getScaledBitmap(filePath: String?, width: Int): Bitmap? {
         if (TextUtils.isEmpty(filePath)) {
             return null
         }

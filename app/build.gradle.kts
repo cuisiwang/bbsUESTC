@@ -55,4 +55,5 @@ dependencies {
     implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
     implementation("io.reactivex.rxjava2:rxjava:2.2.21")
     implementation("com.alibaba:fastjson:1.2.61")
+    implementation("io.github.lucksiege:pictureselector:v3.11.2")
 }
