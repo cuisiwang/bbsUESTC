@@ -21,11 +21,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
-                        <ImageView
+                        <ImageButton
                             android:layout_width="wrap_content"
                             android:layout_height="?attr/actionBarSize"
                             android:src="@drawable/ic_back"
-                            android:layout_marginStart="18dp"/>
+                            android:layout_marginStart="18dp"
+                            android:contentDescription="返回键"
+                            android:id="@+id/back_button"
+                            android:background="@color/transparent"/>
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

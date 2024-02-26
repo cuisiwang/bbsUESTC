@@ -3,6 +3,7 @@ package com.example.bbsuestc.plateDetailActivity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,6 +26,7 @@ const val EXTRA_PLATE_NAME = "plate_name"
 //对应 模块详情 页面
 class PlateDetailActivity : AppCompatActivity() {
 //TODO 添加app bar
+    private lateinit var backButton: ImageButton
     private lateinit var plateTitleTextView: TextView
     private lateinit var moderatorTextView: TextView
     private lateinit var postsTodayStatisticsTextView: TextView
@@ -47,6 +49,10 @@ class PlateDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_plate_detail)
 
+        backButton = findViewById(R.id.back_button)
+        backButton.setOnClickListener {
+            finish()
+        }
 
         moderatorTextView = findViewById(R.id.moderator_TV)
         postsTodayStatisticsTextView = findViewById(R.id.posts_today_statistics_TV)
