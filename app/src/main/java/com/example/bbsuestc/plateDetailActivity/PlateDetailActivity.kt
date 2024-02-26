@@ -25,7 +25,7 @@ const val EXTRA_PLATE_NAME = "plate_name"
 
 //对应 模块详情 页面
 class PlateDetailActivity : AppCompatActivity() {
-//TODO 添加app bar
+
     private lateinit var backButton: ImageButton
     private lateinit var plateTitleTextView: TextView
     private lateinit var moderatorTextView: TextView
