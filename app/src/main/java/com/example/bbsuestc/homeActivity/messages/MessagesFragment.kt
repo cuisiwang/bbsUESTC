@@ -31,6 +31,7 @@ class MessagesFragment : Fragment() {
     private lateinit var view: View
     //系统消息
     private lateinit var messageSystemIv:ImageView
+
     private lateinit var messageList:ArrayList<MessageItem>
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,6 +51,8 @@ class MessagesFragment : Fragment() {
         messageFriendIv=view.findViewById(R.id.message_friends_ic)
 
         messageSystemIv=view.findViewById(R.id.message_system_ic)
+
+
         //做一个数据
         messageList = arrayListOf<MessageItem>()
         //从viewModel中得到数据

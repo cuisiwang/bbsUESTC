@@ -1,5 +1,6 @@
 package com.example.bbsuestc.friendActivity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -10,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
+import com.example.bbsuestc.blacklistActivity.BlacklistActivity
 import com.example.bbsuestc.recyclerViewContents.FriendContent.FriendContentAdapter
 import com.example.bbsuestc.recyclerViewContents.FriendContent.FriendItem
 import com.google.android.material.textfield.TextInputEditText
@@ -26,15 +28,27 @@ class FriendActivity : AppCompatActivity() {
     private lateinit var friendListAll:ArrayList<FriendItem>
     private lateinit var friendContentAdapter:FriendContentAdapter
     private lateinit var friendViewModel: FriendViewModel
+    //黑名单按钮
+    private lateinit var blacklistIv:ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_friend)
         friendListRv=findViewById(R.id.friend_list_rv)
         friendSearchInput=findViewById(R.id.friend_search_et)
         friendBackIv=findViewById(R.id.friend_back_iv)
+
+        blacklistIv=findViewById(R.id.friend_blacklist_iv)
+
         friendViewModel=ViewModelProvider(this).get(FriendViewModel::class.java)
         friendBackIv.setOnClickListener{
             finish()
+        }
+
+        //点击黑名单跳转
+        blacklistIv.setOnClickListener{
+            val intent = Intent(this, BlacklistActivity::class.java)
+            startActivity(intent)
         }
 
         initData()
