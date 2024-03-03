@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:paddingHorizontal="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp">
+        <ImageView
+            android:id="@+id/posts_user_icon_iv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:src="@drawable/bg_circle_imageview"/>
+        <TextView
+            android:id="@+id/posts_userID_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="16"
+            tools:text ="这是用户的ID"
+            android:layout_gravity="center"
+            android:textSize="14sp"
+            android:textColor="@color/primaryBlue"
+            android:paddingVertical="4dp"
+            android:layout_marginLeft="8dp"/>
+
+        <TextView
+            android:id="@+id/posts_time_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="6"
+            tools:text="2022-12-21"
+            android:layout_gravity="center"
+            android:gravity="right"
+            android:textSize="11sp"
+            android:textColor="@color/secondaryGrey"
+            android:paddingVertical="10dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/posts_title_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="这是帖子的标题"
+        android:textSize="18sp"
+        android:layout_marginVertical="3dp"/>
+
+    <TextView
+        android:id="@+id/posts_content_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="这是帖子的内容这是帖子的内容这是帖子的内容这是帖子的内容"
+        android:textSize="14sp"
+        android:maxLines="2"
+        android:textColor="@color/secondaryGrey"
+        android:layout_marginVertical="3dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/posts_plates_tv"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            tools:text="就业创业"
+            android:textSize="13sp"
+            android:textColor="@color/secondaryGrey"
+            app:drawableLeftCompat="@drawable/ic_plates" />
+
+        <TextView
+            android:id="@+id/posts_viewers_tv"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textColor="@color/secondaryGrey"
+            android:textSize="13sp"
+            tools:text=" 12615"
+            app:drawableLeftCompat="@drawable/ic_viewers" />
+        <TextView
+            android:id="@+id/posts_replys_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right|center_vertical"
+            android:textColor="@color/secondaryGrey"
+            tools:text="114"
+            android:textSize="13sp"
+            app:drawableLeftCompat="@drawable/ic_comments" />
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey"
+        android:layout_marginTop="13dp"/>
+
+
+</LinearLayout>
