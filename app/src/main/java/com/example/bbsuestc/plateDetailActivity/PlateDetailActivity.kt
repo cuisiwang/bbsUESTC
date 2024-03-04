@@ -5,12 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.bbsuestc.R
-import com.example.bbsuestc.homeActivity.home.HomeContentVPAdapter
 import com.example.bbsuestc.newPostActivity.NewPostActivity
+import com.example.bbsuestc.recyclerViewContents.PinnedPostsAdapter
 import com.example.bbsuestc.recyclerViewContents.headerServices.HeaderServicesAdapter
 import com.example.bbsuestc.testUtils.TestData
 import com.example.bbsuestc.utils.adjustScrollSensitivity
@@ -26,6 +27,8 @@ const val EXTRA_PLATE_NAME = "plate_name"
 //对应 模块详情 页面
 class PlateDetailActivity : AppCompatActivity() {
 
+    private lateinit var viewModel: PlateDetailViewModel
+
     private lateinit var backButton: ImageButton
     private lateinit var plateTitleTextView: TextView
     private lateinit var moderatorTextView: TextView
@@ -33,13 +36,12 @@ class PlateDetailActivity : AppCompatActivity() {
     private lateinit var postsStatisticsTextView: TextView
     private lateinit var headerServiceRV: RecyclerView
 //TODO 写pinned adapter
-//  private lateinit var pinnedServiceRV: RecyclerView
+    private lateinit var pinnedServiceRV: RecyclerView
     private lateinit var contentsTL: TabLayout
     private lateinit var contentVP: ViewPager2
 //TODO 发帖按钮
 //    修改发帖activity, 使能传入板块信息
   private lateinit var newPostFAB : FloatingActionButton
-
 
 
     private var plateId = 0
@@ -48,6 +50,8 @@ class PlateDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_plate_detail)
+
+        viewModel = ViewModelProvider(this)[PlateDetailViewModel::class.java]
 
         backButton = findViewById(R.id.back_button)
         backButton.setOnClickListener {
@@ -72,6 +76,10 @@ class PlateDetailActivity : AppCompatActivity() {
         headerServiceRV.layoutManager = layoutManager
         headerServiceRV.adapter = HeaderServicesAdapter(this, TestData.plateHotHeaderData())
 
+        pinnedServiceRV = findViewById(R.id.pinned_posts_RV)
+        pinnedServiceRV.adapter = PinnedPostsAdapter(viewModel.pinnedPosts)
+        pinnedServiceRV.layoutManager = LinearLayoutManager(this)
+
         contentsTL = findViewById(R.id.tab_contents_tl)
         contentVP = findViewById(R.id.plate_posts_VP)
 
@@ -83,6 +91,7 @@ class PlateDetailActivity : AppCompatActivity() {
         TabLayoutMediator(contentsTL, contentVP) { tab, position ->
             tab.setText(titles[position])
         }.attach()
+
 
         newPostFAB = findViewById(R.id.new_post_fab)
         newPostFAB.setOnClickListener{

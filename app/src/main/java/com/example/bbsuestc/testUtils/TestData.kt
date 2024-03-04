@@ -1,5 +1,6 @@
 package com.example.bbsuestc.testUtils
 
+import com.example.bbsuestc.plateDetailActivity.PinnedPost
 import com.example.bbsuestc.recyclerViewContents.postsContent.PostsItem
 
 //用于生成测试数据，
@@ -13,6 +14,16 @@ class TestData {
                     PostsItem("","这是发帖人ID","2022-12-22","这是帖子的标题",
                         "这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容",
                         "校园生活",114514,191)
+                )
+            }
+            return data
+        }
+        
+        fun pinnedPosts(): ArrayList<PinnedPost> {
+            val data = ArrayList<PinnedPost>()
+            for (i in 0..4) {
+                data.add(
+                    PinnedPost("这是一个被置顶的帖子")
                 )
             }
             return data
