@@ -78,7 +78,7 @@
                 android:layout_marginStart="17dp"
                 android:layout_marginEnd="17dp"
                 android:textColorHint="@color/secondaryGrey"
-                android:background="@drawable/friend_search_box"
+                android:background="@drawable/bg_default_edittext"
                 android:drawablePadding="10dp"
                 />
             <LinearLayout
@@ -113,6 +113,7 @@
                             android:layout_gravity="center"
                             android:src="@drawable/ic_friend_request" />
                         <TextView
+                            android:id="@+id/friend_request_cnt_tv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/ic_friend_notice"

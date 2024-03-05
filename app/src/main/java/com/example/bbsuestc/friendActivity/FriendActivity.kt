@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
 import com.example.bbsuestc.blacklistActivity.BlacklistActivity
+import com.example.bbsuestc.friendRequestActivity.FriendRequestActivity
 import com.example.bbsuestc.recyclerViewContents.FriendContent.FriendContentAdapter
 import com.example.bbsuestc.recyclerViewContents.FriendContent.FriendItem
 import com.google.android.material.textfield.TextInputEditText
@@ -30,6 +31,8 @@ class FriendActivity : AppCompatActivity() {
     private lateinit var friendViewModel: FriendViewModel
     //黑名单按钮
     private lateinit var blacklistIv:ImageView
+    //好友请求按钮
+    private lateinit var friendRequestIv:ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +43,8 @@ class FriendActivity : AppCompatActivity() {
 
         blacklistIv=findViewById(R.id.friend_blacklist_iv)
 
+        friendRequestIv=findViewById(R.id.friend_request_iv)
+
         friendViewModel=ViewModelProvider(this).get(FriendViewModel::class.java)
         friendBackIv.setOnClickListener{
             finish()
@@ -48,6 +53,12 @@ class FriendActivity : AppCompatActivity() {
         //点击黑名单跳转
         blacklistIv.setOnClickListener{
             val intent = Intent(this, BlacklistActivity::class.java)
+            startActivity(intent)
+        }
+
+        //点击好友请求
+        friendRequestIv.setOnClickListener{
+            val intent=Intent(this,FriendRequestActivity::class.java)
             startActivity(intent)
         }
 

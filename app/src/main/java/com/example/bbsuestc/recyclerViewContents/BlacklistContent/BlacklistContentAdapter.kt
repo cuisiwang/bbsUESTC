@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
 
-class BlacklistContentAdapter(private val data:ArrayList<BlacklistItem>,private val context: Context) : RecyclerView.Adapter<BlacklistContentAdapter.viewHolder>() {
+class BlacklistContentAdapter(private val data:ArrayList<BlacklistItem>,private val context: Context) : RecyclerView.Adapter<BlacklistContentAdapter.ViewHolder>() {
 
 
     public interface OnOptionClickListener{
@@ -20,7 +20,7 @@ class BlacklistContentAdapter(private val data:ArrayList<BlacklistItem>,private 
         mOnclickListener=onclickListener
     }
 
-    inner class viewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         var blacklistUserIcon:ImageView
         var blacklistUserName:TextView
         var blacklistOption:ImageView
@@ -32,19 +32,20 @@ class BlacklistContentAdapter(private val data:ArrayList<BlacklistItem>,private 
         }
         public fun setData(position: Int){
             blacklistUserName.setText(data[position].blacklistUserName)
+            //TODO:设置头像
         }
     }
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): BlacklistContentAdapter.viewHolder {
+    ): BlacklistContentAdapter.ViewHolder {
         val view:View=LayoutInflater.from(context).inflate(R.layout.item_blacklist_content,parent,false)
-        return viewHolder(view)
+        return ViewHolder(view)
     }
 
 
 
-    override fun onBindViewHolder(holder: BlacklistContentAdapter.viewHolder, position: Int) {
+    override fun onBindViewHolder(holder: BlacklistContentAdapter.ViewHolder, position: Int) {
         holder.setData(position)
         holder.blacklistOption.setOnClickListener{
             if(mOnclickListener!=null){
