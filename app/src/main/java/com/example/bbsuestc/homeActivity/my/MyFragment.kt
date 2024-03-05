@@ -19,10 +19,10 @@ class MyFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_my, container, false)
 
         val myViewModel : MyViewModel = ViewModelProvider(this)[MyViewModel::class.java]
-        val textView: TextView = root.findViewById(R.id.my_text)
-        myViewModel.text.observe(viewLifecycleOwner){
-            textView.text=it
-        }
+//        val textView: TextView = root.findViewById(R.id.my_text)
+//        myViewModel.text.observe(viewLifecycleOwner){
+//            textView.text=it
+//        }
 
         return root
     }
