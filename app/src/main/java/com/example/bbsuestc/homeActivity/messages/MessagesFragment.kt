@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
 import com.example.bbsuestc.friendActivity.FriendActivity
+import com.example.bbsuestc.postsPertinentActivity.PostsPertinentActivity
 import com.example.bbsuestc.recyclerViewContents.MessageContent.MessageContentAdapter
 import com.example.bbsuestc.recyclerViewContents.MessageContent.MessageItem
 import com.example.bbsuestc.systemMessageActivity.SystemMessageActivity
@@ -33,6 +34,8 @@ class MessagesFragment : Fragment() {
     private lateinit var messageSystemIv:ImageView
 
     private lateinit var messageList:ArrayList<MessageItem>
+    //帖子相关
+    private lateinit var postsPertinentIv:ImageView
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -51,7 +54,7 @@ class MessagesFragment : Fragment() {
         messageFriendIv=view.findViewById(R.id.message_friends_ic)
 
         messageSystemIv=view.findViewById(R.id.message_system_ic)
-
+        postsPertinentIv=view.findViewById(R.id.message_post_ic)
 
         //做一个数据
         messageList = arrayListOf<MessageItem>()
@@ -73,6 +76,12 @@ class MessagesFragment : Fragment() {
             val intent = Intent(activity, SystemMessageActivity::class.java)
             startActivity(intent)
         }
+        //点击帖子相关
+        postsPertinentIv.setOnClickListener{
+            val intent=Intent(activity,PostsPertinentActivity::class.java)
+            startActivity(intent)
+        }
+
         return view
     }
 
