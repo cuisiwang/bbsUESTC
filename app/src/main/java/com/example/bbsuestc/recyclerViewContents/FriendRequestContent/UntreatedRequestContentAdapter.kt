@@ -26,14 +26,14 @@ class UntreatedRequestContentAdapter(private val data:ArrayList<UntreatedRequest
         var untreatedUserName:TextView
         var untreatedUserIcon:ImageView
         var untreatedOption:ImageView
-        var confirmImage:ImageView
-        var refuseImage:ImageView
+        var confirmText:TextView
+        var refuseText:TextView
         init{
             untreatedUserIcon=itemView.findViewById(R.id.friend_request_untreated_userIcon_iv)
             untreatedUserName=itemView.findViewById(R.id.friend_request_untreated_userName_tv)
             untreatedOption=itemView.findViewById(R.id.friend_request_untreated_option_iv)
-            confirmImage=itemView.findViewById(R.id.friend_request_confirm_iv)
-            refuseImage=itemView.findViewById(R.id.friend_request_refuse_iv)
+            confirmText=itemView.findViewById(R.id.friend_request_confirm_tv)
+            refuseText=itemView.findViewById(R.id.friend_request_refuse_tv)
         }
         public fun setData(position: Int){
             untreatedUserName.setText(data[position].untreatedRequestUserName)
@@ -53,12 +53,12 @@ class UntreatedRequestContentAdapter(private val data:ArrayList<UntreatedRequest
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.setData(position)
         //设置各种监听事件
-        holder.refuseImage.setOnClickListener{
+        holder.refuseText.setOnClickListener{
             if(mOnclickListener!=null){
                 mOnclickListener.onRefuseClick(position)
             }
         }
-        holder.confirmImage.setOnClickListener{
+        holder.confirmText.setOnClickListener{
             if(mOnclickListener!=null){
                 mOnclickListener.onConfirmClick(position)
             }
