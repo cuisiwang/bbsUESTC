@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".friendActivity.FriendActivity"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:contentInsetStart="0dp"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/friend_back_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="8dp"
+                android:paddingHorizontal="10dp"
+                android:src="@drawable/ic_back"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="好友"
+                android:layout_centerInParent="true"
+                android:gravity="center_vertical|center_horizontal"
+                android:textSize="20sp"
+                android:textColor="@color/black"/>
+
+
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_marginHorizontal="20dp"-->
+<!--                android:hint="查找好友"-->
+<!--                app:startIconDrawable="@drawable/ic_friend_search"-->
+<!--                app:startIconScaleType="centerInside"-->
+<!--                app:boxCornerRadiusTopStart="5dp"-->
+<!--                app:boxCornerRadiusBottomEnd="5dp"-->
+<!--                app:boxCornerRadiusBottomStart="5dp"-->
+<!--                app:boxCornerRadiusTopEnd="5dp"-->
+<!--                android:textColorHint="#C6C2C2"-->
+<!--                app:startIconTint="#C6C2C2"-->
+<!--                >-->
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/friend_search_et"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:lines="1"-->
+<!--                    android:inputType="text">-->
+<!--                </com.google.android.material.textfield.TextInputEditText>-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+            <EditText
+                android:id="@+id/friend_search_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="查找好友"
+                android:drawableStart="@drawable/ic_friend_search"
+                android:layout_marginStart="17dp"
+                android:layout_marginEnd="17dp"
+                android:textColorHint="@color/secondaryGrey"
+                android:background="@drawable/bg_default_edittext"
+                android:drawablePadding="10dp"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="20dp">
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1.7">
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_oval_back"
+                            android:layout_gravity="center"
+                            />
+
+                        <ImageView
+                            android:id="@+id/friend_request_iv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_friend_request" />
+                        <TextView
+                            android:id="@+id/friend_request_cnt_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/ic_friend_notice"
+                            android:layout_gravity="right"
+                            android:layout_marginLeft="50dp"
+                            android:text="0"
+                            android:textColor="#716F6F"
+                            android:gravity="center"/>
+                    </FrameLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="好友请求"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:textColor="#878181"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1.7"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_oval_back"
+                            android:layout_gravity="center"
+                            />
+
+                        <ImageView
+                            android:id="@+id/friend_blacklist_iv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_friend_blacklist" />
+
+                    </FrameLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="黑名单"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:textColor="#878181"/>
+                </LinearLayout>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/friend_list_rv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>
