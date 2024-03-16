@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,35 +15,28 @@
         android:theme="@style/Theme.BbsUESTC"
         tools:targetApi="31">
         <activity
-            android:name=".postsPertinentActivity.PostsPertinentActivity"
-            android:exported="false" />
-        <activity
-            android:name=".friendRequestActivity.FriendRequestActivity"
-            android:exported="false" />
-        <activity
-            android:name=".blacklistActivity.BlacklistActivity"
-            android:exported="false" />
-        <activity
-            android:name=".systemMessageActivity.SystemMessageActivity"
-            android:exported="false" />
-        <activity
-            android:name=".friendActivity.FriendActivity"
-            android:exported="false" />
-        <activity
             android:name=".newPostActivity.NewPostActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name=".searchActivity.SearchActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".SignupActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name=".ForegetPasswordActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name=".homeActivity.HomeActivity"
             android:exported="false"
