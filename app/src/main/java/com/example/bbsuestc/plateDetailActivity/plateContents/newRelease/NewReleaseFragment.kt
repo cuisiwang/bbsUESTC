@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
-import com.example.bbsuestc.plateDetailActivity.plateContents.hot.HotViewModel
 import com.example.bbsuestc.recyclerViewContents.postsContent.PostsContentAdapter
 
 class NewReleaseFragment : Fragment() {

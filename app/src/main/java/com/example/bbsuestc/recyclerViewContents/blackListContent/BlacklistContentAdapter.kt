@@ -1,4 +1,4 @@
-package com.example.bbsuestc.recyclerViewContents.BlacklistContent
+package com.example.bbsuestc.recyclerViewContents.blackListContent
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,14 +9,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
 
-class BlacklistContentAdapter(private val data:ArrayList<BlacklistItem>,private val context: Context) : RecyclerView.Adapter<BlacklistContentAdapter.ViewHolder>() {
+class BlacklistContentAdapter(private val data:ArrayList<BlacklistItem>,private val context: Context)
+    : RecyclerView.Adapter<BlacklistContentAdapter.ViewHolder>() {
 
-
-    public interface OnOptionClickListener{
+    interface OnOptionClickListener{
         fun onOptionItemClick(position: Int)
     }
     private lateinit var mOnclickListener:OnOptionClickListener
-    public fun setOnOptionClickListener(onclickListener: OnOptionClickListener){
+    fun setOnOptionClickListener(onclickListener: OnOptionClickListener){
         mOnclickListener=onclickListener
     }
 
@@ -31,7 +31,7 @@ class BlacklistContentAdapter(private val data:ArrayList<BlacklistItem>,private 
 
         }
         public fun setData(position: Int){
-            blacklistUserName.setText(data[position].blacklistUserName)
+            blacklistUserName.text = data[position].blacklistUserName
             //TODO:设置头像
         }
     }

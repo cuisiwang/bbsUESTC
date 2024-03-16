@@ -11,12 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:contentInsetStart="0dp"
-
         >
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
             <ImageView
                 android:id="@+id/friend_request_back_iv"
                 android:layout_width="wrap_content"
@@ -26,8 +24,6 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginLeft="18dp"
                 android:src="@drawable/ic_back"/>
-
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -36,13 +32,12 @@
                 android:text="好友请求"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
-
-
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
+
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:background="@color/grey"/>
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -57,30 +52,28 @@
                 android:text="未处理"
                 android:textColor="@color/secondaryGrey"
                 android:layout_marginStart="18dp"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="13dp"
                 />
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="13dp"
+                android:layout_marginTop="7dp"
                 android:id="@+id/friend_request_untreated_rv"
                 android:nestedScrollingEnabled="false"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="已处理"
                 android:textColor="@color/secondaryGrey"
                 android:layout_marginStart="18dp"
-                android:layout_marginTop="12dp"/>
+                android:layout_marginTop="13dp"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="13dp"
+                android:layout_marginTop="7dp"
                 android:id="@+id/friend_request_treated_rv"
                 android:nestedScrollingEnabled="false"/>
-
-
-
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

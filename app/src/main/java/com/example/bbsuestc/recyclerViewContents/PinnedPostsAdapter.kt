@@ -14,7 +14,6 @@ class PinnedPostsAdapter(private val posts: ArrayList<PinnedPost>) : RecyclerVie
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val postTitleTextView: TextView
-
         init {
             postTitleTextView = itemView.findViewById(R.id.post_title)
         }

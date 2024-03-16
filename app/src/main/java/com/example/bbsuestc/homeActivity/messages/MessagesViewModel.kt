@@ -3,7 +3,7 @@ package com.example.bbsuestc.homeActivity.messages
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.bbsuestc.recyclerViewContents.MessageContent.MessageItem
+import com.example.bbsuestc.recyclerViewContents.messageContent.MessageItem
 
 class MessagesViewModel : ViewModel() {
 

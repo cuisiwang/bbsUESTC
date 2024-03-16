@@ -22,8 +22,7 @@
                 android:layout_height="wrap_content"
                 android:text="移除黑名单"
                 android:paddingVertical="10dp"
-                android:paddingLeft="17dp"
-                android:paddingRight="45dp"/>
+                android:paddingHorizontal="17dp"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"

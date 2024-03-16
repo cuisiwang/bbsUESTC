@@ -1,4 +1,4 @@
-package com.example.bbsuestc.recyclerViewContents.MessageSystemContent
+package com.example.bbsuestc.recyclerViewContents.messageSystemContent
 
 import android.content.Context
 import android.view.LayoutInflater

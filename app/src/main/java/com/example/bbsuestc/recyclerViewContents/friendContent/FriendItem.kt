@@ -1,4 +1,4 @@
-package com.example.bbsuestc.recyclerViewContents.FriendContent
+package com.example.bbsuestc.recyclerViewContents.friendContent
 
 data class FriendItem (
     val userIcon:String,

@@ -36,8 +36,6 @@
                 android:gravity="center_vertical|center_horizontal"
                 android:textSize="20sp"
                 android:textColor="@color/black"/>
-
-
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
     <androidx.core.widget.NestedScrollView
@@ -47,36 +45,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-<!--            <com.google.android.material.textfield.TextInputLayout-->
-<!--                android:layout_height="50dp"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_marginHorizontal="20dp"-->
-<!--                android:hint="查找好友"-->
-<!--                app:startIconDrawable="@drawable/ic_friend_search"-->
-<!--                app:startIconScaleType="centerInside"-->
-<!--                app:boxCornerRadiusTopStart="5dp"-->
-<!--                app:boxCornerRadiusBottomEnd="5dp"-->
-<!--                app:boxCornerRadiusBottomStart="5dp"-->
-<!--                app:boxCornerRadiusTopEnd="5dp"-->
-<!--                android:textColorHint="#C6C2C2"-->
-<!--                app:startIconTint="#C6C2C2"-->
-<!--                >-->
-<!--                <com.google.android.material.textfield.TextInputEditText-->
-<!--                    android:id="@+id/friend_search_et"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:lines="1"-->
-<!--                    android:inputType="text">-->
-<!--                </com.google.android.material.textfield.TextInputEditText>-->
-<!--            </com.google.android.material.textfield.TextInputLayout>-->
             <EditText
                 android:id="@+id/friend_search_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="查找好友"
                 android:drawableStart="@drawable/ic_friend_search"
-                android:layout_marginStart="17dp"
-                android:layout_marginEnd="17dp"
+                android:layout_marginHorizontal="17dp"
                 android:textColorHint="@color/secondaryGrey"
                 android:background="@drawable/bg_default_edittext"
                 android:drawablePadding="10dp"

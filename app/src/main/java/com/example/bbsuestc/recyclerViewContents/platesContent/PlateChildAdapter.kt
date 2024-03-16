@@ -26,16 +26,16 @@ class PlateChildAdapter(val plates: List<Plate>): Adapter<PlateChildAdapter.View
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val context = holder.itemView.context
-        val plate_id = plates[position].id
-        val plate_name = plates[position].name
+        val plateID = plates[position].id
+        val plateName = plates[position].name
 
         holder.plateNameTextView.text = plates[position].name
         //点击模块进入模块详情
         holder.plateRootLayout.setOnClickListener {
             val intent = Intent(context, PlateDetailActivity::class.java)
             //传入板块id和名称，方便确认打开哪个板块
-            intent.putExtra(KEY_PLATE_ID, plate_id)
-            intent.putExtra(KEY_PLATE_NAME, plate_name)
+            intent.putExtra(KEY_PLATE_ID, plateID)
+            intent.putExtra(KEY_PLATE_NAME, plateName)
             context.startActivity(intent)
         }
 

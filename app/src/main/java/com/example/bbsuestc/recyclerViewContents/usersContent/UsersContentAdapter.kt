@@ -7,8 +7,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
-import com.example.bbsuestc.recyclerViewContents.postsContent.PostsContentAdapter
-import com.example.bbsuestc.recyclerViewContents.postsContent.PostsItem
 
 class UsersContentAdapter(private val data : ArrayList<UsersItem>) : RecyclerView.Adapter<UsersContentAdapter.ViewHolder>() {
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

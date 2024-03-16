@@ -12,10 +12,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
-import com.example.bbsuestc.recyclerViewContents.FriendRequestContent.TreatedRequestContentAdapter
-import com.example.bbsuestc.recyclerViewContents.FriendRequestContent.TreatedRequestItem
-import com.example.bbsuestc.recyclerViewContents.FriendRequestContent.UntreatedRequestContentAdapter
-import com.example.bbsuestc.recyclerViewContents.FriendRequestContent.UntreatedRequestItem
+import com.example.bbsuestc.recyclerViewContents.friendRequestContent.TreatedRequestContentAdapter
+import com.example.bbsuestc.recyclerViewContents.friendRequestContent.TreatedRequestItem
+import com.example.bbsuestc.recyclerViewContents.friendRequestContent.UntreatedRequestContentAdapter
+import com.example.bbsuestc.recyclerViewContents.friendRequestContent.UntreatedRequestItem
 
 class FriendRequestActivity : AppCompatActivity() {
     //返回按钮

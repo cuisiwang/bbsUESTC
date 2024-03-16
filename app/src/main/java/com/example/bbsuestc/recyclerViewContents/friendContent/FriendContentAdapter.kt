@@ -1,9 +1,7 @@
-package com.example.bbsuestc.recyclerViewContents.FriendContent
+package com.example.bbsuestc.recyclerViewContents.friendContent
 
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView.OnItemClickListener
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView

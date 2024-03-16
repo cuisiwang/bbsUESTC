@@ -47,23 +47,17 @@
         android:layout_height="wrap_content"
 
         android:layout_marginStart="59dp">
-        <FrameLayout
+
+        <TextView
+            android:id="@+id/friend_request_confirm_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="14dp"
-            >
-            <ImageView
-                android:id="@+id/friend_request_confirm_iv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/bg_friend_confirm"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="同意"
-                android:textColor="@color/white"
-                android:layout_gravity="center"/>
-        </FrameLayout>
+            android:text="同意"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:background="@drawable/bg_friend_confirm"/>
+
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -84,7 +78,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_friend_option"
+            android:src="@drawable/ic_options"
             android:layout_gravity="center_vertical"
             android:id="@+id/friend_request_untreated_option_iv"/>
     </LinearLayout>

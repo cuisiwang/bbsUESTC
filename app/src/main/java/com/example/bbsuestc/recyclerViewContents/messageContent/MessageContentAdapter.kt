@@ -1,6 +1,5 @@
-package com.example.bbsuestc.recyclerViewContents.MessageContent
+package com.example.bbsuestc.recyclerViewContents.messageContent
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,18 +9,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
 
 class MessageContentAdapter(private val data:ArrayList<MessageItem>):
-    RecyclerView.Adapter<MessageContentAdapter.innerholder>() {
+    RecyclerView.Adapter<MessageContentAdapter.InnerHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): innerholder {
+    ): InnerHolder {
 
         val view:View=LayoutInflater.from(parent.context).inflate(R.layout.item_message_content,parent,false)
-        return innerholder(view)
+        return InnerHolder(view)
     }
 
-    class innerholder(itemView : View) : RecyclerView.ViewHolder(itemView) {
+    class InnerHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
         var userIcon : ImageView
         var userID : TextView
         var time : TextView //时间不确定格式
@@ -36,7 +35,7 @@ class MessageContentAdapter(private val data:ArrayList<MessageItem>):
         }
     }
 
-    override fun onBindViewHolder(holder: innerholder, position: Int) {
+    override fun onBindViewHolder(holder: InnerHolder, position: Int) {
 
         holder.messageContent.setText(data[position].messageContent)
         holder.userID.setText(data[position].userID)

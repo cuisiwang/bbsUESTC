@@ -1,36 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--一个类别的模块的布局-->
-
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
 
         <TextView
             android:id="@+id/plate_group_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="模块群组名称"
-            android:textAlignment="viewStart" />
+            tools:text="模块群组名称"
+            android:textSize="17sp"
+            android:textColor="@color/secondaryGrey"
+            android:layout_marginVertical="17dp"
+            android:layout_marginLeft="20dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/plates_RV"
+            android:layout_marginLeft="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
 

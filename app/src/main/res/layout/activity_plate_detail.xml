@@ -15,7 +15,7 @@
                 <androidx.appcompat.widget.Toolbar
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_scrollFlags="scroll|enterAlways"
+                    app:layout_scrollFlags="scroll"
                     app:contentInsetStart="0dp">
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -32,18 +32,18 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textStyle="bold"
                             android:id="@+id/plate_title"
-                            android:text="板块名称"
-                            android:textSize="30dp"
-                            android:padding="10dp"/>
+                            tools:text="板块名称"
+                            android:textSize="35sp"
+                            android:paddingLeft="20dp"/>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             android:contentDescription="板块信息，包括版主、今日主题数、总主题数"
-                            android:padding="10dp">
+                            android:paddingLeft="20dp"
+                            android:layout_marginVertical="10dp">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -96,31 +96,30 @@
                 </androidx.appcompat.widget.Toolbar>
 
             <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_contents_tl"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:tabMode="scrollable"
-            android:contentDescription="帖子排序方式选择"
+                android:id="@+id/tab_contents_tl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabMode="scrollable"
                 tools:background="@color/primaryBlue"/>
         </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/pinned_posts_RV"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="置顶帖子"/>
-                <androidx.viewpager2.widget.ViewPager2
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/plate_posts_VP"
-                    android:contentDescription="帖子显示区域，内嵌fragment_{排序方式}_plate_detail.xml"/>
-            </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/pinned_posts_RV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="置顶帖子"/>
+        <androidx.viewpager2.widget.ViewPager2
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/plate_posts_VP"
+            android:contentDescription="帖子显示区域，内嵌fragment_{排序方式}_plate_detail.xml"/>
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="wrap_content"

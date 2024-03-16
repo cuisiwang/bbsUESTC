@@ -1,4 +1,4 @@
-package com.example.bbsuestc.recyclerViewContents.MessageSystemContent
+package com.example.bbsuestc.recyclerViewContents.messageSystemContent
 
 data class MessageSystemItem (
     var isNotRead:Boolean,

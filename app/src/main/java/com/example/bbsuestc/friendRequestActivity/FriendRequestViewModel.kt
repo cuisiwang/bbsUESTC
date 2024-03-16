@@ -1,7 +1,7 @@
 package com.example.bbsuestc.friendRequestActivity
 
 import androidx.lifecycle.ViewModel
-import com.example.bbsuestc.recyclerViewContents.FriendRequestContent.UntreatedRequestItem
+import com.example.bbsuestc.recyclerViewContents.friendRequestContent.UntreatedRequestItem
 
 class FriendRequestViewModel :ViewModel() {
     //模拟十一条未处理的好友请求数据项

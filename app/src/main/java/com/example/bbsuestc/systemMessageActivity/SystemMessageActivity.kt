@@ -8,8 +8,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
-import com.example.bbsuestc.recyclerViewContents.MessageSystemContent.MessageSystemContentAdapter
-import com.example.bbsuestc.recyclerViewContents.MessageSystemContent.MessageSystemItem
+import com.example.bbsuestc.recyclerViewContents.messageSystemContent.MessageSystemContentAdapter
+import com.example.bbsuestc.recyclerViewContents.messageSystemContent.MessageSystemItem
 
 class SystemMessageActivity : AppCompatActivity() {
     private lateinit var backIcon:ImageView

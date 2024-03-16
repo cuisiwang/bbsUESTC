@@ -21,7 +21,7 @@ class TestData {
         
         fun pinnedPosts(): ArrayList<PinnedPost> {
             val data = ArrayList<PinnedPost>()
-            for (i in 0..4) {
+            for (i in 0..1) {
                 data.add(
                     PinnedPost("这是一个被置顶的帖子")
                 )

@@ -1,4 +1,4 @@
-package com.example.bbsuestc.recyclerViewContents.FriendRequestContent
+package com.example.bbsuestc.recyclerViewContents.friendRequestContent
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -11,8 +11,6 @@ import com.example.bbsuestc.R
 
 class UntreatedRequestContentAdapter(private val data:ArrayList<UntreatedRequestItem>,private val context:Context) :
     RecyclerView.Adapter<UntreatedRequestContentAdapter.ViewHolder>() {
-
-
     public interface OnRecyclerViewItemClickListener{
         fun onOptionClick(position: Int)
         fun onConfirmClick(position: Int)
@@ -26,17 +24,17 @@ class UntreatedRequestContentAdapter(private val data:ArrayList<UntreatedRequest
         var untreatedUserName:TextView
         var untreatedUserIcon:ImageView
         var untreatedOption:ImageView
-        var confirmImage:ImageView
+        var confirm:TextView
         var refuseImage:ImageView
         init{
             untreatedUserIcon=itemView.findViewById(R.id.friend_request_untreated_userIcon_iv)
             untreatedUserName=itemView.findViewById(R.id.friend_request_untreated_userName_tv)
             untreatedOption=itemView.findViewById(R.id.friend_request_untreated_option_iv)
-            confirmImage=itemView.findViewById(R.id.friend_request_confirm_iv)
+            confirm=itemView.findViewById(R.id.friend_request_confirm_tv)
             refuseImage=itemView.findViewById(R.id.friend_request_refuse_iv)
         }
         public fun setData(position: Int){
-            untreatedUserName.setText(data[position].untreatedRequestUserName)
+            untreatedUserName.text = data[position].untreatedRequestUserName
 
         }
     }
@@ -54,19 +52,13 @@ class UntreatedRequestContentAdapter(private val data:ArrayList<UntreatedRequest
         holder.setData(position)
         //设置各种监听事件
         holder.refuseImage.setOnClickListener{
-            if(mOnclickListener!=null){
-                mOnclickListener.onRefuseClick(position)
-            }
+            mOnclickListener.onRefuseClick(position)
         }
-        holder.confirmImage.setOnClickListener{
-            if(mOnclickListener!=null){
-                mOnclickListener.onConfirmClick(position)
-            }
+        holder.confirm.setOnClickListener{
+            mOnclickListener.onConfirmClick(position)
         }
         holder.untreatedOption.setOnClickListener{
-            if (mOnclickListener!=null){
-                mOnclickListener.onOptionClick(position)
-            }
+            mOnclickListener.onOptionClick(position)
         }
     }
 
