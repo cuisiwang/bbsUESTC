@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--对应模块详情页面-->
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+        <!--  此处应有一个app bar  -->
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_scrollFlags="scroll|enterAlways"
+                    app:contentInsetStart="0dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+                        <ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="?attr/actionBarSize"
+                            android:src="@drawable/ic_back"
+                            android:layout_marginStart="18dp"
+                            android:contentDescription="返回键"
+                            android:id="@+id/back_button"
+                            android:background="@color/transparent"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:id="@+id/plate_title"
+                            android:text="板块名称"
+                            android:textSize="30dp"
+                            android:padding="10dp"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:contentDescription="板块信息，包括版主、今日主题数、总主题数"
+                            android:padding="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="版主："
+                                android:textColor="@color/secondaryGrey"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:id="@+id/moderator_TV"
+                                android:layout_marginEnd="10dp"
+                                tools:text="重生之我是国王的爹"
+                                android:textColor="@color/secondaryGrey"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="今日主题："
+                                android:textColor="@color/secondaryGrey"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:id="@+id/posts_today_statistics_TV"
+                                android:layout_marginEnd="10dp"
+                                tools:text="10"
+                                android:textColor="@color/secondaryGrey"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="主题数："
+                                android:textColor="@color/secondaryGrey"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:id="@+id/posts_statistics_TV"
+                                android:layout_marginEnd="10dp"
+                                tools:text="1000"
+                                android:textColor="@color/secondaryGrey"/>
+
+                        </LinearLayout>
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/header_services_rv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:orientation="horizontal"
+                            android:contentDescription="子板块快速跳转"/>
+                    </LinearLayout>
+                </androidx.appcompat.widget.Toolbar>
+
+            <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_contents_tl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabMode="scrollable"
+            android:contentDescription="帖子排序方式选择"
+                tools:background="@color/primaryBlue"/>
+        </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/pinned_posts_RV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="置顶帖子"/>
+                <androidx.viewpager2.widget.ViewPager2
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/plate_posts_VP"
+                    android:contentDescription="帖子显示区域，内嵌fragment_{排序方式}_plate_detail.xml"/>
+            </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|bottom"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/new_post_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:backgroundTint="@color/primaryBlue"
+            app:tint="@color/white"
+            android:src="@drawable/ic_home_new_post"
+            app:elevation="0dp"/>
+    </RelativeLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
