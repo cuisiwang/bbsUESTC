@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".homeActivity.my.MyFragment">
 
     <LinearLayout
@@ -12,85 +12,183 @@
         android:orientation="vertical"
         android:paddingHorizontal="10dp">
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/my_header_card_cv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:cardBackgroundColor="#F0F0F0"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp"
+            app:cardUseCompatPadding="true"
+            app:contentPadding="18dp">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/my_header_card_cv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="20dp"
-        android:layout_marginTop="10dp"
-        app:contentPadding="18dp"
-        app:cardBackgroundColor="#F0F0F0"
-        app:cardElevation="10dp"
-        app:cardUseCompatPadding="true">
-        <RelativeLayout
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="7dp">
+
+                <ImageView
+                    android:id="@+id/my_header_card_icon_iv"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:layout_alignParentStart="true"
+                    android:src="@drawable/bg_circle_imageview" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_toEndOf="@id/my_header_card_icon_iv"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/my_header_card_id_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="河畔用户123"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/my_header_card_level_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="等级1"
+                        android:textColor="@color/primaryBlue"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_arrow_right" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingVertical="7dp">
-            <ImageView
-                android:id="@+id/my_header_card_icon_iv"
-                android:layout_width="85dp"
-                android:layout_height="85dp"
-                android:src="@drawable/bg_circle_imageview"
-                android:layout_alignParentStart="true"/>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:orientation="vertical"
-                android:layout_toEndOf="@id/my_header_card_icon_iv">
-                <TextView
-                    android:id="@+id/my_header_card_id_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="河畔用户123"
-                    android:textSize="22sp"
-                    android:layout_marginTop="10dp"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:id="@+id/my_header_card_level_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="等级1"
-                    android:textColor="@color/primaryBlue"
-                    android:layout_marginTop="10dp"
-                    android:textSize="15sp"/>
-            </LinearLayout>
+            android:layout_marginStart="15dp"
+            android:text="帖子"
+            android:textColor="@color/secondaryGrey"
+            android:textSize="17sp" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:src="@drawable/ic_arrow_right"
-                android:layout_centerVertical="true"/>
+        <TextView
+            android:id="@+id/my_posts_favourites_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:drawableStartCompat="@drawable/ic_my_favourites"
+            android:text="我的收藏"
+            android:layout_marginLeft="15dp"
+            android:drawablePadding="14dp"
+            android:textSize="20sp"
+            android:layout_marginVertical="10dp"/>
 
-        </RelativeLayout>
+        <TextView
+            android:id="@+id/my_posts_mypost_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:drawableStartCompat="@drawable/ic_my_posts"
+            android:text="我的发帖"
+            android:layout_marginLeft="15dp"
+            android:drawablePadding="14dp"
+            android:textSize="20sp"
+            android:layout_marginVertical="10dp"/>
 
-    </androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/my_posts_drafts_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:drawableStartCompat="@drawable/ic_my_drafts"
+            android:text="草稿箱"
+            android:layout_marginLeft="15dp"
+            android:drawablePadding="14dp"
+            android:textSize="20sp"
+            android:layout_marginVertical="10dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="帖子"
-        android:layout_marginStart="15dp"
-        android:textSize="17sp"
-        android:textColor="@color/secondaryGrey"/>
+        <TextView
+            android:id="@+id/my_posts_replies_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:drawableStartCompat="@drawable/ic_my_replies"
+            android:text="我的回复"
+            android:layout_marginLeft="15dp"
+            android:drawablePadding="14dp"
+            android:textSize="20sp"
+            android:layout_marginVertical="10dp"/>
+        <TextView
+            android:id="@+id/my_posts_histories_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:drawableStartCompat="@drawable/ic_my_histories"
+            android:text="浏览历史"
+            android:layout_marginLeft="15dp"
+            android:drawablePadding="14dp"
+            android:textSize="20sp"
+            android:layout_marginVertical="10dp"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="账号"
+            android:textColor="@color/secondaryGrey"
+            android:textSize="17sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="账号"
-        android:layout_marginStart="15dp"
-        android:textSize="17sp"
-        android:textColor="@color/secondaryGrey"/>
+        <TextView
+            android:id="@+id/my_account_manage_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:drawableStartCompat="@drawable/ic_my_accounts_manage"
+            android:text="账号管理"
+            android:layout_marginLeft="15dp"
+            android:drawablePadding="14dp"
+            android:textSize="20sp"
+            android:layout_marginVertical="10dp"/>
+        <TextView
+            android:id="@+id/my_account_logout_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="退出登陆"
+            android:layout_marginLeft="15dp"
+            android:textSize="20sp"
+            android:layout_marginVertical="10dp"
+            android:drawablePadding="14dp"
+            app:drawableStartCompat="@drawable/ic_my_logout" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="应用"
-        android:layout_marginStart="15dp"
-        android:textSize="17sp"
-        android:textColor="@color/secondaryGrey"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="应用"
+            android:textColor="@color/secondaryGrey"
+            android:textSize="17sp" />
+        <TextView
+            android:id="@+id/my_app_settings_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:drawableStartCompat="@drawable/ic_my_settings"
+            android:text="应用设置"
+            android:layout_marginLeft="15dp"
+            android:textSize="20sp"
+            android:drawablePadding="14dp"
+            android:layout_marginVertical="10dp"/>
+        <TextView
+            android:id="@+id/my_app_about_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:drawableStartCompat="@drawable/ic_my_about"
+            android:text="关于"
+            android:layout_marginLeft="15dp"
+            android:textSize="20sp"
+            android:drawablePadding="14dp"
+            android:layout_marginVertical="10dp"/>
     </LinearLayout>
 </ScrollView>
