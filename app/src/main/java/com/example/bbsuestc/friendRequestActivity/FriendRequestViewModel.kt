@@ -7,16 +7,17 @@ import com.example.bbsuestc.recyclerViewContents.FriendRequestContent.UntreatedR
 
 
 class FriendRequestViewModel :ViewModel() {
+
     //模拟十一条未处理的好友请求数据项
     private val untreatedRequestListInit:ArrayList<UntreatedRequestItem> = arrayListOf<UntreatedRequestItem>().apply {
         for(i in 0..10){
-            add(UntreatedRequestItem("","河畔用户"+i.toString()))
+            add(UntreatedRequestItem("", "河畔用户$i"))
         }
     }
-    public var untreatedRequestList : MutableLiveData<ArrayList<UntreatedRequestItem>>? =null
-    public var treatedRequestList: MutableLiveData<ArrayList<TreatedRequestItem>>? =null
-    init{
 
+    var untreatedRequestList : MutableLiveData<ArrayList<UntreatedRequestItem>>? =null
+    var treatedRequestList: MutableLiveData<ArrayList<TreatedRequestItem>>? =null
+    init{
         untreatedRequestList = MutableLiveData<ArrayList<UntreatedRequestItem>>()
         untreatedRequestList!!.value = ArrayList<UntreatedRequestItem>()
 
@@ -25,8 +26,9 @@ class FriendRequestViewModel :ViewModel() {
         //初始化数据
         untreatedRequestList?.value?.addAll(untreatedRequestListInit)
     }
+
     //点击同意的数据更新
-    public fun confirm(position:Int){
+    fun confirm(position:Int){
         val untreatedRequest: UntreatedRequestItem? = untreatedRequestList?.value?.get(position)
         if (untreatedRequest != null) {
 
@@ -36,8 +38,9 @@ class FriendRequestViewModel :ViewModel() {
         untreatedRequestList?.value= untreatedRequestList?.value
         treatedRequestList?.value= treatedRequestList?.value
     }
+
     //点击拒绝
-    public fun deny(position: Int){
+    fun deny(position: Int){
         val untreatedRequest: UntreatedRequestItem? = untreatedRequestList?.value?.get(position)
         if (untreatedRequest != null) {
             treatedRequestList?.value?.add(TreatedRequestItem(untreatedRequest.untreatedRequestUserIcon,untreatedRequest.untreatedRequestUserName,false) )
@@ -46,13 +49,13 @@ class FriendRequestViewModel :ViewModel() {
         untreatedRequestList?.value= untreatedRequestList?.value
         treatedRequestList?.value= treatedRequestList?.value
     }
-    public fun deleteTreated(position: Int){
+
+    fun deleteTreated(position: Int){
         treatedRequestList?.value?.removeAt(position)
         treatedRequestList?.value= treatedRequestList?.value
     }
-    public fun ignoreUntreated(position: Int){
 
-
+    fun ignoreUntreated(position: Int){
         untreatedRequestList?.value?.removeAt(position)
         untreatedRequestList?.value= untreatedRequestList?.value
     }

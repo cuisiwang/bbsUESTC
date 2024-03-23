@@ -75,8 +75,6 @@ class FriendRequestActivity : AppCompatActivity() {
             treatedAdapter.notifyDataSetChanged()
         }
 
-
-
         //设置未处理数据
         untreatedRequestRv.adapter=untreatedAdapter
         untreatedRequestRv.layoutManager=LinearLayoutManager(this)
@@ -89,8 +87,6 @@ class FriendRequestActivity : AppCompatActivity() {
         untreatedRequestRv.itemAnimator=null;
 
     }
-
-
 
     fun getTreatedRequestRv(): RecyclerView {
         return treatedRequestRv

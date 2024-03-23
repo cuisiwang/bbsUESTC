@@ -18,14 +18,14 @@ import com.example.bbsuestc.recyclerViewContents.FriendContent.FriendContentAdap
 class TreatedRequestContentAdapter(private var data:ArrayList<TreatedRequestItem>,private val context:FriendRequestActivity,private val viewModel: FriendRequestViewModel) : RecyclerView.Adapter<TreatedRequestContentAdapter.ViewHolder>(){
 
 
-    public interface OnRecyclerViewClickListener{
+    interface OnRecyclerViewClickListener{
         fun onOptionClick(position: Int)
     }
     private lateinit var mOnClickListener:OnRecyclerViewClickListener
-    public fun setOnRecyclerViewClickListener(listener:OnRecyclerViewClickListener){
+    fun setOnRecyclerViewClickListener(listener:OnRecyclerViewClickListener){
         mOnClickListener=listener
     }
-    public fun updateData(data:ArrayList<TreatedRequestItem>){
+    fun updateData(data:ArrayList<TreatedRequestItem>){
         this.data=data
     }
 
@@ -43,13 +43,13 @@ class TreatedRequestContentAdapter(private var data:ArrayList<TreatedRequestItem
             treatedOption=itemView.findViewById(R.id.friend_request_treated_option_iv)
             stateTextView=itemView.findViewById(R.id.friend_request_option_chose_tv)
         }
-        public fun setData(position: Int){
-            treatedUserName.setText(data[position].treatedRequestUserName)
+        fun setData(position: Int){
+            treatedUserName.text = data[position].treatedRequestUserName
             if(data[position].optionChosen==false){
-                stateTextView.setText("已拒绝")
+                stateTextView.text = "已拒绝"
             }
             else{
-                stateTextView.setText("已同意")
+                stateTextView.text = "已同意"
             }
             //TODO:设置头像
         }
@@ -73,8 +73,8 @@ class TreatedRequestContentAdapter(private var data:ArrayList<TreatedRequestItem
         }
     }
     //初始化点击事件监听器
-    public fun initListener(){
-        this.setOnRecyclerViewClickListener(object :TreatedRequestContentAdapter.OnRecyclerViewClickListener{
+    fun initListener(){
+        this.setOnRecyclerViewClickListener(object : OnRecyclerViewClickListener{
             //弹出侧边栏
             override fun onOptionClick(position: Int) {
                 popMenuTreated(position)
@@ -83,11 +83,13 @@ class TreatedRequestContentAdapter(private var data:ArrayList<TreatedRequestItem
         })
     }
     private fun popMenuTreated(position: Int) {
+
         val layoutManager: RecyclerView.LayoutManager? = context.getTreatedRequestRv().layoutManager
         val itemView: View? = layoutManager?.findViewByPosition(position)
         val optionView: ImageView? = itemView?.findViewById(R.id.friend_request_treated_option_iv)
         val popupWindowLayout= LayoutInflater.from(context).inflate(R.layout.popup_window_treated_request,context.getTreatedRequestRv(),false)
         val deleteTextView : TextView = popupWindowLayout.findViewById(R.id.treated_request_delete_pw_tv)
+
         val popupWindow= PopupWindow(context)
         popupWindow.isOutsideTouchable=true
         popupWindow.isFocusable=true
