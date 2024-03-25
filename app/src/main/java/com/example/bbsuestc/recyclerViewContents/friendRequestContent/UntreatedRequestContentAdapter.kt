@@ -1,6 +1,5 @@
-package com.example.bbsuestc.recyclerViewContents.FriendRequestContent
+package com.example.bbsuestc.recyclerViewContents.friendRequestContent
 
-import android.content.Context
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
@@ -19,15 +18,15 @@ class UntreatedRequestContentAdapter(private var data:ArrayList<UntreatedRequest
     public fun updateData(data:ArrayList<UntreatedRequestItem>){
         this.data=data
     }
-    public interface OnRecyclerViewItemClickListener{
-        fun onOptionClick(position: Int)
-        fun onConfirmClick(position: Int)
-        fun onRefuseClick(position: Int)
-    }
-    private lateinit var mOnclickListener:OnRecyclerViewItemClickListener
-    public fun setRecyclerViewItemClickListener(listener:OnRecyclerViewItemClickListener){
-        mOnclickListener=listener
-    }
+//    public interface OnRecyclerViewItemClickListener{
+//        fun onOptionClick(position: Int)
+//        fun onConfirmClick(position: Int)
+//        fun onRefuseClick(position: Int)
+//    }
+//    private lateinit var mOnclickListener:OnRecyclerViewItemClickListener
+//    public fun setRecyclerViewItemClickListener(listener:OnRecyclerViewItemClickListener){
+//        mOnclickListener=listener
+//    }
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         var untreatedUserName:TextView
         var untreatedUserIcon:ImageView
@@ -59,42 +58,42 @@ class UntreatedRequestContentAdapter(private var data:ArrayList<UntreatedRequest
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.setData(position)
         //设置各种监听事件
+        //点击拒绝
         holder.refuseText.setOnClickListener{
-            if(mOnclickListener!=null){
-                mOnclickListener.onRefuseClick(position)
-            }
+            viewModel.deny(position)
+
         }
+        //点击同意
         holder.confirmText.setOnClickListener{
-            if(mOnclickListener!=null){
-                mOnclickListener.onConfirmClick(position)
-            }
+            viewModel.confirm(position)
+
         }
+        //点击侧边栏，弹出窗口
         holder.untreatedOption.setOnClickListener{
-            if (mOnclickListener!=null){
-                mOnclickListener.onOptionClick(position)
-            }
+            popMenuUntreated(position)
+
         }
     }
     //初始化监听事件
-    public fun initListener(){
-        //未处理列表监听
-        this.setRecyclerViewItemClickListener(object :UntreatedRequestContentAdapter.OnRecyclerViewItemClickListener{
-            override fun onOptionClick(position: Int) {
-                //点击侧边菜单，弹出窗口
-                popMenuUntreated(position)
-            }
-            //点击了同意,插入已处理列表
-            override fun onConfirmClick(position: Int) {
-                viewModel.confirm(position)
-
-            }
-            //点击了拒绝,插入已处理列表
-            override fun onRefuseClick(position: Int) {
-                viewModel.deny(position)
-            }
-
-        })
-    }
+//    public fun initListener(){
+//        //未处理列表监听
+//        this.setRecyclerViewItemClickListener(object :UntreatedRequestContentAdapter.OnRecyclerViewItemClickListener{
+//            override fun onOptionClick(position: Int) {
+//                //点击侧边菜单，弹出窗口
+//                popMenuUntreated(position)
+//            }
+//            //点击了同意,插入已处理列表
+//            override fun onConfirmClick(position: Int) {
+//                viewModel.confirm(position)
+//
+//            }
+//            //点击了拒绝,插入已处理列表
+//            override fun onRefuseClick(position: Int) {
+//                viewModel.deny(position)
+//            }
+//
+//        })
+//    }
     private fun popMenuUntreated(position: Int) {
         val layoutManager: RecyclerView.LayoutManager? = context.getUntreatedRv().layoutManager
         val itemView: View? = layoutManager?.findViewByPosition(position)

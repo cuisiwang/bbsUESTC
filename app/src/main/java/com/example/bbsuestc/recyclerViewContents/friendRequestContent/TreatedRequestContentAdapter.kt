@@ -1,6 +1,5 @@
-package com.example.bbsuestc.recyclerViewContents.FriendRequestContent
+package com.example.bbsuestc.recyclerViewContents.friendRequestContent
 
-import android.content.Context
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
@@ -8,23 +7,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.PopupWindow
 import android.widget.TextView
-import androidx.appcompat.view.menu.MenuView.ItemView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
 import com.example.bbsuestc.friendRequestActivity.FriendRequestActivity
 import com.example.bbsuestc.friendRequestActivity.FriendRequestViewModel
-import com.example.bbsuestc.recyclerViewContents.FriendContent.FriendContentAdapter
 
 class TreatedRequestContentAdapter(private var data:ArrayList<TreatedRequestItem>,private val context:FriendRequestActivity,private val viewModel: FriendRequestViewModel) : RecyclerView.Adapter<TreatedRequestContentAdapter.ViewHolder>(){
 
 
-    interface OnRecyclerViewClickListener{
-        fun onOptionClick(position: Int)
-    }
-    private lateinit var mOnClickListener:OnRecyclerViewClickListener
-    fun setOnRecyclerViewClickListener(listener:OnRecyclerViewClickListener){
-        mOnClickListener=listener
-    }
     fun updateData(data:ArrayList<TreatedRequestItem>){
         this.data=data
     }
@@ -67,20 +57,9 @@ class TreatedRequestContentAdapter(private var data:ArrayList<TreatedRequestItem
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.setData(position)
         holder.treatedOption.setOnClickListener{
-            if(mOnClickListener!=null){
-                mOnClickListener.onOptionClick(position)
-            }
+            //这里弹出侧边对话框
+            popMenuTreated(position)
         }
-    }
-    //初始化点击事件监听器
-    fun initListener(){
-        this.setOnRecyclerViewClickListener(object : OnRecyclerViewClickListener{
-            //弹出侧边栏
-            override fun onOptionClick(position: Int) {
-                popMenuTreated(position)
-            }
-
-        })
     }
     private fun popMenuTreated(position: Int) {
 
@@ -89,13 +68,12 @@ class TreatedRequestContentAdapter(private var data:ArrayList<TreatedRequestItem
         val optionView: ImageView? = itemView?.findViewById(R.id.friend_request_treated_option_iv)
         val popupWindowLayout= LayoutInflater.from(context).inflate(R.layout.popup_window_treated_request,context.getTreatedRequestRv(),false)
         val deleteTextView : TextView = popupWindowLayout.findViewById(R.id.treated_request_delete_pw_tv)
-
         val popupWindow= PopupWindow(context)
         popupWindow.isOutsideTouchable=true
         popupWindow.isFocusable=true
         popupWindow.contentView=popupWindowLayout
         popupWindow.setBackgroundDrawable(ColorDrawable(0x00000000))
-
+        //避免对话框到屏幕外面去
         if(position!=data.size-1) {
             popupWindow.showAsDropDown(optionView)
         }

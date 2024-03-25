@@ -1,4 +1,4 @@
-package com.example.bbsuestc.recyclerViewContents.MessageContent
+package com.example.bbsuestc.recyclerViewContents.messageContent
 
 data class MessageItem(
     val userIcon : String,

@@ -13,9 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
 import com.example.bbsuestc.blacklistActivity.BlacklistActivity
 import com.example.bbsuestc.friendRequestActivity.FriendRequestActivity
-import com.example.bbsuestc.recyclerViewContents.FriendContent.FriendContentAdapter
-import com.example.bbsuestc.recyclerViewContents.FriendContent.FriendItem
-import com.google.android.material.textfield.TextInputEditText
+import com.example.bbsuestc.recyclerViewContents.friendContent.FriendContentAdapter
+import com.example.bbsuestc.recyclerViewContents.friendContent.FriendItem
 
 class FriendActivity : AppCompatActivity() {
     //好友列表

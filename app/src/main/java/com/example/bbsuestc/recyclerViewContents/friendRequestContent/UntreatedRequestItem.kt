@@ -1,4 +1,4 @@
-package com.example.bbsuestc.recyclerViewContents.FriendRequestContent
+package com.example.bbsuestc.recyclerViewContents.friendRequestContent
 
 data class UntreatedRequestItem (
     val untreatedRequestUserIcon:String,

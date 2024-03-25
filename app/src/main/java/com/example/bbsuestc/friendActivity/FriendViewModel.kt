@@ -1,7 +1,7 @@
 package com.example.bbsuestc.friendActivity
 
 import androidx.lifecycle.ViewModel
-import com.example.bbsuestc.recyclerViewContents.FriendContent.FriendItem
+import com.example.bbsuestc.recyclerViewContents.friendContent.FriendItem
 
 class FriendViewModel : ViewModel(){
 

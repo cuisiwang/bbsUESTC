@@ -1,4 +1,4 @@
-package com.example.bbsuestc.recyclerViewContents.BlacklistContent
+package com.example.bbsuestc.recyclerViewContents.blacklistContent
 
 
 

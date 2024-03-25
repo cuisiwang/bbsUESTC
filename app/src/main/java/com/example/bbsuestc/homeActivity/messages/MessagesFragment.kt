@@ -18,8 +18,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
 import com.example.bbsuestc.friendActivity.FriendActivity
 import com.example.bbsuestc.postsPertinentActivity.PostsPertinentActivity
-import com.example.bbsuestc.recyclerViewContents.MessageContent.MessageContentAdapter
-import com.example.bbsuestc.recyclerViewContents.MessageContent.MessageItem
+import com.example.bbsuestc.recyclerViewContents.messageContent.MessageContentAdapter
+import com.example.bbsuestc.recyclerViewContents.messageContent.MessageItem
 import com.example.bbsuestc.systemMessageActivity.SystemMessageActivity
 
 class MessagesFragment : Fragment() {
