@@ -10,7 +10,7 @@ class BlackListViewModel : ViewModel() {
         value = initBlackList()
     }
 
-    val blackList: LiveData<ArrayList<BlackListItems>> = _blackListLiveData
+    val blackList: LiveData<ArrayList<BlackListItems>> = _blackListLiveData;
 
     private fun initBlackList(): ArrayList<BlackListItems> {
         val list = arrayListOf<BlackListItems>()
