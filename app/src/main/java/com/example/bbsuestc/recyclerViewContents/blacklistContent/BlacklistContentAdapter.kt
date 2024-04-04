@@ -9,14 +9,14 @@ import android.widget.PopupWindow
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
-import com.example.bbsuestc.blackListActivity.BlackListViewModel
+import com.example.bbsuestc.blacklistActivity.BlackListViewModel
 import com.example.bbsuestc.blackListActivity.BlacklistActivity
 import com.example.bbsuestc.recyclerViewContents.blackListContent.BlackListItems
 
 class BlackListContentAdapter(
     private val data: ArrayList<BlackListItems>?,
     private val context :BlacklistActivity,
-    private val viewModel:BlackListViewModel
+    private val viewModel: BlackListViewModel
 ) : RecyclerView.Adapter<BlackListContentAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

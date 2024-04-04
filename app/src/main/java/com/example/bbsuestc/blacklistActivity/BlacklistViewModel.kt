@@ -1,10 +1,9 @@
-package com.example.bbsuestc.blackListActivity
+package com.example.bbsuestc.blacklistActivity
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.bbsuestc.recyclerViewContents.blackListContent.BlackListItems
-import com.example.bbsuestc.recyclerViewContents.messageContent.MessageItem
 
 class BlackListViewModel : ViewModel() {
     private val _blackListLiveData = MutableLiveData<ArrayList<BlackListItems>>().apply {
