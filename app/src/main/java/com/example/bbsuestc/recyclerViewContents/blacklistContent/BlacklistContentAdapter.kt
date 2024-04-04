@@ -9,8 +9,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
 
-class BlacklistContentAdapter(private val data:ArrayList<BlacklistItem>,private val context: Context)
-    : RecyclerView.Adapter<BlacklistContentAdapter.ViewHolder>() {
+class BlackListContentAdapter(private val data:ArrayList<BlackListItems>, private val context: Context)
+    : RecyclerView.Adapter<BlackListContentAdapter.ViewHolder>() {
 
     interface OnOptionClickListener{
         fun onOptionItemClick(position: Int)
@@ -38,14 +38,14 @@ class BlacklistContentAdapter(private val data:ArrayList<BlacklistItem>,private 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): BlacklistContentAdapter.ViewHolder {
+    ): BlackListContentAdapter.ViewHolder {
         val view:View=LayoutInflater.from(context).inflate(R.layout.item_blacklist_content,parent,false)
         return ViewHolder(view)
     }
 
 
 
-    override fun onBindViewHolder(holder: BlacklistContentAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: BlackListContentAdapter.ViewHolder, position: Int) {
         holder.setData(position)
         holder.blacklistOption.setOnClickListener{
             if(mOnclickListener!=null){

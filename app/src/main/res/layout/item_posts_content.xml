@@ -76,6 +76,7 @@
             tools:text="就业创业"
             android:textSize="13sp"
             android:textColor="@color/secondaryGrey"
+            android:drawablePadding="5dp"
             app:drawableLeftCompat="@drawable/ic_plates" />
 
         <TextView
@@ -86,7 +87,8 @@
             android:gravity="center_vertical"
             android:textColor="@color/secondaryGrey"
             android:textSize="13sp"
-            tools:text=" 12615"
+            tools:text="12615"
+            android:drawablePadding="5dp"
             app:drawableLeftCompat="@drawable/ic_viewers" />
         <TextView
             android:id="@+id/posts_replys_tv"
@@ -96,6 +98,7 @@
             android:textColor="@color/secondaryGrey"
             tools:text="114"
             android:textSize="13sp"
+            android:drawablePadding="5dp"
             app:drawableLeftCompat="@drawable/ic_comments" />
 
     </LinearLayout>

@@ -7,17 +7,19 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
 
-class FriendContentAdapter(private val data:ArrayList<FriendItem>):
+class FriendContentAdapter(private val data: ArrayList<FriendItem>) :
     RecyclerView.Adapter<FriendContentAdapter.SearchHolder>() {
     inner class SearchHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var userIcon:ImageView
-        var userName:TextView
-        init{
-            this.userIcon=itemView.findViewById(R.id.friend_userIcon_iv)
-            this.userName=itemView.findViewById(R.id.friend_userName_tv)
+        var userIcon: ImageView
+        var userName: TextView
+
+        init {
+            this.userIcon = itemView.findViewById(R.id.friend_userIcon_iv)
+            this.userName = itemView.findViewById(R.id.friend_userName_tv)
         }
-        public fun setData(position:Int){
-            userName.setText(data[position].userName)
+
+        public fun setData(position: Int) {
+            userName.text = data[position].userName
         }
     }
 
@@ -25,7 +27,7 @@ class FriendContentAdapter(private val data:ArrayList<FriendItem>):
         parent: ViewGroup,
         viewType: Int
     ): FriendContentAdapter.SearchHolder {
-        val view:View=View.inflate(parent.context,R.layout.item_friend_content,null)
+        val view: View = View.inflate(parent.context, R.layout.item_friend_content, null)
         return SearchHolder(view)
     }
 

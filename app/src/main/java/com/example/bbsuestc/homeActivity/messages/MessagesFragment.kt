@@ -23,68 +23,77 @@ import com.example.bbsuestc.recyclerViewContents.messageContent.MessageItem
 import com.example.bbsuestc.systemMessageActivity.SystemMessageActivity
 
 class MessagesFragment : Fragment() {
-    private lateinit var view: View
     private lateinit var messageToolBar: Toolbar
-    private lateinit var messageListRv:RecyclerView
-    private lateinit var toolbarNewIv:ImageView
+    private lateinit var messageListRv: RecyclerView
+    private lateinit var messageToolbarIv: ImageView
+
     //好友
     private lateinit var messageFriendIv: LinearLayout
+    private lateinit var view: View
+
     //系统消息
-    private lateinit var messageSystemIv:LinearLayout
+    private lateinit var messageSystemIv: LinearLayout
 
-    private lateinit var messageList:ArrayList<MessageItem>
+    private lateinit var messageList: ArrayList<MessageItem>
 
-    private val notificationsViewModel : MessagesViewModel by lazy {
-        ViewModelProvider(this)[MessagesViewModel::class.java]
-    }
+    //帖子相关
+    private lateinit var postsPertinentIv: ImageView
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        view = inflater.inflate(R.layout.fragment_messages,container,false)
+        val notificationsViewModel =
+            ViewModelProvider(this)[MessagesViewModel::class.java]
 
-        messageToolBar=view.findViewById(R.id.toolbar_message)
-        messageListRv=view.findViewById(R.id.message_interact_rv)
-        toolbarNewIv=view.findViewById(R.id.message_toolbar_add_iv)
-        messageFriendIv=view.findViewById(R.id.message_friends_iv)
-        messageSystemIv=view.findViewById(R.id.message_system_iv)
+        view = inflater.inflate(R.layout.fragment_messages, container, false)
 
+        messageToolBar = view.findViewById(R.id.toolbar_message)
+        messageListRv = view.findViewById(R.id.message_interact_rv)
+        messageToolbarIv = view.findViewById(R.id.message_toolbar_add_iv)
+        messageFriendIv = view.findViewById(R.id.message_friends_iv)
+        messageSystemIv = view.findViewById(R.id.message_system_iv)
+        postsPertinentIv = view.findViewById(R.id.message_post_ic)
+
+        //做一个数据
+        messageList = arrayListOf<MessageItem>()
         //从viewModel中得到数据
-        view.post {
-            messageList = notificationsViewModel.messageList.value!!
-            messageListRv.adapter= MessageContentAdapter(messageList)
-            messageListRv.layoutManager=LinearLayoutManager(activity)
-        }
-
-        toolbarNewIv.setOnClickListener{
+        messageList = notificationsViewModel.messageList.value!!
+        messageListRv.adapter = MessageContentAdapter(messageList)
+        messageListRv.layoutManager = LinearLayoutManager(activity)
+        //点击图片，激活spinner
+        messageToolbarIv.setOnClickListener {
             showPopupWindow()
         }
         //点击friend跳转
-        messageFriendIv.setOnClickListener{
+        messageFriendIv.setOnClickListener {
             val intent = Intent(activity, FriendActivity::class.java)
             startActivity(intent)
         }
         //点击系统消息
-        messageSystemIv.setOnClickListener{
+        messageSystemIv.setOnClickListener {
             val intent = Intent(activity, SystemMessageActivity::class.java)
             startActivity(intent)
         }
+
         return view
     }
 
     private fun showPopupWindow() {
-        val pwLayout = LayoutInflater.from(context).inflate(R.layout.popup_window_message,messageToolBar,false)
-        val addFriendTv : TextView = pwLayout.findViewById(R.id.message_add_friend_pw_tv)
-        val newChatTv : TextView = pwLayout.findViewById(R.id.message_new_chat_pw_tv)
+        val pwLayout = LayoutInflater.from(context)
+            .inflate(R.layout.popup_window_message, messageToolBar, false)
+        val addFriendTv: TextView = pwLayout.findViewById(R.id.message_add_friend_pw_tv)
+        val newChatTv: TextView = pwLayout.findViewById(R.id.message_new_chat_pw_tv)
         val pw = PopupWindow(context)
         pw.contentView = pwLayout
         pw.isFocusable = true
         pw.isOutsideTouchable = true
         pw.setBackgroundDrawable(ColorDrawable(0x00000000))
-        pw.showAsDropDown(toolbarNewIv)
+        pw.showAsDropDown(view.findViewById(R.id.message_toolbar_add_iv))
         //TODO:给两个textview注册点击事件
+
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

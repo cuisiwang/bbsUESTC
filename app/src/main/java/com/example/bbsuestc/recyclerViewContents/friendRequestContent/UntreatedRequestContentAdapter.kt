@@ -1,40 +1,40 @@
 package com.example.bbsuestc.recyclerViewContents.friendRequestContent
 
-import android.content.Context
+import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.PopupWindow
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
+import com.example.bbsuestc.friendRequestActivity.FriendRequestActivity
+import com.example.bbsuestc.friendRequestActivity.FriendRequestViewModel
 
-class UntreatedRequestContentAdapter(private val data:ArrayList<UntreatedRequestItem>,private val context:Context) :
+class UntreatedRequestContentAdapter(private var data:ArrayList<UntreatedRequestItem>,
+                                     private val context:FriendRequestActivity,
+                                     private val viewModel:FriendRequestViewModel) :
     RecyclerView.Adapter<UntreatedRequestContentAdapter.ViewHolder>() {
-    public interface OnRecyclerViewItemClickListener{
-        fun onOptionClick(position: Int)
-        fun onConfirmClick(position: Int)
-        fun onRefuseClick(position: Int)
-    }
-    private lateinit var mOnclickListener:OnRecyclerViewItemClickListener
-    public fun setRecyclerViewItemClickListener(listener:OnRecyclerViewItemClickListener){
-        mOnclickListener=listener
+
+    public fun updateData(data:ArrayList<UntreatedRequestItem>){
+        this.data=data
     }
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         var untreatedUserName:TextView
         var untreatedUserIcon:ImageView
         var untreatedOption:ImageView
-        var confirm:TextView
-        var refuseImage:TextView
+        var confirmText:TextView
+        var refuseText:TextView
         init{
             untreatedUserIcon=itemView.findViewById(R.id.friend_request_untreated_userIcon_iv)
             untreatedUserName=itemView.findViewById(R.id.friend_request_untreated_userName_tv)
             untreatedOption=itemView.findViewById(R.id.friend_request_untreated_option_iv)
-            confirm=itemView.findViewById(R.id.friend_request_confirm_tv)
-            refuseImage=itemView.findViewById(R.id.friend_request_refuse_tv)
+            confirmText=itemView.findViewById(R.id.friend_request_confirm_tv)
+            refuseText=itemView.findViewById(R.id.friend_request_refuse_tv)
         }
         public fun setData(position: Int){
-            untreatedUserName.text = data[position].untreatedRequestUserName
+            untreatedUserName.setText(data[position].untreatedRequestUserName)
 
         }
     }
@@ -51,15 +51,47 @@ class UntreatedRequestContentAdapter(private val data:ArrayList<UntreatedRequest
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.setData(position)
         //设置各种监听事件
-        holder.refuseImage.setOnClickListener{
-            mOnclickListener.onRefuseClick(position)
+        //点击拒绝
+        holder.refuseText.setOnClickListener{
+            viewModel.deny(position)
+
         }
-        holder.confirm.setOnClickListener{
-            mOnclickListener.onConfirmClick(position)
+        //点击同意
+        holder.confirmText.setOnClickListener{
+            viewModel.confirm(position)
+
         }
+        //点击侧边栏，弹出窗口
         holder.untreatedOption.setOnClickListener{
-            mOnclickListener.onOptionClick(position)
+            popMenuUntreated(position)
+
         }
     }
 
+    private fun popMenuUntreated(position: Int) {
+        val layoutManager: RecyclerView.LayoutManager? = context.getUntreatedRv().layoutManager
+        val itemView: View? = layoutManager?.findViewByPosition(position)
+        val optionView: ImageView? = itemView?.findViewById(R.id.friend_request_untreated_option_iv)
+        val popupWindowLayout= LayoutInflater.from(context).inflate(R.layout.popup_window_untreated_request,context.getUntreatedRv(),false)
+        val ignoreTextView : TextView = popupWindowLayout.findViewById(R.id.untreated_request_ignore_pw_tv)
+        val popupWindow= PopupWindow(context)
+        popupWindow.isOutsideTouchable=true
+        popupWindow.isFocusable=true
+        popupWindow.contentView=popupWindowLayout
+        popupWindow.setBackgroundDrawable(ColorDrawable(0x00000000))
+
+        if(position!=data.size-1) {
+            popupWindow.showAsDropDown(optionView)
+        }
+        else{
+            popupWindow.showAsDropDown(optionView,0,-200)
+        }
+
+        //删除操作
+
+        ignoreTextView.setOnClickListener{
+            viewModel.ignoreUntreated(position)
+            popupWindow.dismiss()
+        }
+    }
 }

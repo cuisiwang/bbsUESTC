@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/posts_tab_note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="全部"
+        android:textSize="14sp" />
+    <FrameLayout
+        android:id="@+id/posts_pertinent_tl_fl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/posts_tab_note"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="7dp"
+        android:visibility="gone"
+        tools:visibility="visible">
+        <ImageView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_post_red_dot"
+
+            android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/posts_pertinent_tl_cnt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="56"
+            android:layout_gravity="center"
+            android:textSize="11sp"/>
+    </FrameLayout>
+</RelativeLayout>

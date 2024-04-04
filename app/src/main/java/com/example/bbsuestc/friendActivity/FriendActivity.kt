@@ -11,53 +11,58 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
-import com.example.bbsuestc.blackListActivity.BlackListActivity
+import com.example.bbsuestc.blackListActivity.BlacklistActivity
 import com.example.bbsuestc.friendRequestActivity.FriendRequestActivity
 import com.example.bbsuestc.recyclerViewContents.friendContent.FriendContentAdapter
 import com.example.bbsuestc.recyclerViewContents.friendContent.FriendItem
 
 class FriendActivity : AppCompatActivity() {
     //好友列表
-    private lateinit var friendListRv:RecyclerView
+    private lateinit var friendListRv: RecyclerView
+
     //搜索输入
-    private lateinit var friendSearchInput:EditText
+    private lateinit var friendSearchInput: EditText
+
     //返回
-    private lateinit var friendBackIv:ImageView
+    private lateinit var friendBackIv: ImageView
+
     //用于存储数据
-    private lateinit var friendList:ArrayList<FriendItem>
-    private lateinit var friendListAll:ArrayList<FriendItem>
-    private lateinit var friendContentAdapter:FriendContentAdapter
+    private lateinit var friendList: ArrayList<FriendItem>
+    private lateinit var friendListAll: ArrayList<FriendItem>
+    private lateinit var friendContentAdapter: FriendContentAdapter
     private lateinit var friendViewModel: FriendViewModel
+
     //黑名单按钮
-    private lateinit var blacklistIv:ImageView
+    private lateinit var blacklistIv: ImageView
+
     //好友请求按钮
-    private lateinit var friendRequestIv:ImageView
+    private lateinit var friendRequestIv: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_friend)
-        friendListRv=findViewById(R.id.friend_list_rv)
-        friendSearchInput=findViewById(R.id.friend_search_et)
-        friendBackIv=findViewById(R.id.friend_back_iv)
+        friendListRv = findViewById(R.id.friend_list_rv)
+        friendSearchInput = findViewById(R.id.friend_search_et)
+        friendBackIv = findViewById(R.id.friend_back_iv)
 
-        blacklistIv=findViewById(R.id.friend_blacklist_iv)
+        blacklistIv = findViewById(R.id.friend_blacklist_iv)
 
-        friendRequestIv=findViewById(R.id.friend_request_iv)
+        friendRequestIv = findViewById(R.id.friend_request_iv)
 
-        friendViewModel=ViewModelProvider(this).get(FriendViewModel::class.java)
-        friendBackIv.setOnClickListener{
+        friendViewModel = ViewModelProvider(this)[FriendViewModel::class.java]
+        friendBackIv.setOnClickListener {
             finish()
         }
 
         //点击黑名单跳转
-        blacklistIv.setOnClickListener{
-            val intent = Intent(this, BlackListActivity::class.java)
+        blacklistIv.setOnClickListener {
+            val intent = Intent(this, BlacklistActivity::class.java)
             startActivity(intent)
         }
 
         //点击好友请求
-        friendRequestIv.setOnClickListener{
-            val intent=Intent(this,FriendRequestActivity::class.java)
+        friendRequestIv.setOnClickListener {
+            val intent = Intent(this, FriendRequestActivity::class.java)
             startActivity(intent)
         }
 
@@ -66,7 +71,7 @@ class FriendActivity : AppCompatActivity() {
     }
 
     private fun editTextSearchListener() {
-        friendSearchInput.addTextChangedListener(object :TextWatcher{
+        friendSearchInput.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
             }
@@ -84,13 +89,13 @@ class FriendActivity : AppCompatActivity() {
     }
 
     private fun search() {
-        val input:String= friendSearchInput.text.toString()
+        val input: String = friendSearchInput.text.toString()
         friendList.clear()
-        for(i in 0..<friendListAll.size){
-            val item:FriendItem=friendListAll[i]
-            val name:String=item.userName
+        for (i in 0..<friendListAll.size) {
+            val item: FriendItem = friendListAll[i]
+            val name: String = item.userName
             // TODO: 查询逻辑有问题 
-            if(name.contains(input)){
+            if (name.contains(input)) {
                 friendList.add(item)
             }
 
@@ -98,14 +103,13 @@ class FriendActivity : AppCompatActivity() {
         friendContentAdapter.notifyDataSetChanged()
     }
 
-    private fun initData(){
-
-        friendList= arrayListOf<FriendItem>()
-        friendListAll= arrayListOf<FriendItem>()
-        friendList=friendViewModel.friendList
-        friendListAll=friendViewModel.friendListAll
-        friendContentAdapter=FriendContentAdapter(friendList)
-        friendListRv.adapter=friendContentAdapter
-        friendListRv.layoutManager=LinearLayoutManager(this)
+    private fun initData() {
+        friendList = arrayListOf<FriendItem>()
+        friendListAll = arrayListOf<FriendItem>()
+        friendList = friendViewModel.friendList
+        friendListAll = friendViewModel.friendListAll
+        friendContentAdapter = FriendContentAdapter(friendList)
+        friendListRv.adapter = friendContentAdapter
+        friendListRv.layoutManager = LinearLayoutManager(this)
     }
 }
