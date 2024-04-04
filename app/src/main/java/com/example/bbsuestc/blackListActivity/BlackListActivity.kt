@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
+import com.example.bbsuestc.blacklistActivity.BlackListViewModel
 import com.example.bbsuestc.recyclerViewContents.blacklistContent.BlackListContentAdapter
 
 class BlacklistActivity : AppCompatActivity() {
