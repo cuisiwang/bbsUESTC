@@ -9,9 +9,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
+import com.example.bbsuestc.systemMessageActivity.SystemMessageViewModel
 
-class MessageSystemContentAdapter(private val data:ArrayList<MessageSystemItem>,private val context:Context): RecyclerView.Adapter<MessageSystemContentAdapter.ViewHolder>() {
-    lateinit var mOnItemClickListener:OnItemClickListener
+class MessageSystemContentAdapter(private val data:ArrayList<MessageSystemItem>,
+                                  private val context:Context,
+                                  private val viewModel: SystemMessageViewModel
+): RecyclerView.Adapter<MessageSystemContentAdapter.ViewHolder>() {
+
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var noticeDot:ImageView
         var messageTitle:TextView
@@ -23,7 +27,10 @@ class MessageSystemContentAdapter(private val data:ArrayList<MessageSystemItem>,
             this.noticeDot=itemView.findViewById(R.id.message_system_notice_dot)
             this.messageTitle=itemView.findViewById(R.id.message_system_title)
             this.messageTime=itemView.findViewById(R.id.message_system_time)
-            itemView.setOnClickListener { mOnItemClickListener.onItemClick(adapterPosition) }
+            //条目点击事件，跳转待实现
+            itemView.setOnClickListener {
+                viewModel.readMessage(bindingAdapterPosition)
+            }
         }
 
         public fun setData(position: Int){
@@ -40,12 +47,7 @@ class MessageSystemContentAdapter(private val data:ArrayList<MessageSystemItem>,
         }
 
     }
-    public interface OnItemClickListener{
-        fun onItemClick(position: Int);
-    }
-    public fun setOnItemClickListener(onItemClickListener:OnItemClickListener){
-        this.mOnItemClickListener=onItemClickListener
-    }
+
 
     override fun onCreateViewHolder(
         parent: ViewGroup,

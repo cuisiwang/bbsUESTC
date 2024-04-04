@@ -21,6 +21,9 @@ class BlackListViewModel : ViewModel() {
         }
         return list
     }
-
+    fun removeFromBlacklist(position:Int){
+        _blackListLiveData.value?.removeAt(position)
+        _blackListLiveData.postValue(_blackListLiveData.value)
+    }
 
 }

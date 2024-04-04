@@ -7,8 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
-import com.example.bbsuestc.blackListActivity.BlackListViewModel
-import com.example.bbsuestc.recyclerViewContents.blackListContent.BlackListContentAdapter
+import com.example.bbsuestc.recyclerViewContents.blacklistContent.BlackListContentAdapter
 
 class BlacklistActivity : AppCompatActivity() {
     //返回图标
@@ -32,7 +31,8 @@ class BlacklistActivity : AppCompatActivity() {
     private fun initData() {
         blacklistRvAdapter = BlackListContentAdapter(
             blacklistViewModel.blackList.value,
-            this
+            this,
+            blacklistViewModel
         )
         //添加观察者
         blacklistViewModel.blackList.observe(this) {
