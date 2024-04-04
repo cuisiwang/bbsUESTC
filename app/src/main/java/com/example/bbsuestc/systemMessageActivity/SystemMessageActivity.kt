@@ -16,13 +16,15 @@ class SystemMessageActivity : AppCompatActivity() {
     private lateinit var messageSystemRv:RecyclerView
     private lateinit var adapter:MessageSystemContentAdapter
     private lateinit var systemList:ArrayList<MessageSystemItem>
-    private lateinit var systemMessageViewModel: SystemMessageViewModel
+    private val systemMessageViewModel: SystemMessageViewModel by lazy {
+        ViewModelProvider(this)[SystemMessageViewModel::class.java]
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_system_message)
+
         backIcon=findViewById(R.id.message_system_back_iv)
         messageSystemRv=findViewById(R.id.message_system_rv)
-        systemMessageViewModel=ViewModelProvider(this).get(SystemMessageViewModel::class.java)
         backIcon.setOnClickListener{
             finish()
         }
@@ -31,19 +33,13 @@ class SystemMessageActivity : AppCompatActivity() {
 
     private fun initData() {
         systemList= arrayListOf<MessageSystemItem>()
-//        for(i in 0..20){
-//            var item:MessageSystemItem=MessageSystemItem(true,"未读系统消息","12-21","消息内容")
-//            item.isRead = i <= 10
-//            systemList.add(item)
-//        }
         systemList=systemMessageViewModel.systemMessageList
         adapter= MessageSystemContentAdapter(systemList,this)
         messageSystemRv.adapter=adapter
         messageSystemRv.layoutManager=LinearLayoutManager(this)
         adapter.setOnItemClickListener(object :MessageSystemContentAdapter.OnItemClickListener{
-            //点击一个条目，跳转详情界面(待实现) ,将信息设为已读
+            //todo:点击一个条目，跳转详情界面(待实现) ,将信息设为已读
             override fun onItemClick(position: Int) {
-                //println(position)
                 systemList[position].isNotRead=false
                 adapter.notifyDataSetChanged()
             }

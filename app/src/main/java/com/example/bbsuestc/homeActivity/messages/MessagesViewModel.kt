@@ -10,7 +10,7 @@ class MessagesViewModel : ViewModel() {
     private val _text = MutableLiveData<String>().apply {
         value = "This is notifications Fragment"
     }
-    private val _MessageList= MutableLiveData<ArrayList<MessageItem>>().apply {
+    private val _messageList= MutableLiveData<ArrayList<MessageItem>>().apply {
         val list:ArrayList<MessageItem> = arrayListOf<MessageItem>().apply {
             for(i in 1..40){
                 add((MessageItem("","河畔用户1","12-01","有一条信息有一条信息有一条信息有一条信息有一条信息有一条信息",i)))
@@ -19,5 +19,5 @@ class MessagesViewModel : ViewModel() {
         value=list
     }
     val text: LiveData<String> = _text
-    val messageList:MutableLiveData<ArrayList<MessageItem>> = _MessageList
+    val messageList:LiveData<ArrayList<MessageItem>> = _messageList
 }

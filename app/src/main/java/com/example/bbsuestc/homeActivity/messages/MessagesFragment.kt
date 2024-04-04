@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.TextView
 
@@ -22,38 +23,40 @@ import com.example.bbsuestc.recyclerViewContents.messageContent.MessageItem
 import com.example.bbsuestc.systemMessageActivity.SystemMessageActivity
 
 class MessagesFragment : Fragment() {
+    private lateinit var view: View
     private lateinit var messageToolBar: Toolbar
     private lateinit var messageListRv:RecyclerView
     private lateinit var toolbarNewIv:ImageView
     //好友
-    private lateinit var messageFriendIv:ImageView
-    private lateinit var view: View
+    private lateinit var messageFriendIv: LinearLayout
     //系统消息
-    private lateinit var messageSystemIv:ImageView
+    private lateinit var messageSystemIv:LinearLayout
 
     private lateinit var messageList:ArrayList<MessageItem>
+
+    private val notificationsViewModel : MessagesViewModel by lazy {
+        ViewModelProvider(this)[MessagesViewModel::class.java]
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val notificationsViewModel =
-            ViewModelProvider(this)[MessagesViewModel::class.java]
-
         view = inflater.inflate(R.layout.fragment_messages,container,false)
 
         messageToolBar=view.findViewById(R.id.toolbar_message)
         messageListRv=view.findViewById(R.id.message_interact_rv)
         toolbarNewIv=view.findViewById(R.id.message_toolbar_add_iv)
-        messageFriendIv = view.findViewById(R.id.message_friends_ic)
-        messageFriendIv=view.findViewById(R.id.message_friends_ic)
-        messageSystemIv=view.findViewById(R.id.message_system_ic)
-        //做一个数据
-        messageList = arrayListOf<MessageItem>()
+        messageFriendIv=view.findViewById(R.id.message_friends_iv)
+        messageSystemIv=view.findViewById(R.id.message_system_iv)
+
         //从viewModel中得到数据
-        messageList = notificationsViewModel.messageList.value!!
-        messageListRv.adapter= MessageContentAdapter(messageList)
-        messageListRv.layoutManager=LinearLayoutManager(activity)
+        view.post {
+            messageList = notificationsViewModel.messageList.value!!
+            messageListRv.adapter= MessageContentAdapter(messageList)
+            messageListRv.layoutManager=LinearLayoutManager(activity)
+        }
+
         toolbarNewIv.setOnClickListener{
             showPopupWindow()
         }
@@ -82,7 +85,6 @@ class MessagesFragment : Fragment() {
         pw.showAsDropDown(toolbarNewIv)
         //TODO:给两个textview注册点击事件
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

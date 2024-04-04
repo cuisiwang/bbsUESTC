@@ -54,7 +54,6 @@ class FriendRequestActivity : AppCompatActivity() {
         untreatedAdapter= UntreatedRequestContentAdapter(untreatedRequestList,this)
         treatedAdapter= TreatedRequestContentAdapter(treatedRequestList,this)
 
-        // TODO: 把按钮的功能写进adapter！而不是在activity里！！！提示：使用LiveData通过viewModel对数据进行监听实现数据互通
         //设置各种监听事件
         //未处理列表监听
         untreatedAdapter.setRecyclerViewItemClickListener(object :UntreatedRequestContentAdapter.OnRecyclerViewItemClickListener{

@@ -29,18 +29,17 @@ class TreatedRequestContentAdapter(private val data:ArrayList<TreatedRequestItem
         var stateTextView:TextView
 
         init{
-            treatedUserIcon=itemView.findViewById(R.id.friend_request_treated_userIcon_iv)
+            treatedUserIcon=itemView.findViewById(R.id.friend_request_treated_user_icon_iv)
             treatedUserName=itemView.findViewById(R.id.friend_request_treated_userName_tv)
             treatedOption=itemView.findViewById(R.id.friend_request_treated_option_iv)
             stateTextView=itemView.findViewById(R.id.friend_request_option_chose_tv)
         }
         public fun setData(position: Int){
-            treatedUserName.setText(data[position].treatedRequestUserName)
-            if(data[position].optionChosen==false){
-                stateTextView.setText("已拒绝")
-            }
-            else{
-                stateTextView.setText("已同意")
+            treatedUserName.text = data[position].treatedRequestUserName
+            if(!data[position].optionChosen){
+                stateTextView.text = "已拒绝"
+            }else{
+                stateTextView.text = "已同意"
             }
             //TODO:设置头像
         }
@@ -58,9 +57,7 @@ class TreatedRequestContentAdapter(private val data:ArrayList<TreatedRequestItem
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.setData(position)
         holder.treatedOption.setOnClickListener{
-            if(mOnClickListener!=null){
-                mOnClickListener.onOptionClick(position)
-            }
+            mOnClickListener.onOptionClick(position)
         }
     }
 

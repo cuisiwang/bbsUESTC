@@ -18,7 +18,7 @@ class PostsContentAdapter(private val data : ArrayList<PostsItem>) : RecyclerVie
         var postContent : TextView
         var postPlate : TextView
         var postViewers : TextView
-        var postReplys : TextView
+        var postReplies : TextView
 
         init {
             userIcon = itemView.findViewById(R.id.posts_user_icon_iv)
@@ -28,7 +28,7 @@ class PostsContentAdapter(private val data : ArrayList<PostsItem>) : RecyclerVie
             postContent = itemView.findViewById(R.id.posts_content_tv)
             postPlate = itemView.findViewById(R.id.posts_plates_tv)
             postViewers = itemView.findViewById(R.id.posts_viewers_tv)
-            postReplys = itemView.findViewById(R.id.posts_replys_tv)
+            postReplies = itemView.findViewById(R.id.posts_replys_tv)
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -46,7 +46,7 @@ class PostsContentAdapter(private val data : ArrayList<PostsItem>) : RecyclerVie
         holder.postContent.text = currentItem.postContent
         holder.postPlate.text = " "+currentItem.plates
         holder.postViewers.text = " "+currentItem.viewers
-        holder.postReplys.text = " "+currentItem.comments
+        holder.postReplies.text = " "+currentItem.comments
     }
 
     override fun getItemCount() = data.size

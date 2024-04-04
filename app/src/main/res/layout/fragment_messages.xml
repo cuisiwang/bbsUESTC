@@ -51,6 +51,7 @@
                 android:paddingVertical="20dp"
                 android:paddingHorizontal="8dp">
                 <LinearLayout
+                    android:id="@+id/message_friends_iv"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -61,7 +62,6 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center">
                         <ImageView
-                            android:id="@+id/message_friends_ic"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/ic_friend_back"
@@ -192,6 +192,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/message_system_iv"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -211,7 +212,6 @@
                             />
 
                         <ImageView
-                            android:id="@+id/message_system_ic"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/ic_system_back"

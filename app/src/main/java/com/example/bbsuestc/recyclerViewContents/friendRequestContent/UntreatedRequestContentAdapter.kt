@@ -25,13 +25,13 @@ class UntreatedRequestContentAdapter(private val data:ArrayList<UntreatedRequest
         var untreatedUserIcon:ImageView
         var untreatedOption:ImageView
         var confirm:TextView
-        var refuseImage:ImageView
+        var refuseImage:TextView
         init{
             untreatedUserIcon=itemView.findViewById(R.id.friend_request_untreated_userIcon_iv)
             untreatedUserName=itemView.findViewById(R.id.friend_request_untreated_userName_tv)
             untreatedOption=itemView.findViewById(R.id.friend_request_untreated_option_iv)
             confirm=itemView.findViewById(R.id.friend_request_confirm_tv)
-            refuseImage=itemView.findViewById(R.id.friend_request_refuse_iv)
+            refuseImage=itemView.findViewById(R.id.friend_request_refuse_tv)
         }
         public fun setData(position: Int){
             untreatedUserName.text = data[position].untreatedRequestUserName

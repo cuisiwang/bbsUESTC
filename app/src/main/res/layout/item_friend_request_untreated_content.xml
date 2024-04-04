@@ -1,91 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingHorizontal="10dp">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:paddingTop="10dp">
+
         <ImageView
             android:id="@+id/friend_request_untreated_userIcon_iv"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_blacklist_head"
-            android:layout_marginTop="8dp"
-            />
+            android:layout_weight="1"
+            android:src="@drawable/ic_blacklist_head" />
+
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_weight="4"
             android:gravity="center_vertical"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="8dp">
+            android:orientation="vertical">
+
             <TextView
                 android:id="@+id/friend_request_untreated_userName_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="河畔用户1"
                 android:lines="1"
                 android:textStyle="bold"
-                android:layout_marginBottom="5dp"
-                />
+                tools:text="河畔用户1" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginTop="6dp"
                 android:text="请求添加你为好友"
                 android:textColor="@color/secondaryGrey"
-                android:textSize="11sp"/>
+                android:textSize="13sp" />
         </LinearLayout>
 
-
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
 
-        android:layout_marginStart="59dp">
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/friend_request_confirm_tv"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="同意"
-            android:textColor="@color/white"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:background="@drawable/bg_friend_confirm"/>
+            android:layout_weight="4">
 
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="14dp"
-            >
-            <ImageView
-                android:id="@+id/friend_request_refuse_iv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/bg_friend_refuse"/>
             <TextView
+                android:id="@+id/friend_request_confirm_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_friend_confirm"
+                android:gravity="center"
+                android:text="同意"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/friend_request_refuse_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="15dp"
+                android:background="@drawable/bg_friend_refuse"
+                android:gravity="center"
                 android:text="拒绝"
-                android:textColor="@color/white"
-                android:layout_gravity="center"/>
-        </FrameLayout>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_options"
-            android:layout_gravity="center_vertical"
-            android:id="@+id/friend_request_untreated_option_iv"/>
+                android:textColor="@color/white" />
+
+            <ImageView
+                android:id="@+id/friend_request_untreated_option_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/ic_options" />
+        </LinearLayout>
+
     </LinearLayout>
-    <View
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="12dp"
         android:layout_height="1dp"
-        android:layout_marginStart="59dp"
-        android:background="@color/grey"/>
+        android:layout_marginTop="12dp">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="4"
+            android:background="@color/grey" />
+    </LinearLayout>
 </LinearLayout>

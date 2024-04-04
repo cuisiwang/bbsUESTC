@@ -1,34 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:background="@color/transparent">
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="7dp"
         android:layout_margin="3dp"
-        >
+        app:cardCornerRadius="7dp">
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/untreated_request_ignore_pw_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="忽略"
                 android:paddingVertical="10dp"
                 android:paddingLeft="17dp"
-                android:paddingRight="45dp"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/grey"
-                android:layout_marginHorizontal="7dp"/>
+                android:paddingRight="45dp"
+                android:text="忽略" />
 
         </LinearLayout>
 
