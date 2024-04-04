@@ -1,27 +1,26 @@
-package com.example.bbsuestc.blacklistActivity
+package com.example.bbsuestc.blackListActivity
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.bbsuestc.recyclerViewContents.blackListContent.BlackListItem
+import com.example.bbsuestc.recyclerViewContents.blackListContent.BlackListItems
+import com.example.bbsuestc.recyclerViewContents.messageContent.MessageItem
 
-class BlackListViewModel : ViewModel(){
+class BlackListViewModel : ViewModel() {
+    private val _blackListLiveData = MutableLiveData<ArrayList<BlackListItems>>().apply {
+        value = initBlackList()
+    }
 
-    private val blacklistContent:MutableLiveData<ArrayList<BlackListItem>> = MutableLiveData<ArrayList<BlackListItem>>()
-    init{
-        //模拟数据
-        blacklistContent.value= arrayListOf<BlackListItem>().apply {
-            for( i in 0.. 40){
-                add(BlackListItem("","河畔用户$i"))
-            }
+    val blackList: LiveData<ArrayList<BlackListItems>> = _blackListLiveData
+
+
+    private fun initBlackList(): ArrayList<BlackListItems>? {
+        val list = arrayListOf<BlackListItems>()
+        for (i in 1 .. 50){
+            list.add(BlackListItems("","河畔用户$i"))
         }
+        return list
     }
-    fun getBlackList():LiveData<ArrayList<BlackListItem>>{
-        return blacklistContent
-    }
-    //移除黑名单，即删除一项
-    fun removeFromBlacklist(position : Int){
-        blacklistContent.value?.removeAt(position)
-        blacklistContent.postValue(blacklistContent.value)
-    }
+
+
 }

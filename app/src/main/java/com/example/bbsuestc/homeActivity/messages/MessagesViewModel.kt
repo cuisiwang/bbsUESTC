@@ -7,17 +7,22 @@ import com.example.bbsuestc.recyclerViewContents.messageContent.MessageItem
 
 class MessagesViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
-    }
-    private val _messageList= MutableLiveData<ArrayList<MessageItem>>().apply {
-        val list:ArrayList<MessageItem> = arrayListOf<MessageItem>().apply {
-            for(i in 1..40){
-                add((MessageItem("","河畔用户1","12-01","有一条信息有一条信息有一条信息有一条信息有一条信息有一条信息",i)))
+    private val _messageList = MutableLiveData<ArrayList<MessageItem>>().apply {
+        val list: ArrayList<MessageItem> = arrayListOf<MessageItem>().apply {
+            for (i in 1..40) {
+                add(
+                    MessageItem(
+                        "",
+                        "河畔用户1",
+                        "12-01",
+                        "有一条信息有一条信息有一条信息有一条信息有一条信息有一条信息",
+                        i
+                    )
+                )
             }
         }
-        value=list
+        value = list
     }
-    val text: LiveData<String> = _text
-    val messageList:LiveData<ArrayList<MessageItem>> = _messageList
+
+    val messageList: LiveData<ArrayList<MessageItem>> = _messageList
 }
