@@ -16,8 +16,8 @@ class BlackListViewModel : ViewModel() {
 
     private fun initBlackList(): ArrayList<BlackListItems>? {
         val list = arrayListOf<BlackListItems>()
-        for (i in 1 .. 50){
-            list.add(BlackListItems("","河畔用户$i"))
+        for (i in 1..50) {
+            list.add(BlackListItems("", "河畔用户$i"))
         }
         return list
     }
