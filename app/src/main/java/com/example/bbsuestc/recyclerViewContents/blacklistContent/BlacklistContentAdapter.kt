@@ -1,4 +1,4 @@
-package com.example.bbsuestc.recyclerViewContents.blacklistContent
+package com.example.bbsuestc.recyclerViewContents.blackListContent
 
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
@@ -9,13 +9,12 @@ import android.widget.PopupWindow
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
-import com.example.bbsuestc.blacklistActivity.BlackListViewModel
+import com.example.bbsuestc.blackListActivity.BlackListViewModel
 import com.example.bbsuestc.blackListActivity.BlacklistActivity
-import com.example.bbsuestc.recyclerViewContents.blackListContent.BlackListItems
 
 class BlackListContentAdapter(
     private val data: ArrayList<BlackListItems>?,
-    private val context :BlacklistActivity,
+    private val context: BlacklistActivity,
     private val viewModel: BlackListViewModel
 ) : RecyclerView.Adapter<BlackListContentAdapter.ViewHolder>() {
 
@@ -30,6 +29,7 @@ class BlackListContentAdapter(
             blacklistOption = itemView.findViewById(R.id.blacklist_option_iv)
 
         }
+
         public fun setData(position: Int) {
             blacklistUserName.text = data?.get(position)?.blacklistUserName ?: "默认用户"
             //TODO:设置头像
@@ -55,29 +55,30 @@ class BlackListContentAdapter(
     override fun getItemCount(): Int {
         return data?.size ?: 0
     }
+
     //渲染一个在点击项目附近的弹窗，内含删除操作
-    private fun popMenu(position:Int) {
+    private fun popMenu(position: Int) {
         //获取item view
         val layoutManager: RecyclerView.LayoutManager? = context.getBlacklistRV().layoutManager
         val itemView: View? = layoutManager?.findViewByPosition(position)
         val optionView: ImageView? = itemView?.findViewById(R.id.blacklist_option_iv)
-        val popupWindowLayout=LayoutInflater.from(context).inflate(R.layout.popup_window_blacklist,context.getBlacklistRV(),false)
-        val deleteTextView : TextView = popupWindowLayout.findViewById(R.id.blacklist_delete_pw_tv)
-        val popupWindow= PopupWindow(context)
-        popupWindow.isOutsideTouchable=true
-        popupWindow.isFocusable=true
-        popupWindow.contentView=popupWindowLayout
+        val popupWindowLayout = LayoutInflater.from(context)
+            .inflate(R.layout.popup_window_blacklist, context.getBlacklistRV(), false)
+        val deleteTextView: TextView = popupWindowLayout.findViewById(R.id.blacklist_delete_pw_tv)
+        val popupWindow = PopupWindow(context)
+        popupWindow.isOutsideTouchable = true
+        popupWindow.isFocusable = true
+        popupWindow.contentView = popupWindowLayout
         popupWindow.setBackgroundDrawable(ColorDrawable(0x00000000))
 
-        if(position!= (data?.size ?: -1) -1) {
+        if (position != (data?.size ?: -1) - 1) {
             popupWindow.showAsDropDown(optionView)
-        }
-        else{
-            popupWindow.showAsDropDown(optionView,0,-200)
+        } else {
+            popupWindow.showAsDropDown(optionView, 0, -200)
         }
 
         //删除操作
-        deleteTextView.setOnClickListener{
+        deleteTextView.setOnClickListener {
             //修改数据
             viewModel.removeFromBlacklist(position)
             popupWindow.dismiss()

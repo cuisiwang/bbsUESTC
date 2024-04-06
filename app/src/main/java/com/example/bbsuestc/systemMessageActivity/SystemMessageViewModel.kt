@@ -14,8 +14,9 @@ class SystemMessageViewModel : ViewModel() {
     val systemMessageList:LiveData<ArrayList<MessageSystemItem>> = _systemMessageList
     private fun initSystemMessageList(): ArrayList<MessageSystemItem>? {
         val list:ArrayList<MessageSystemItem> = arrayListOf<MessageSystemItem>().apply {
-            for(i in 1.. 50){
-                add(MessageSystemItem(i<25 ,"未读系统消息","12-21","消息内容"))
+            add(MessageSystemItem(true,"未读系统消息","12-21","消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容"))
+            for(i in 1.. 10){
+                add(MessageSystemItem(i<7 ,"未读系统消息","12-21","消息内容"))
             }
         }
         return list
