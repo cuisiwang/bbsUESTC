@@ -26,7 +26,6 @@ class FriendRequestActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_friend_request)
 
-
         friendRequestBackIv=findViewById(R.id.friend_request_back_iv)
         treatedRequestRv=findViewById(R.id.friend_request_treated_rv)
         untreatedRequestRv=findViewById(R.id.friend_request_untreated_rv)
@@ -50,11 +49,9 @@ class FriendRequestActivity : AppCompatActivity() {
 
         //添加观察者
         requestViewModel.getUntreatedRequestList().observe(this) {
-            untreatedAdapter.updateData(requestViewModel.getUntreatedRequestList().value!!)
             untreatedAdapter.notifyDataSetChanged()
         }
         requestViewModel.getTreatedRequestList().observe(this){
-            treatedAdapter.updateData(requestViewModel.getTreatedRequestList().value!!)
             treatedAdapter.notifyDataSetChanged()
         }
 

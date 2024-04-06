@@ -9,10 +9,8 @@ import com.example.bbsuestc.recyclerViewContents.friendRequestContent.UntreatedR
 
 class FriendRequestViewModel :ViewModel() {
 
-
     private val untreatedRequestList : MutableLiveData<ArrayList<UntreatedRequestItem>> =MutableLiveData<ArrayList<UntreatedRequestItem>>()
     private val treatedRequestList: MutableLiveData<ArrayList<TreatedRequestItem>> =MutableLiveData<ArrayList<TreatedRequestItem>>()
-
 
     init{
         //初始化一些数据进行模拟

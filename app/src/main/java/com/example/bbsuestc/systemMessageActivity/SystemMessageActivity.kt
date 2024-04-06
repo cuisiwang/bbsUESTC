@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
 import com.example.bbsuestc.recyclerViewContents.messageSystemContent.MessageSystemContentAdapter
 import com.example.bbsuestc.recyclerViewContents.messageSystemContent.MessageSystemItem
+import com.example.bbsuestc.systemMessageActivity.SystemMessageViewModel
 
 class SystemMessageActivity : AppCompatActivity() {
     private lateinit var backIcon:ImageView
@@ -30,20 +31,15 @@ class SystemMessageActivity : AppCompatActivity() {
         }
         initData()
     }
-
     private fun initData() {
         systemList= arrayListOf<MessageSystemItem>()
-        systemList=systemMessageViewModel.systemMessageList
-        adapter= MessageSystemContentAdapter(systemList,this)
+        systemList= systemMessageViewModel.systemMessageList.value!!
+        adapter= MessageSystemContentAdapter(systemList,this,systemMessageViewModel)
         messageSystemRv.adapter=adapter
         messageSystemRv.layoutManager=LinearLayoutManager(this)
-        adapter.setOnItemClickListener(object :MessageSystemContentAdapter.OnItemClickListener{
-            //todo:点击一个条目，跳转详情界面(待实现) ,将信息设为已读
-            override fun onItemClick(position: Int) {
-                systemList[position].isNotRead=false
-                adapter.notifyDataSetChanged()
-            }
+        systemMessageViewModel.systemMessageList.observe(this){
+            adapter.notifyDataSetChanged()
+        }
 
-        })
     }
 }

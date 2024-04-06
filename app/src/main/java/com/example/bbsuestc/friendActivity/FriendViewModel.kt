@@ -6,13 +6,13 @@ import com.example.bbsuestc.recyclerViewContents.friendContent.FriendItem
 class FriendViewModel : ViewModel(){
 
     private val _FriendList = arrayListOf<FriendItem>().apply {
-        for(i in 0..40){
+        for(i in 0..400){
             val friendItem=FriendItem("","河畔用户"+i.toString())
             add(friendItem)
         }
     }
     private val _FriendListAll = arrayListOf<FriendItem>().apply {
-        for(i in 0..40){
+        for(i in 0..400){
             val friendItem=FriendItem("","河畔用户"+i.toString())
             add(friendItem)
         }
