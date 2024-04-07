@@ -9,7 +9,7 @@ class MessagesViewModel : ViewModel() {
 
     private val _messageList = MutableLiveData<ArrayList<MessageItem>>().apply {
         val list: ArrayList<MessageItem> = arrayListOf<MessageItem>().apply {
-            for (i in 1..40) {
+            for (i in 0..200) {
                 add(
                     MessageItem(
                         "",

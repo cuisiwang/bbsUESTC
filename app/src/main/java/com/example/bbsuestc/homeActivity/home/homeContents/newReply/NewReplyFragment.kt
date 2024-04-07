@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
 import com.example.bbsuestc.recyclerViewContents.postsContent.PostsContentAdapter
 import com.example.bbsuestc.recyclerViewContents.postsContent.PostsItem
+import com.example.bbsuestc.testUtils.TestData
+import com.example.bbsuestc.utils.fixHeight
 
 class NewReplyFragment : Fragment() {
     private lateinit var postsContent : RecyclerView
@@ -23,14 +25,8 @@ class NewReplyFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_new_reply, container, false)
         //data应该从ViewModel里获取
         postsContent = root.findViewById(R.id.new_reply_posts_rv)
-        val data = arrayListOf<PostsItem>()
-        for(i in 0..10){
-            data.add(
-                PostsItem("","这是新回复发帖人ID","2022-12-22","这是新回复帖子的标题",
-                    "这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容",
-                    "校园生活",114514,191)
-            )
-        }
+        val data = TestData.postData()
+        postsContent.fixHeight()
         postsContent.layoutManager = LinearLayoutManager(activity)
         postsContent.adapter = PostsContentAdapter(data)
         return root

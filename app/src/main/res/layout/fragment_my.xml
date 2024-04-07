@@ -90,7 +90,7 @@
             android:layout_marginLeft="15dp"
             android:drawablePadding="14dp"
             android:textSize="20sp"
-            android:layout_marginVertical="10dp"/>
+            android:paddingVertical="10dp"/>
 
         <TextView
             android:id="@+id/my_posts_mypost_tv"
@@ -101,7 +101,7 @@
             android:layout_marginLeft="15dp"
             android:drawablePadding="14dp"
             android:textSize="20sp"
-            android:layout_marginVertical="10dp"/>
+            android:paddingVertical="10dp"/>
 
         <TextView
             android:id="@+id/my_posts_drafts_tv"
@@ -112,7 +112,7 @@
             android:layout_marginLeft="15dp"
             android:drawablePadding="14dp"
             android:textSize="20sp"
-            android:layout_marginVertical="10dp"/>
+            android:paddingVertical="10dp"/>
 
         <TextView
             android:id="@+id/my_posts_replies_tv"
@@ -123,7 +123,7 @@
             android:layout_marginLeft="15dp"
             android:drawablePadding="14dp"
             android:textSize="20sp"
-            android:layout_marginVertical="10dp"/>
+            android:paddingVertical="10dp"/>
         <TextView
             android:id="@+id/my_posts_histories_tv"
             android:layout_width="match_parent"
@@ -133,7 +133,7 @@
             android:layout_marginLeft="15dp"
             android:drawablePadding="14dp"
             android:textSize="20sp"
-            android:layout_marginVertical="10dp"/>
+            android:paddingVertical="10dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -153,7 +153,7 @@
             android:layout_marginLeft="15dp"
             android:drawablePadding="14dp"
             android:textSize="20sp"
-            android:layout_marginVertical="10dp"/>
+            android:paddingVertical="10dp"/>
         <TextView
             android:id="@+id/my_account_logout_tv"
             android:layout_width="match_parent"
@@ -161,7 +161,7 @@
             android:text="退出登陆"
             android:layout_marginLeft="15dp"
             android:textSize="20sp"
-            android:layout_marginVertical="10dp"
+            android:paddingVertical="10dp"
             android:drawablePadding="14dp"
             app:drawableStartCompat="@drawable/ic_my_logout" />
 
@@ -182,7 +182,7 @@
             android:layout_marginLeft="15dp"
             android:textSize="20sp"
             android:drawablePadding="14dp"
-            android:layout_marginVertical="10dp"/>
+            android:paddingVertical="10dp"/>
         <TextView
             android:id="@+id/my_app_about_tv"
             android:layout_width="match_parent"
@@ -192,6 +192,6 @@
             android:layout_marginLeft="15dp"
             android:textSize="20sp"
             android:drawablePadding="14dp"
-            android:layout_marginVertical="10dp"/>
+            android:paddingVertical="10dp"/>
     </LinearLayout>
 </ScrollView>

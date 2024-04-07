@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
 import com.example.bbsuestc.recyclerViewContents.postsContent.PostsContentAdapter
+import com.example.bbsuestc.utils.fixHeight
 
 class HotFragment : Fragment() {
 
@@ -27,6 +28,7 @@ class HotFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_hot_plate_detail, container, false)
         postsContent = root.findViewById(R.id.hot_posts_rv)
         postsContent.apply {
+            fixHeight()
             layoutManager = LinearLayoutManager(context) // TODO 如遇到bug,context改为activity <- ..?
             adapter = PostsContentAdapter(viewModel.data)
         }

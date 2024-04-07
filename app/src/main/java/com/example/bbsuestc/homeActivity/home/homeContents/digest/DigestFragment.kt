@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
 import com.example.bbsuestc.recyclerViewContents.postsContent.PostsContentAdapter
 import com.example.bbsuestc.recyclerViewContents.postsContent.PostsItem
+import com.example.bbsuestc.testUtils.TestData
+import com.example.bbsuestc.utils.fixHeight
 
 class DigestFragment : Fragment() {
 
@@ -24,14 +26,8 @@ class DigestFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_digest, container, false)
         //data应该从ViewModel里获取
         postsContent = root.findViewById(R.id.digest_posts_rv)
-        val data = arrayListOf<PostsItem>()
-        for(i in 0..10){
-            data.add(
-                PostsItem("","这是精华发帖人ID","2022-12-22","这是精华帖子的标题",
-                    "这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容",
-                    "校园生活",114514,191)
-            )
-        }
+        postsContent.fixHeight()
+        val data = TestData.postData()
         postsContent.layoutManager = LinearLayoutManager(activity)
         postsContent.adapter = PostsContentAdapter(data)
         return root

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
 import com.example.bbsuestc.recyclerViewContents.postsContent.PostsContentAdapter
+import com.example.bbsuestc.utils.fixHeight
 
 class NewReleaseFragment : Fragment() {
 
@@ -18,7 +19,7 @@ class NewReleaseFragment : Fragment() {
     }
 
     private lateinit var viewModel: NewReleaseViewModel
-    private lateinit var postsContent : RecyclerView
+    private lateinit var postsContent: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,10 +28,10 @@ class NewReleaseFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_new_release_plate_detail, container, false)
         postsContent = root.findViewById(R.id.new_release_posts_rv)
         postsContent.apply {
+            fixHeight()
             layoutManager = LinearLayoutManager(context) // TODO 如遇到bug,context改为activity
             adapter = PostsContentAdapter(viewModel.data)
         }
-
 
         return root
     }

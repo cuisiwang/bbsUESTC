@@ -35,11 +35,11 @@ class PlateDetailActivity : AppCompatActivity() {
     private lateinit var postsTodayStatisticsTextView: TextView
     private lateinit var postsStatisticsTextView: TextView
     private lateinit var headerServiceRV: RecyclerView
-//TODO 写pinned adapter
+//TODO:写pinned adapter
     private lateinit var pinnedServiceRV: RecyclerView
     private lateinit var contentsTL: TabLayout
     private lateinit var contentVP: ViewPager2
-//TODO 发帖按钮
+//TODO:发帖按钮
 //    修改发帖activity, 使能传入板块信息
   private lateinit var newPostFAB : FloatingActionButton
 

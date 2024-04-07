@@ -12,6 +12,7 @@ import com.example.bbsuestc.R
 import com.example.bbsuestc.recyclerViewContents.headerServices.HeaderServicesAdapter
 import com.example.bbsuestc.recyclerViewContents.postsContent.PostsContentAdapter
 import com.example.bbsuestc.testUtils.TestData
+import com.example.bbsuestc.utils.fixHeight
 
 class HotFragment : Fragment() {
 
@@ -36,6 +37,7 @@ class HotFragment : Fragment() {
         //data应该从ViewModel里获取
         val data = TestData.postData()
 
+        postsContent.fixHeight()
         postsContent.layoutManager = LinearLayoutManager(activity)
         postsContent.adapter = PostsContentAdapter(data)
 

@@ -6,7 +6,7 @@ import android.widget.Toast
 import java.lang.Exception
 import java.lang.reflect.Field
 
-fun ViewPager2.adjustScrollSensitivity(vp : ViewPager2, factor: Int) {
+fun ViewPager2.adjustScrollSensitivity(vp: ViewPager2, factor: Int) {
     //通过反射动态设置ViewPager2 灵敏度
     try {
         val recyclerViewField: Field = ViewPager2::class.java.getDeclaredField("mRecyclerView")
@@ -16,10 +16,14 @@ fun ViewPager2.adjustScrollSensitivity(vp : ViewPager2, factor: Int) {
         touchSlopField.isAccessible = true
         val touchSlop = touchSlopField.get(recyclerView) as Int
         touchSlopField.set(recyclerView, touchSlop * factor)
-    } catch (e:Exception) {
+    } catch (e: Exception) {
         e.printStackTrace()
-        Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show()
     }
+}
 
-
+fun RecyclerView.fixHeight() {
+    //固定rv高度，以解决在scrollView下的rv会直接全部绘制的问题
+    val params = this.layoutParams
+    params.height = resources.displayMetrics.heightPixels
+    this.layoutParams = params
 }

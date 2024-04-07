@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.PopupWindow
@@ -21,6 +22,7 @@ import com.example.bbsuestc.friendActivity.FriendActivity
 import com.example.bbsuestc.recyclerViewContents.messageContent.MessageContentAdapter
 import com.example.bbsuestc.recyclerViewContents.messageContent.MessageItem
 import com.example.bbsuestc.systemMessageActivity.SystemMessageActivity
+import com.example.bbsuestc.utils.fixHeight
 
 class MessagesFragment : Fragment() {
     private lateinit var messageToolBar: Toolbar
@@ -35,6 +37,9 @@ class MessagesFragment : Fragment() {
     private lateinit var messageSystemIv: LinearLayout
 
     private lateinit var messageList: ArrayList<MessageItem>
+    private val notificationsViewModel by lazy {
+        ViewModelProvider(this)[MessagesViewModel::class.java]
+    }
 
     //帖子相关
     private lateinit var postsPertinentIv: ImageView
@@ -43,9 +48,6 @@ class MessagesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val notificationsViewModel =
-            ViewModelProvider(this)[MessagesViewModel::class.java]
-
         view = inflater.inflate(R.layout.fragment_messages, container, false)
 
         messageToolBar = view.findViewById(R.id.toolbar_message)
@@ -57,10 +59,7 @@ class MessagesFragment : Fragment() {
 
         //做一个数据
         messageList = arrayListOf<MessageItem>()
-        //从viewModel中得到数据
-        messageList = notificationsViewModel.messageList.value!!
-        messageListRv.adapter = MessageContentAdapter(messageList)
-        messageListRv.layoutManager = LinearLayoutManager(activity)
+
         //点击图片，激活spinner
         messageToolbarIv.setOnClickListener {
             showPopupWindow()
@@ -77,6 +76,15 @@ class MessagesFragment : Fragment() {
         }
 
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        //从viewModel中得到数据
+        messageListRv.fixHeight()
+        messageList = notificationsViewModel.messageList.value!!
+        messageListRv.adapter = MessageContentAdapter(messageList)
+        messageListRv.layoutManager = LinearLayoutManager(activity)
     }
 
     private fun showPopupWindow() {

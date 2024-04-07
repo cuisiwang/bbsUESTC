@@ -8,22 +8,23 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
 
-class PostsContentAdapter(private val data : ArrayList<PostsItem>) : RecyclerView.Adapter<PostsContentAdapter.ViewHolder>() {
+class PostsContentAdapter(private val data: ArrayList<PostsItem>) :
+    RecyclerView.Adapter<PostsContentAdapter.ViewHolder>() {
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         //寻找view
-        var userIcon : ImageView
-        var userID : TextView
-        var postTime : TextView
-        var postTitle : TextView
-        var postContent : TextView
-        var postPlate : TextView
-        var postViewers : TextView
-        var postReplies : TextView
+        var userIcon: ImageView
+        var userID: TextView
+        var postTime: TextView
+        var postTitle: TextView
+        var postContent: TextView
+        var postPlate: TextView
+        var postViewers: TextView
+        var postReplies: TextView
 
         init {
             userIcon = itemView.findViewById(R.id.posts_user_icon_iv)
             userID = itemView.findViewById(R.id.posts_userID_tv)
-            postTime = itemView. findViewById(R.id.posts_time_tv)
+            postTime = itemView.findViewById(R.id.posts_time_tv)
             postTitle = itemView.findViewById(R.id.posts_title_tv)
             postContent = itemView.findViewById(R.id.posts_content_tv)
             postPlate = itemView.findViewById(R.id.posts_plates_tv)
@@ -31,9 +32,10 @@ class PostsContentAdapter(private val data : ArrayList<PostsItem>) : RecyclerVie
             postReplies = itemView.findViewById(R.id.posts_replys_tv)
         }
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_posts_content,parent,false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_posts_content, parent, false)
         )
     }
 
@@ -44,9 +46,9 @@ class PostsContentAdapter(private val data : ArrayList<PostsItem>) : RecyclerVie
         holder.postTime.text = currentItem.postTime
         holder.postTitle.text = currentItem.postTitle
         holder.postContent.text = currentItem.postContent
-        holder.postPlate.text = " "+currentItem.plates
-        holder.postViewers.text = " "+currentItem.viewers
-        holder.postReplies.text = " "+currentItem.comments
+        holder.postPlate.text = " " + currentItem.plates
+        holder.postViewers.text = " " + currentItem.viewers
+        holder.postReplies.text = " " + currentItem.comments
     }
 
     override fun getItemCount() = data.size

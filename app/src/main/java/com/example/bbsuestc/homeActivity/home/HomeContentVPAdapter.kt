@@ -6,7 +6,6 @@ import com.example.bbsuestc.homeActivity.home.homeContents.digest.DigestFragment
 import com.example.bbsuestc.homeActivity.home.homeContents.hot.HotFragment
 import com.example.bbsuestc.homeActivity.home.homeContents.newRelease.NewReleaseFragment
 import com.example.bbsuestc.homeActivity.home.homeContents.newReply.NewReplyFragment
-import com.example.bbsuestc.homeActivity.home.homeContents.statics.StaticsFragment
 
 class HomeContentVPAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
     override fun getItemCount(): Int {
