@@ -18,13 +18,13 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/message_add_friend_pw_tv"
+                android:id="@+id/friend_delete_pw_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingVertical="13dp"
                 android:paddingLeft="17dp"
                 android:paddingRight="45dp"
-                android:text="添加好友" />
+                android:text="删除好友" />
 
             <View
                 android:layout_width="match_parent"
@@ -33,13 +33,13 @@
                 android:background="@color/grey" />
 
             <TextView
-                android:id="@+id/message_new_chat_pw_tv"
+                android:id="@+id/friend_blacklist_pw_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingVertical="13dp"
                 android:paddingLeft="17dp"
-                android:paddingRight="45dp"
-                android:text="发起聊天" />
+                android:paddingRight="40dp"
+                android:text="拉入黑名单" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

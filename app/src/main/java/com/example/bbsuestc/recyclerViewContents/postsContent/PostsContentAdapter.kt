@@ -12,14 +12,14 @@ class PostsContentAdapter(private val data: ArrayList<PostsItem>) :
     RecyclerView.Adapter<PostsContentAdapter.ViewHolder>() {
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         //寻找view
-        var userIcon: ImageView
-        var userID: TextView
-        var postTime: TextView
-        var postTitle: TextView
-        var postContent: TextView
-        var postPlate: TextView
-        var postViewers: TextView
-        var postReplies: TextView
+        val userIcon: ImageView
+        val userID: TextView
+        val postTime: TextView
+        val postTitle: TextView
+        val postContent: TextView
+        val postPlate: TextView
+        val postViewers: TextView
+        val postReplies: TextView
 
         init {
             userIcon = itemView.findViewById(R.id.posts_user_icon_iv)

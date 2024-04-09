@@ -7,20 +7,16 @@ import com.example.bbsuestc.recyclerViewContents.messageSystemContent.MessageSys
 
 class SystemMessageViewModel : ViewModel() {
 
-    private val _systemMessageList : MutableLiveData<ArrayList<MessageSystemItem>> = MutableLiveData<ArrayList<MessageSystemItem>>().apply {
-        value=initSystemMessageList()
-    }
-
-    val systemMessageList:LiveData<ArrayList<MessageSystemItem>> = _systemMessageList
-    private fun initSystemMessageList(): ArrayList<MessageSystemItem>? {
-        val list:ArrayList<MessageSystemItem> = arrayListOf<MessageSystemItem>().apply {
+    private val _systemMessageList = MutableLiveData<ArrayList<MessageSystemItem>>().apply {
+        value=arrayListOf<MessageSystemItem>().apply {
             add(MessageSystemItem(true,"未读系统消息","12-21","消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容"))
             for(i in 1.. 10){
                 add(MessageSystemItem(i<7 ,"未读系统消息","12-21","消息内容"))
             }
         }
-        return list
     }
+
+    val systemMessageList:LiveData<ArrayList<MessageSystemItem>> = _systemMessageList
     fun readMessage(position:Int){
         //重置消息为已读
         _systemMessageList.value?.get(position)?.isNotRead  =false

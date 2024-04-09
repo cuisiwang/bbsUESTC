@@ -29,8 +29,8 @@
                 android:layout_gravity="center_vertical"
                 tools:text="河畔用户1"
                 android:textStyle="bold" />
-<!--            todo:写相关option-->
             <ImageView
+                android:id="@+id/friend_options_iv"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"

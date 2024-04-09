@@ -108,7 +108,7 @@ class FriendActivity : AppCompatActivity() {
     private fun initData() {
         displayedFriendList = arrayListOf()
         displayedFriendList = friendViewModel.friendList.value!!
-        friendContentAdapter = FriendContentAdapter(displayedFriendList)
+        friendContentAdapter = FriendContentAdapter(displayedFriendList,this,friendViewModel)
         friendListRv.adapter = friendContentAdapter
         friendListRv.layoutManager = LinearLayoutManager(this)
 
