@@ -12,6 +12,7 @@ import com.example.bbsuestc.recyclerViewContents.friendRequestContent.TreatedReq
 import com.example.bbsuestc.recyclerViewContents.friendRequestContent.TreatedRequestItem
 import com.example.bbsuestc.recyclerViewContents.friendRequestContent.UntreatedRequestContentAdapter
 import com.example.bbsuestc.recyclerViewContents.friendRequestContent.UntreatedRequestItem
+import com.example.bbsuestc.utils.fixHeight
 
 class FriendRequestActivity : AppCompatActivity() {
     //返回按钮
@@ -33,7 +34,6 @@ class FriendRequestActivity : AppCompatActivity() {
 
         //返回按钮
         friendRequestBackIv.setOnClickListener{
-
             finish()
         }
         initData();
@@ -44,14 +44,14 @@ class FriendRequestActivity : AppCompatActivity() {
 
     private fun initData() {
         //初始化适配器和数据项
-        untreatedAdapter= UntreatedRequestContentAdapter(requestViewModel.getUntreatedRequestList().value!!,this,requestViewModel)
-        treatedAdapter= TreatedRequestContentAdapter(requestViewModel.getTreatedRequestList().value!!,this,requestViewModel)
+        untreatedAdapter= UntreatedRequestContentAdapter(requestViewModel.untreatedRequestList.value!!,this,requestViewModel)
+        treatedAdapter= TreatedRequestContentAdapter(requestViewModel.treatedRequestList.value!!,this,requestViewModel)
 
         //添加观察者
-        requestViewModel.getUntreatedRequestList().observe(this) {
+        requestViewModel.untreatedRequestList.observe(this) {
             untreatedAdapter.notifyDataSetChanged()
         }
-        requestViewModel.getTreatedRequestList().observe(this){
+        requestViewModel.treatedRequestList.observe(this){
             treatedAdapter.notifyDataSetChanged()
         }
 
@@ -61,9 +61,6 @@ class FriendRequestActivity : AppCompatActivity() {
         //设置已处理数据
         treatedRequestRv.adapter=treatedAdapter
         treatedRequestRv.layoutManager=LinearLayoutManager(this)
-        //取消动画，避免显示不友好
-        treatedRequestRv.itemAnimator=null;
-        untreatedRequestRv.itemAnimator=null;
     }
 
     fun getTreatedRequestRv(): RecyclerView {

@@ -1,5 +1,7 @@
 package com.example.bbsuestc.utils
 
+import android.graphics.Rect
+import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import android.widget.Toast
@@ -23,7 +25,10 @@ fun ViewPager2.adjustScrollSensitivity(vp: ViewPager2, factor: Int) {
 
 fun RecyclerView.fixHeight() {
     //固定rv高度，以解决在scrollView下的rv会直接全部绘制的问题
+    // TODO: 这么写有点问题，不是所有的rv都能无脑call这个函数，maybe fixable？
+    //在具体使用的时候具体判断
     val params = this.layoutParams
     params.height = resources.displayMetrics.heightPixels
     this.layoutParams = params
 }
+

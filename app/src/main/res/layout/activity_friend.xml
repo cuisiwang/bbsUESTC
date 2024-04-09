@@ -66,10 +66,11 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"/>
                 <LinearLayout
+                    android:id="@+id/friend_request_ly"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_weight="1.7">
+                    android:layout_weight="1">
                     <FrameLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -80,9 +81,7 @@
                             android:src="@drawable/ic_oval_back"
                             android:layout_gravity="center"
                             />
-
                         <ImageView
-                            android:id="@+id/friend_request_iv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -93,9 +92,9 @@
                             android:layout_height="wrap_content"
                             android:background="@drawable/ic_friend_notice"
                             android:layout_gravity="right"
-                            android:layout_marginLeft="50dp"
-                            android:text="0"
-                            android:textColor="#716F6F"
+                            tools:text="0"
+                            android:layout_marginLeft="40dp"
+                            android:textColor="@color/secondaryGrey"
                             android:gravity="center"/>
                     </FrameLayout>
                     <TextView
@@ -107,10 +106,12 @@
                         android:textColor="#878181"/>
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/friend_blacklist_ly"
                     android:layout_width="0dp"
-                    android:layout_weight="1.7"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginStart="20dp">
                     <FrameLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -121,14 +122,11 @@
                             android:src="@drawable/ic_oval_back"
                             android:layout_gravity="center"
                             />
-
                         <ImageView
-                            android:id="@+id/friend_blacklist_iv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_friend_blacklist" />
-
                     </FrameLayout>
                     <TextView
                         android:layout_width="wrap_content"

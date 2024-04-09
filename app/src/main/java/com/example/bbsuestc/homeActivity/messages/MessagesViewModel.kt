@@ -8,8 +8,8 @@ import com.example.bbsuestc.recyclerViewContents.messageContent.MessageItem
 class MessagesViewModel : ViewModel() {
 
     private val _messageList = MutableLiveData<ArrayList<MessageItem>>().apply {
-        val list: ArrayList<MessageItem> = arrayListOf<MessageItem>().apply {
-            for (i in 0..200) {
+        value = arrayListOf<MessageItem>().apply {
+            for (i in 0..20) {
                 add(
                     MessageItem(
                         "",
@@ -21,7 +21,6 @@ class MessagesViewModel : ViewModel() {
                 )
             }
         }
-        value = list
     }
 
     val messageList: LiveData<ArrayList<MessageItem>> = _messageList

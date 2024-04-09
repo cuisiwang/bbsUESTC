@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
 import com.example.bbsuestc.recyclerViewContents.blackListContent.BlackListContentAdapter
+import com.example.bbsuestc.utils.fixHeight
 
 class BlacklistActivity : AppCompatActivity() {
     //返回图标
@@ -21,6 +22,7 @@ class BlacklistActivity : AppCompatActivity() {
 
         blacklistBackIcon = findViewById(R.id.blacklist_back_iv)
         blacklistRecyclerView = findViewById(R.id.blacklist_rv)
+        blacklistRecyclerView.fixHeight()
         blacklistViewModel = ViewModelProvider(this)[BlackListViewModel::class.java]
         blacklistBackIcon.setOnClickListener {
             finish()

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.PopupWindow
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
 import com.example.bbsuestc.friendRequestActivity.FriendRequestActivity
@@ -17,9 +18,6 @@ class UntreatedRequestContentAdapter(private var data:ArrayList<UntreatedRequest
                                      private val viewModel:FriendRequestViewModel) :
     RecyclerView.Adapter<UntreatedRequestContentAdapter.ViewHolder>() {
 
-    public fun updateData(data:ArrayList<UntreatedRequestItem>){
-        this.data=data
-    }
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         var untreatedUserName:TextView
         var untreatedUserIcon:ImageView
@@ -34,7 +32,7 @@ class UntreatedRequestContentAdapter(private var data:ArrayList<UntreatedRequest
             refuseText=itemView.findViewById(R.id.friend_request_refuse_tv)
         }
         public fun setData(position: Int){
-            untreatedUserName.setText(data[position].untreatedRequestUserName)
+            untreatedUserName.text = data[position].untreatedRequestUserName
 
         }
     }
@@ -54,17 +52,16 @@ class UntreatedRequestContentAdapter(private var data:ArrayList<UntreatedRequest
         //点击拒绝
         holder.refuseText.setOnClickListener{
             viewModel.deny(position)
-
+            Toast.makeText(context, "已处理", Toast.LENGTH_SHORT).show()
         }
         //点击同意
         holder.confirmText.setOnClickListener{
             viewModel.confirm(position)
-
+            Toast.makeText(context, "已处理", Toast.LENGTH_SHORT).show()
         }
         //点击侧边栏，弹出窗口
         holder.untreatedOption.setOnClickListener{
             popMenuUntreated(position)
-
         }
     }
 

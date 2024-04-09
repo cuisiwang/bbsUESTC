@@ -14,18 +14,13 @@ import com.example.bbsuestc.friendRequestActivity.FriendRequestViewModel
 
 class TreatedRequestContentAdapter(private var data:ArrayList<TreatedRequestItem>,private val context:FriendRequestActivity,private val viewModel: FriendRequestViewModel) : RecyclerView.Adapter<TreatedRequestContentAdapter.ViewHolder>(){
 
-
-    fun updateData(data:ArrayList<TreatedRequestItem>){
-        this.data=data
-    }
-
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        var treatedUserName: TextView
-        var treatedUserIcon: ImageView
+        private var treatedUserName: TextView
+        private var treatedUserIcon: ImageView
         //侧边菜单
         var treatedOption: ImageView
         //显示已同意，或者已拒绝
-        var stateTextView:TextView
+        private var stateTextView:TextView
 
         init{
             treatedUserIcon=itemView.findViewById(R.id.friend_request_treated_user_icon_iv)
@@ -35,7 +30,7 @@ class TreatedRequestContentAdapter(private var data:ArrayList<TreatedRequestItem
         }
         fun setData(position: Int){
             treatedUserName.text = data[position].treatedRequestUserName
-            if(data[position].optionChosen==false){
+            if(!data[position].optionChosen){
                 stateTextView.text = "已拒绝"
             }
             else{
@@ -62,13 +57,13 @@ class TreatedRequestContentAdapter(private var data:ArrayList<TreatedRequestItem
         }
     }
     private fun popMenuTreated(position: Int) {
-
         val layoutManager: RecyclerView.LayoutManager? = context.getTreatedRequestRv().layoutManager
         val itemView: View? = layoutManager?.findViewByPosition(position)
         val optionView: ImageView? = itemView?.findViewById(R.id.friend_request_treated_option_iv)
         val popupWindowLayout= LayoutInflater.from(context).inflate(R.layout.popup_window_treated_request,context.getTreatedRequestRv(),false)
         val deleteTextView : TextView = popupWindowLayout.findViewById(R.id.treated_request_delete_pw_tv)
         val popupWindow= PopupWindow(context)
+
         popupWindow.isOutsideTouchable=true
         popupWindow.isFocusable=true
         popupWindow.contentView=popupWindowLayout
