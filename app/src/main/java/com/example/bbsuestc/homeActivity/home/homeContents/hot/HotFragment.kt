@@ -29,19 +29,22 @@ class HotFragment : Fragment() {
         headerServices = root.findViewById(R.id.hot_header_services_rv)
         postsContent = root.findViewById(R.id.hot_posts_rv)
 
+        return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         val layoutManager = LinearLayoutManager(context)
         layoutManager.orientation = LinearLayoutManager.HORIZONTAL
         headerServices.layoutManager = layoutManager
         headerServices.adapter = HeaderServicesAdapter(context, TestData.homeHotHeaderData())
 
         //data应该从ViewModel里获取
+//        postsContent.fixHeight()
         val data = TestData.postData()
-
-        postsContent.fixHeight()
         postsContent.layoutManager = LinearLayoutManager(activity)
         postsContent.adapter = PostsContentAdapter(data)
-
-        return root
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

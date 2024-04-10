@@ -2,6 +2,7 @@ package com.example.bbsuestc.homeActivity.home.homeContents.newRelease
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import com.example.bbsuestc.R
 import com.example.bbsuestc.recyclerViewContents.postsContent.PostsContentAdapter
 import com.example.bbsuestc.recyclerViewContents.postsContent.PostsItem
 import com.example.bbsuestc.testUtils.TestData
+import com.example.bbsuestc.utils.fixHeight
 
 class NewReleaseFragment : Fragment() {
 
@@ -24,14 +26,18 @@ class NewReleaseFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_new_release, container, false)
-        //data应该从ViewModel里获取
         postsContent = root.findViewById(R.id.new_release_posts_rv)
-        val data = TestData.postData()
-        postsContent.layoutManager = LinearLayoutManager(activity)
-        postsContent.adapter = PostsContentAdapter(data)
         return root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        //data应该从ViewModel里获取
+        postsContent.fixHeight()
+        val data = TestData.postData()
+        postsContent.layoutManager = LinearLayoutManager(activity)
+        postsContent.adapter = PostsContentAdapter(data)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this)[NewReleaseViewModel::class.java]

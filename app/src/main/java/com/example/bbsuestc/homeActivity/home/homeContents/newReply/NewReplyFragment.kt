@@ -2,6 +2,7 @@ package com.example.bbsuestc.homeActivity.home.homeContents.newReply
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +16,7 @@ import com.example.bbsuestc.testUtils.TestData
 import com.example.bbsuestc.utils.fixHeight
 
 class NewReplyFragment : Fragment() {
-    private lateinit var postsContent : RecyclerView
+    private lateinit var postsContent: RecyclerView
     private lateinit var viewModel: NewReplyViewModel
 
     override fun onCreateView(
@@ -23,13 +24,20 @@ class NewReplyFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_new_reply, container, false)
-        //data应该从ViewModel里获取
+
         postsContent = root.findViewById(R.id.new_reply_posts_rv)
-        val data = TestData.postData()
+        Log.e("AAAA", "onCreateView: 1111" )
+
+        return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        //data应该从ViewModel里获取
         postsContent.fixHeight()
+        val data = TestData.postData()
         postsContent.layoutManager = LinearLayoutManager(activity)
         postsContent.adapter = PostsContentAdapter(data)
-        return root
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
