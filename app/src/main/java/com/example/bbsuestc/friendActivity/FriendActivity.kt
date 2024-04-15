@@ -100,7 +100,6 @@ class FriendActivity : AppCompatActivity() {
             if (name.contains(input)) {
                 displayedFriendList.add(item)
             }
-
         }
         friendContentAdapter.notifyDataSetChanged()
     }

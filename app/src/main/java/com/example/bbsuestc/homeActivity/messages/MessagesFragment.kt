@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
 import com.example.bbsuestc.friendActivity.FriendActivity
+import com.example.bbsuestc.postsRelativeActivity.PostsRelativeActivity
 import com.example.bbsuestc.recyclerViewContents.messageContent.MessageContentAdapter
 import com.example.bbsuestc.recyclerViewContents.messageContent.MessageItem
 import com.example.bbsuestc.systemMessageActivity.SystemMessageActivity
@@ -42,7 +43,7 @@ class MessagesFragment : Fragment() {
     }
 
     //帖子相关
-    private lateinit var postsPertinentIv: ImageView
+    private lateinit var postsRelativeIv: LinearLayout
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -55,7 +56,7 @@ class MessagesFragment : Fragment() {
         messageToolbarIv = view.findViewById(R.id.message_toolbar_add_iv)
         messageFriendIv = view.findViewById(R.id.message_friends_iv)
         messageSystemIv = view.findViewById(R.id.message_system_iv)
-        postsPertinentIv = view.findViewById(R.id.message_post_ic)
+        postsRelativeIv = view.findViewById(R.id.message_post_ly)
 
         //做一个数据
         messageList = arrayListOf<MessageItem>()
@@ -74,7 +75,11 @@ class MessagesFragment : Fragment() {
             val intent = Intent(activity, SystemMessageActivity::class.java)
             startActivity(intent)
         }
-
+        //点击帖子相关
+        postsRelativeIv.setOnClickListener{
+            val intent=Intent(activity,PostsRelativeActivity::class.java)
+            startActivity(intent)
+        }
         return view
     }
 

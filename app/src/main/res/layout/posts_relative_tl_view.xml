@@ -14,7 +14,7 @@
         android:text="全部"
         android:textSize="14sp" />
     <FrameLayout
-        android:id="@+id/posts_pertinent_tl_fl"
+        android:id="@+id/posts_relative_tl_fl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/posts_tab_note"
@@ -30,7 +30,7 @@
 
             android:layout_gravity="center"/>
         <TextView
-            android:id="@+id/posts_pertinent_tl_cnt"
+            android:id="@+id/posts_relative_tl_cnt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
