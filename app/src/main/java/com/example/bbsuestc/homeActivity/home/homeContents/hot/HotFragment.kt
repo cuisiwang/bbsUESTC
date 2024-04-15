@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
 import com.example.bbsuestc.recyclerViewContents.headerServices.HeaderServicesAdapter
 import com.example.bbsuestc.recyclerViewContents.postsContent.PostsContentAdapter
+import com.example.bbsuestc.recyclerViewContents.postsContent.PostsItem
 import com.example.bbsuestc.testUtils.TestData
 import com.example.bbsuestc.utils.fixHeight
 
@@ -19,6 +20,7 @@ class HotFragment : Fragment() {
     private lateinit var viewModel: HotViewModel
     private lateinit var headerServices : RecyclerView
     private lateinit var postsContent : RecyclerView
+    private val dataList : ArrayList<PostsItem> = arrayListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +30,8 @@ class HotFragment : Fragment() {
 
         headerServices = root.findViewById(R.id.hot_header_services_rv)
         postsContent = root.findViewById(R.id.hot_posts_rv)
+        postsContent.layoutManager = LinearLayoutManager(activity)
+        postsContent.adapter = PostsContentAdapter(dataList)
 
         return root
     }
@@ -42,9 +46,10 @@ class HotFragment : Fragment() {
 
         //data应该从ViewModel里获取
 //        postsContent.fixHeight()
-        val data = TestData.postData()
-        postsContent.layoutManager = LinearLayoutManager(activity)
-        postsContent.adapter = PostsContentAdapter(data)
+        for (i in TestData.postData()){
+            dataList.add(i)
+        }
+        postsContent.adapter!!.notifyItemRangeChanged(0,dataList.size-1)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

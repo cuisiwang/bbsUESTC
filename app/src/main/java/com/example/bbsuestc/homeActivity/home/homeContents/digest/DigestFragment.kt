@@ -19,24 +19,29 @@ class DigestFragment : Fragment() {
 
     private lateinit var postsContent: RecyclerView
     private lateinit var viewModel: DigestViewModel
+    private val dataList : ArrayList<PostsItem> = arrayListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_digest, container, false)
+
         postsContent = root.findViewById(R.id.digest_posts_rv)
-        Log.e("AAAA", "onCreateView: 2222" )
+
+        postsContent.layoutManager = LinearLayoutManager(activity)
+        postsContent.adapter = PostsContentAdapter(dataList)
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //data应该从ViewModel里获取
-        postsContent.fixHeight()
-        val data = TestData.postData()
-        postsContent.layoutManager = LinearLayoutManager(activity)
-        postsContent.adapter = PostsContentAdapter(data)
+//        postsContent.fixHeight()
+        for (i in TestData.postData()){
+            dataList.add(i)
+        }
+        postsContent.adapter!!.notifyItemRangeChanged(0,dataList.size-1)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

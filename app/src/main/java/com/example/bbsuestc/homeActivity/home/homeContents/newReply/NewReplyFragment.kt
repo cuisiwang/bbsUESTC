@@ -18,6 +18,7 @@ import com.example.bbsuestc.utils.fixHeight
 class NewReplyFragment : Fragment() {
     private lateinit var postsContent: RecyclerView
     private lateinit var viewModel: NewReplyViewModel
+    private val dataList : ArrayList<PostsItem> = arrayListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,18 +27,20 @@ class NewReplyFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_new_reply, container, false)
 
         postsContent = root.findViewById(R.id.new_reply_posts_rv)
-        Log.e("AAAA", "onCreateView: 1111" )
 
+        postsContent.layoutManager = LinearLayoutManager(activity)
+        postsContent.adapter = PostsContentAdapter(dataList)
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //data应该从ViewModel里获取
-        postsContent.fixHeight()
-        val data = TestData.postData()
-        postsContent.layoutManager = LinearLayoutManager(activity)
-        postsContent.adapter = PostsContentAdapter(data)
+//        postsContent.fixHeight()
+        for (i in TestData.postData()){
+            dataList.add(i)
+        }
+        postsContent.adapter!!.notifyItemRangeChanged(0,dataList.size-1)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
