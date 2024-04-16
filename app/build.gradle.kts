@@ -56,4 +56,5 @@ dependencies {
     implementation("io.reactivex.rxjava2:rxjava:2.2.21")
     implementation("com.alibaba:fastjson:1.2.61")
     implementation("io.github.lucksiege:pictureselector:v3.11.2")
+    implementation("de.hdodenhof:circleimageview:3.1.0")
 }

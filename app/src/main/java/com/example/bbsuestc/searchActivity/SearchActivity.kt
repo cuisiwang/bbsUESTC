@@ -67,6 +67,7 @@ class SearchActivity : AppCompatActivity() {
         }
         searchContent.clearFocus()
 
+        resultContent.layoutManager = LinearLayoutManager(this)
         resultContent.adapter = null
 
         val resultNumbers :Int
@@ -74,6 +75,7 @@ class SearchActivity : AppCompatActivity() {
             //模拟搜索帖子返回的结果
             //data应该从ViewModel里获取
             val data = arrayListOf<PostsItem>()
+            resultContent.adapter = PostsContentAdapter(data)
             for(i in 0..10){
                 data.add(
                     PostsItem("","这是发帖人ID","2022-12-22","这是帖子的标题",
@@ -81,22 +83,20 @@ class SearchActivity : AppCompatActivity() {
                         "校园生活",114514,191)
                 )
             }
-            resultContent.layoutManager = LinearLayoutManager(this)
-            resultContent.adapter = PostsContentAdapter(data)
             resultNumbers = data.size
         }else{
             //模拟搜索用户返回结果
             val data = arrayListOf<UsersItem>()
+            resultContent.adapter = UsersContentAdapter(data)
             for(i in 0..20){
                 data.add(
                     UsersItem("","这是发帖人ID","这是一条个人简介")
                 )
             }
-            resultContent.layoutManager = LinearLayoutManager(this)
-            resultContent.adapter = UsersContentAdapter(data)
             resultNumbers = data.size
         }
         resultNumber.text = "找到${resultNumbers}条结果"
         resultNumber.visibility = View.VISIBLE
+        resultContent.adapter!!.notifyItemRangeInserted(0,resultNumbers-1)
     }
 }

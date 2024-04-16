@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
 import com.example.bbsuestc.recyclerViewContents.platesContent.PlateParentAdapter
+import com.example.bbsuestc.utils.fixHeight
 
 class PlatesFragment : Fragment() {
 

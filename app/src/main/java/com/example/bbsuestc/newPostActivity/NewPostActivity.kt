@@ -36,7 +36,7 @@ import com.luck.picture.lib.interfaces.OnResultCallbackListener
 
 class NewPostActivity : AppCompatActivity() {
 
-    private lateinit var viewModel : NewPostViewModel
+    private val viewModel : NewPostViewModel by lazy { ViewModelProvider(this)[NewPostViewModel::class.java] }
     private lateinit var smoothLayout : SmoothInputLayout
     private lateinit var backIv : ImageView
     private lateinit var postTv : TextView
@@ -61,7 +61,6 @@ class NewPostActivity : AppCompatActivity() {
     private fun init(){
         findView()
         setClickListeners()
-        viewModel = ViewModelProvider(this)[NewPostViewModel::class.java]
     }
 
 
