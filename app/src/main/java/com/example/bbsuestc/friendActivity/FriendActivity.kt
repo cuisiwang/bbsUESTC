@@ -92,33 +92,36 @@ class FriendActivity : AppCompatActivity() {
 
     private fun search() {
         val input: String = friendSearchInput.text.toString()
+        val formerSize = displayedFriendList.size
         displayedFriendList.clear()
-        for (i in 0..<friendViewModel.friendList.value!!.size) {
-            val item: FriendItem = friendViewModel.friendList.value!![i]
-            val name: String = item.userName
-            // TODO: 查询逻辑有问题 
-            if (name.contains(input)) {
+        friendContentAdapter.notifyItemRangeRemoved(0,formerSize)
+        if (input != "") {
+            for (item in friendViewModel.friendList.value!!) {
+                if (item.userName.contains(input)) {
+                    displayedFriendList.add(item)
+                }
+            }
+        } else {
+            for (item in friendViewModel.friendList.value!!) {
                 displayedFriendList.add(item)
             }
-
         }
-        friendContentAdapter.notifyDataSetChanged()
+        friendContentAdapter.notifyItemRangeInserted(0,displayedFriendList.size-1)
     }
 
     private fun initData() {
-        displayedFriendList = arrayListOf()
-        displayedFriendList = friendViewModel.friendList.value!!
-        friendContentAdapter = FriendContentAdapter(displayedFriendList,this,friendViewModel)
+        displayedFriendList = ArrayList(friendViewModel.friendList.value!!)
+        friendContentAdapter = FriendContentAdapter(displayedFriendList, this, friendViewModel)
         friendListRv.adapter = friendContentAdapter
         friendListRv.layoutManager = LinearLayoutManager(this)
 
-        if(friendViewModel.requestCount.value == 0){
+        if (friendViewModel.requestCount.value == 0) {
             requestCountTv.text = "0"
-        }else if (friendViewModel.requestCount.value!! <= 99){
+        } else if (friendViewModel.requestCount.value!! <= 99) {
             requestCountTv.setBackgroundResource(R.drawable.ic_message_dot)
             requestCountTv.setTextColor(resources.getColor(R.color.white))
             requestCountTv.text = friendViewModel.requestCount.value.toString()
-        }else{
+        } else {
             requestCountTv.setBackgroundResource(R.drawable.ic_message_dot)
             requestCountTv.setTextColor(resources.getColor(R.color.white))
             requestCountTv.text = "99+"
