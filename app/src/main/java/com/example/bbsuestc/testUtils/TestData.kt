@@ -48,9 +48,9 @@ class TestData {
             val itemNames : ArrayList<String> = arrayListOf()
             itemNames.apply {
                 add("版规")
-                add("招聘信息发布栏")
+                add("招聘信息")
                 add("藏经阁")
-                add("实习信息发布栏")
+                add("实习信息")
                 add("职场交流")
             }
 

@@ -7,4 +7,5 @@
     <color name="primaryBlue">#1890FF</color>
     <color name="secondaryGrey">#8A8A8A</color>
     <color name="secondaryBlue">#E6F3FF</color>
+    <color name="backgroundLightBlue">#031890FF</color>
 </resources>
