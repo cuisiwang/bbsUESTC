@@ -57,4 +57,7 @@ dependencies {
     implementation("com.alibaba:fastjson:1.2.61")
     implementation("io.github.lucksiege:pictureselector:v3.11.2")
     implementation("de.hdodenhof:circleimageview:3.1.0")
+    implementation("com.squareup.picasso:picasso:2.71828")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 }

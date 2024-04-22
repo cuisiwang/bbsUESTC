@@ -5,6 +5,7 @@ import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -85,9 +86,15 @@ class LoginActivityMain : AppCompatActivity() {
     }
 
     private fun login() {
-        val intent = Intent(this, HomeActivity::class.java)
-        startActivity(intent)
-        finish()
+        val dialog = layoutInflater.inflate(R.layout.progress_indicator_full_screen,null)
+        dialog.visibility=View.VISIBLE
+        addContentView(dialog, ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
+        dialog.postDelayed({
+            dialog.visibility = View.GONE
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+            finish()
+        },3521)
     }
 
     private fun startForgetPasswordActivity() {

@@ -7,6 +7,17 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbsuestc.R
+import com.squareup.picasso.Picasso
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import java.util.Random
+import android.os.Bundle
+import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
+import com.google.gson.GsonBuilder
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class PostsContentAdapter(private val data: ArrayList<PostsItem>) :
     RecyclerView.Adapter<PostsContentAdapter.ViewHolder>() {
@@ -49,6 +60,8 @@ class PostsContentAdapter(private val data: ArrayList<PostsItem>) :
         holder.postPlate.text = " " + currentItem.plates
         holder.postViewers.text = " " + currentItem.viewers
         holder.postReplies.text = " " + currentItem.comments
+        val id: Int = Random().nextInt(500) + 1
+        Picasso.get().load("https://picsum.photos/id/$id/100").into(holder.userIcon)
     }
 
     override fun getItemCount() = data.size

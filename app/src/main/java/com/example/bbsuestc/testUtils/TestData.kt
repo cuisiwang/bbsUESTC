@@ -9,7 +9,7 @@ class TestData {
     companion object {
         fun postData(): ArrayList<PostsItem> {
             val data = arrayListOf<PostsItem>()
-            for(i in 0..10){
+            for(i in 0..9){
                 data.add(
                     PostsItem("","这是发帖人ID","2022-12-22","这是帖子的标题",
                         "这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容",

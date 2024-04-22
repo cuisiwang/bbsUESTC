@@ -28,7 +28,7 @@ class NewReplyFragment : Fragment() {
 
         postsContent = root.findViewById(R.id.new_reply_posts_rv)
 
-        postsContent.layoutManager = LinearLayoutManager(activity)
+        postsContent.layoutManager = LinearLayoutManager(context)
         postsContent.adapter = PostsContentAdapter(dataList)
         return root
     }
@@ -37,10 +37,13 @@ class NewReplyFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //data应该从ViewModel里获取
 //        postsContent.fixHeight()
-        for (i in TestData.postData()){
-            dataList.add(i)
+        postsContent.post{
+            for (i in TestData.postData()){
+                dataList.add(i)
+            }
+            postsContent.adapter!!.notifyItemRangeChanged(0,dataList.size-1)
         }
-        postsContent.adapter!!.notifyItemRangeChanged(0,dataList.size-1)
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
