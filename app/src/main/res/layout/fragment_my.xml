@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:paddingVertical="7dp">
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/my_header_card_icon_iv"
                     android:layout_width="85dp"
                     android:layout_height="85dp"
