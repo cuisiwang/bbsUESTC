@@ -21,6 +21,9 @@
         android:theme="@style/Theme.BbsUESTC"
         tools:targetApi="31">
         <activity
+            android:name=".postsRelativeActivity.PostsRelativeActivity"
+            android:exported="false" />
+        <activity
             android:name=".webViewActivity.WebViewActivity"
             android:exported="false" />
         <activity
