@@ -1,34 +1,30 @@
 package com.example.bbsuestc.newPostActivity
 
 import android.Manifest
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.database.Cursor
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.provider.MediaStore
+import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.am.widget.smoothinputlayout.SmoothInputLayout
 import com.example.bbsuestc.R
-import com.example.bbsuestc.homeActivity.plates.PlatesViewModel
+import com.example.bbsuestc.homeActivity.HomeActivity
+import com.example.bbsuestc.homeActivity.home.homeContents.hot.HotFragment
 import com.example.bbsuestc.utils.GlideEngine
 import com.example.bbsuestc.utils.Statics
 import com.example.bbsuestc.widget.RichContentEdittext
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.luck.picture.lib.basic.PictureSelector
 import com.luck.picture.lib.config.SelectMimeType
 import com.luck.picture.lib.entity.LocalMedia
@@ -36,19 +32,19 @@ import com.luck.picture.lib.interfaces.OnResultCallbackListener
 
 class NewPostActivity : AppCompatActivity() {
 
-    private val viewModel : NewPostViewModel by lazy { ViewModelProvider(this)[NewPostViewModel::class.java] }
-    private lateinit var smoothLayout : SmoothInputLayout
-    private lateinit var backIv : ImageView
-    private lateinit var postTv : TextView
-    private lateinit var plateTv : TextView
-    private lateinit var themeTv : TextView
-    private lateinit var titleEt : EditText
-    private lateinit var contentRichEt : RichContentEdittext
-    private lateinit var emojiIv : ImageView
-    private lateinit var photoIv : ImageView
-    private lateinit var atIv : ImageView
-    private lateinit var attachmentIv : ImageView
-    private lateinit var voteIV : ImageView
+    private val viewModel: NewPostViewModel by lazy { ViewModelProvider(this)[NewPostViewModel::class.java] }
+    private lateinit var smoothLayout: SmoothInputLayout
+    private lateinit var backIv: ImageView
+    private lateinit var postTv: TextView
+    private lateinit var plateTv: TextView
+    private lateinit var themeTv: TextView
+    private lateinit var titleEt: EditText
+    private lateinit var contentRichEt: RichContentEdittext
+    private lateinit var emojiIv: ImageView
+    private lateinit var photoIv: ImageView
+    private lateinit var atIv: ImageView
+    private lateinit var attachmentIv: ImageView
+    private lateinit var voteIV: ImageView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,18 +54,42 @@ class NewPostActivity : AppCompatActivity() {
         init()
     }
 
-    private fun init(){
+    private fun init() {
         findView()
         setClickListeners()
     }
 
 
-    private fun doChooseTheme() {
-        //选择主题
-    }
-
     private fun doChoosePlate() {
         //选择板块
+        val Dialog: BottomSheetDialog = BottomSheetDialog(this)
+        val bottomSheetView: View =
+            layoutInflater.inflate(R.layout.dialog_plate_tmp, null)
+        Dialog.setContentView(bottomSheetView)
+        Dialog.show()
+        bottomSheetView.setOnClickListener {
+            Dialog.dismiss()
+            plateTv.post {
+                plateTv.text = "前程似锦"
+            }
+        }
+
+    }
+
+    private fun doChooseTheme() {
+        //选择主题
+        val Dialog: BottomSheetDialog = BottomSheetDialog(this)
+        val bottomSheetView: View =
+            layoutInflater.inflate(R.layout.dialog_theme_tmp, null)
+        Dialog.setContentView(bottomSheetView)
+        Dialog.show()
+        bottomSheetView.setOnClickListener {
+            Dialog.dismiss()
+            themeTv.post {
+                themeTv.text = "就业创业"
+            }
+        }
+
     }
 
     private fun addVote() {
@@ -88,19 +108,29 @@ class NewPostActivity : AppCompatActivity() {
     private fun startContentProvider4Photo() {
         //添加照片
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
-            != PackageManager.PERMISSION_GRANTED && Build.VERSION.SDK_INT <= 32) {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), Statics.PERMISSIONS_READ_EXTERNAL_STORAGE)
-        }else if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_MEDIA_IMAGES)
-        != PackageManager.PERMISSION_GRANTED && Build.VERSION.SDK_INT >= 33){
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_MEDIA_IMAGES), Statics.PERMISSIONS_READ_MEDIA_IMAGES)
+            != PackageManager.PERMISSION_GRANTED && Build.VERSION.SDK_INT <= 32
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                Statics.PERMISSIONS_READ_EXTERNAL_STORAGE
+            )
+        } else if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_MEDIA_IMAGES)
+            != PackageManager.PERMISSION_GRANTED && Build.VERSION.SDK_INT >= 33
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.READ_MEDIA_IMAGES),
+                Statics.PERMISSIONS_READ_MEDIA_IMAGES
+            )
         }
         PictureSelector.create(this)
             .openGallery(SelectMimeType.ofImage())
             .setImageEngine(GlideEngine.createGlideEngine())
-            .forResult(object : OnResultCallbackListener<LocalMedia>{
+            .forResult(object : OnResultCallbackListener<LocalMedia> {
                 override fun onResult(result: ArrayList<LocalMedia>?) {
                     if (result != null) {
-                        for (localFiles : LocalMedia in result){
+                        for (localFiles: LocalMedia in result) {
                             contentRichEt.insertImage(localFiles.realPath, 1000)
                         }
                     }
@@ -113,6 +143,15 @@ class NewPostActivity : AppCompatActivity() {
     }
 
     private fun doPost() {
+        val dialog = layoutInflater.inflate(R.layout.progress_indicator_full_screen,null)
+        dialog.visibility=View.VISIBLE
+        addContentView(dialog, ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
+        dialog.postDelayed({
+            dialog.visibility = View.GONE
+            Statics.flag=true
+            finish()
+            Toast.makeText(this, "发送成功", Toast.LENGTH_SHORT).show()
+        },6211)
     }
 
     private fun findView() {
@@ -129,11 +168,12 @@ class NewPostActivity : AppCompatActivity() {
         attachmentIv = findViewById(R.id.new_post_add_attachment_iv)
         voteIV = findViewById(R.id.new_post_add_vote_iv)
     }
+
     private fun setClickListeners() {
         backIv.setOnClickListener { finish() }
         postTv.setOnClickListener { doPost() }
         plateTv.setOnClickListener { doChoosePlate() }
-        plateTv.setOnClickListener { doChooseTheme() }
+        themeTv.setOnClickListener { doChooseTheme() }
         emojiIv.setOnClickListener { smoothLayout.showInputPane(true) }
         photoIv.setOnClickListener { startContentProvider4Photo() }
         atIv.setOnClickListener { doAt() }
@@ -143,12 +183,14 @@ class NewPostActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        val imm: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val imm: InputMethodManager =
+            getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         this.currentFocus?.let {
             imm.hideSoftInputFromWindow(it.windowToken, 0)
             return
         }
     }
+
     override fun onPause() {
         super.onPause()
         // TODO: 做文件本地存储草稿以及定时存储草稿，防止闪退，杀后台等情况

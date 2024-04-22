@@ -13,7 +13,10 @@ import com.example.bbsuestc.recyclerViewContents.headerServices.HeaderServicesAd
 import com.example.bbsuestc.recyclerViewContents.postsContent.PostsContentAdapter
 import com.example.bbsuestc.recyclerViewContents.postsContent.PostsItem
 import com.example.bbsuestc.testUtils.TestData
+import com.example.bbsuestc.utils.Statics
 import com.example.bbsuestc.utils.fixHeight
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class HotFragment : Fragment() {
 
@@ -63,6 +66,20 @@ class HotFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(HotViewModel::class.java)
     }
 
+    override fun onResume() {
+        super.onResume()
+        if(Statics.flag){
+            postsContent.postDelayed({
+                val now = LocalDateTime.now()
+                val fm=DateTimeFormatter.ofPattern("yyyy-MM-dd")
+                dataList.add(0,PostsItem("1","崔思惘",now.format(fm),"求工作推荐！","大家好！楼主是24届的毕业生，现在在找工作，求推荐！" +
+                        "\n"+"[图片]","前程似锦",1,0))
+                postsContent.adapter!!.notifyItemInserted(0)
+                postsContent.layoutManager!!.scrollToPosition(0)
+                Statics.flag=false
+            },912)
+        }
+    }
     companion object {
         fun newInstance() = HotFragment()
     }

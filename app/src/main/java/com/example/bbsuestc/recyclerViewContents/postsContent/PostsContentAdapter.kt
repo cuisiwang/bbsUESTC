@@ -60,8 +60,11 @@ class PostsContentAdapter(private val data: ArrayList<PostsItem>) :
         holder.postPlate.text = " " + currentItem.plates
         holder.postViewers.text = " " + currentItem.viewers
         holder.postReplies.text = " " + currentItem.comments
-        val id: Int = Random().nextInt(500) + 1
-        Picasso.get().load("https://picsum.photos/id/$id/100").into(holder.userIcon)
+        if(currentItem.posterIcon=="1") holder.userIcon.setImageResource(R.mipmap.testpic)
+        else{
+            val id: Int = Random().nextInt(500) + 1
+            Picasso.get().load("https://picsum.photos/id/$id/100").into(holder.userIcon)
+        }
     }
 
     override fun getItemCount() = data.size

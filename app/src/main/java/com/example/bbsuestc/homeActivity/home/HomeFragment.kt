@@ -15,6 +15,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.bbsuestc.R
 import com.example.bbsuestc.newPostActivity.NewPostActivity
 import com.example.bbsuestc.searchActivity.SearchActivity
+import com.example.bbsuestc.webViewActivity.WebViewActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -39,6 +40,12 @@ class HomeFragment : Fragment() {
         searchET = root.findViewById(R.id.home_toolbar_search_iv)
         searchET.setOnClickListener {
             val intent = Intent(activity, SearchActivity::class.java)
+            startActivity(intent)
+        }
+        headerIV = root.findViewById(R.id.home_toolbar_head_icon_iv)
+        headerIV.setOnClickListener {
+            val intent = Intent(context,WebViewActivity::class.java)
+            intent.putExtra("url","http://222.197.183.89:65342/user/me")
             startActivity(intent)
         }
 

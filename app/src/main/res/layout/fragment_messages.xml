@@ -132,9 +132,9 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
                             android:layout_marginLeft="50dp"
-                            android:background="@drawable/bg_oval_red"
+                            android:background="@drawable/ic_message_dot"
                             android:gravity="center"
-                            android:text="20"
+                            android:text="7"
                             android:textColor="@color/white"
                             android:textSize="13dp" />
                     </FrameLayout>
@@ -184,7 +184,7 @@
                             android:layout_marginLeft="50dp"
                             android:background="@drawable/bg_oval_red"
                             android:gravity="center_horizontal"
-                            android:text="20"
+                            android:text="11"
                             android:textColor="@color/white"
                             android:textSize="13dp" />
                     </FrameLayout>
