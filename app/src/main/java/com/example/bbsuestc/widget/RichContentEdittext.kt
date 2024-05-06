@@ -217,7 +217,6 @@ class RichContentEdittext @JvmOverloads constructor(
     }
 
     /**
-     * author: sca_tl
      * description: 生成图片View
      */
     private fun createImageLayout(): RelativeLayout {
@@ -247,7 +246,7 @@ class RichContentEdittext @JvmOverloads constructor(
      * author: sca_tl
      * description: 插入图片
      */
-    fun insertImage(bitmap: Bitmap?, imagePath: String?) {
+    private fun insertImage(bitmap: Bitmap?, imagePath: String?) {
         //bitmap == null时，可能是网络图片，不能做限制
         if (TextUtils.isEmpty(imagePath)) {
             return
@@ -259,16 +258,16 @@ class RichContentEdittext @JvmOverloads constructor(
             val editStr1 = lastEditStr.substring(0, cursorIndex).trim { it <= ' ' } //获取光标前面的字符串
             val editStr2 = lastEditStr.substring(cursorIndex).trim { it <= ' ' } //获取光标后的字符串
             val lastEditIndex = rootLayout.indexOfChild(lastFocusEdit) //获取焦点的EditText所在位置
-            if (lastEditStr.length == 0) {
+            if (lastEditStr.isEmpty()) {
                 //如果当前获取焦点的EditText为空，直接在EditText下方插入图片，并且插入空的EditText
                 addEditTextAtIndex(lastEditIndex + 1, "")
                 addImageViewAtIndex(lastEditIndex + 1, bitmap, imagePath)
-            } else if (editStr1.length == 0) {
+            } else if (editStr1.isEmpty()) {
                 //如果光标已经顶在了editText的最前面，则直接插入图片，并且EditText下移即可
                 addImageViewAtIndex(lastEditIndex, bitmap, imagePath)
                 //同时插入一个空的EditText，防止插入多张图片无法写文字
                 addEditTextAtIndex(lastEditIndex + 1, "")
-            } else if (editStr2.length == 0) {
+            } else if (editStr2.isEmpty()) {
                 // 如果光标已经顶在了editText的最末端，则需要添加新的imageView和EditText
                 addEditTextAtIndex(lastEditIndex + 1, "")
                 addImageViewAtIndex(lastEditIndex + 1, bitmap, imagePath)
@@ -283,7 +282,7 @@ class RichContentEdittext @JvmOverloads constructor(
                 //在空的EditText的位置插入图片布局，空的EditText下移
                 addImageViewAtIndex(lastEditIndex + 1, bitmap, imagePath)
             }
-            //hideKeyBoard();
+            //隐藏软键盘
             val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(lastFocusEdit.windowToken, 0)
         } catch (e: Exception) {

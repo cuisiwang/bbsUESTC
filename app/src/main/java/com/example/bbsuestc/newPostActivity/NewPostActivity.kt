@@ -2,7 +2,6 @@ package com.example.bbsuestc.newPostActivity
 
 import android.Manifest
 import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -19,10 +18,8 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.am.widget.smoothinputlayout.SmoothInputLayout
 import com.example.bbsuestc.R
-import com.example.bbsuestc.homeActivity.HomeActivity
-import com.example.bbsuestc.homeActivity.home.homeContents.hot.HotFragment
 import com.example.bbsuestc.utils.GlideEngine
-import com.example.bbsuestc.utils.Statics
+import com.example.bbsuestc.utils.APIStatics
 import com.example.bbsuestc.widget.RichContentEdittext
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.luck.picture.lib.basic.PictureSelector
@@ -113,7 +110,7 @@ class NewPostActivity : AppCompatActivity() {
             ActivityCompat.requestPermissions(
                 this,
                 arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
-                Statics.PERMISSIONS_READ_EXTERNAL_STORAGE
+                APIStatics.PERMISSIONS_READ_EXTERNAL_STORAGE
             )
         } else if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_MEDIA_IMAGES)
             != PackageManager.PERMISSION_GRANTED && Build.VERSION.SDK_INT >= 33
@@ -121,7 +118,7 @@ class NewPostActivity : AppCompatActivity() {
             ActivityCompat.requestPermissions(
                 this,
                 arrayOf(Manifest.permission.READ_MEDIA_IMAGES),
-                Statics.PERMISSIONS_READ_MEDIA_IMAGES
+                APIStatics.PERMISSIONS_READ_MEDIA_IMAGES
             )
         }
         PictureSelector.create(this)
@@ -148,7 +145,7 @@ class NewPostActivity : AppCompatActivity() {
         addContentView(dialog, ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
         dialog.postDelayed({
             dialog.visibility = View.GONE
-            Statics.flag=true
+            APIStatics.flag=true
             finish()
             Toast.makeText(this, "发送成功", Toast.LENGTH_SHORT).show()
         },6211)

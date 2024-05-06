@@ -11,9 +11,18 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bbsuestc.homeActivity.HomeActivity
+import com.example.bbsuestc.utils.APIStatics
+import com.example.bbsuestc.utils.LoginResponse
+import com.example.bbsuestc.utils.TokenManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.textfield.TextInputEditText
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import kotlin.math.log
 
 
 class LoginActivityMain : AppCompatActivity() {
@@ -24,6 +33,8 @@ class LoginActivityMain : AppCompatActivity() {
     private lateinit var autoLoginBt: RadioButton
     private lateinit var loginBt: Button
     private lateinit var forgetPassword: TextView
+    private lateinit var loginName:TextInputEditText
+    private lateinit var loginPwd:TextInputEditText
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_main)
@@ -34,6 +45,8 @@ class LoginActivityMain : AppCompatActivity() {
         autoLoginBt = findViewById(R.id.auto_login_rb)
         loginBt = findViewById(R.id.login_bt)
         forgetPassword = findViewById(R.id.find_password_tv)  //忘记密码，注册
+        loginName = findViewById(R.id.login_username_tf)
+        loginPwd = findViewById(R.id.login_password_tf)
 
         logoLayout.post {
             initializeLogo()
@@ -86,15 +99,48 @@ class LoginActivityMain : AppCompatActivity() {
     }
 
     private fun login() {
+        val name = loginName.text.toString()
+        val password = loginPwd.text.toString()
+        val authService = APIStatics.createService(APIStatics.ServiceInterface::class.java)
+        val call = authService.login(type = "login", username = name, password = password)
+        //展示登录动画
         val dialog = layoutInflater.inflate(R.layout.progress_indicator_full_screen,null)
         dialog.visibility=View.VISIBLE
-        addContentView(dialog, ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
-        dialog.postDelayed({
-            dialog.visibility = View.GONE
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
-            finish()
-        },3521)
+        addContentView(dialog, ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT))
+        call.enqueue(object : Callback<LoginResponse> {
+            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                if (response.isSuccessful) {
+                    val loginResponse = response.body()!!
+                    // 处理登录成功后的响应
+                    dialog.visibility = View.GONE
+                    TokenManager.saveTokenAndSecret(loginResponse.token,loginResponse.secret)//存储token和secret
+                    Toast.makeText(this@LoginActivityMain, "登录成功！", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this@LoginActivityMain, HomeActivity::class.java)//跳转至主页
+                    startActivity(intent)
+                    finish()
+                } else {
+                    Toast.makeText(this@LoginActivityMain, "登录失败！请确认用户账号与密码！", Toast.LENGTH_SHORT).show()
+                    dialog.visibility = View.GONE
+                }
+            }
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                Toast.makeText(this@LoginActivityMain, "请求失败！请检查是否处于校内网络环境！", Toast.LENGTH_SHORT).show()
+                dialog.visibility = View.GONE
+
+            }
+        })
+
+
+//        val dialog = layoutInflater.inflate(R.layout.progress_indicator_full_screen,null)
+//        dialog.visibility=View.VISIBLE
+//        addContentView(dialog, ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
+//        dialog.postDelayed({
+//            dialog.visibility = View.GONE
+//            val intent = Intent(this, HomeActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//        },3521)
     }
 
     private fun startForgetPasswordActivity() {

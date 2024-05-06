@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -15,6 +14,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.bbsuestc.R
 import com.example.bbsuestc.newPostActivity.NewPostActivity
 import com.example.bbsuestc.searchActivity.SearchActivity
+import com.example.bbsuestc.utils.APIStatics
 import com.example.bbsuestc.webViewActivity.WebViewActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
@@ -45,7 +45,7 @@ class HomeFragment : Fragment() {
         headerIV = root.findViewById(R.id.home_toolbar_head_icon_iv)
         headerIV.setOnClickListener {
             val intent = Intent(context,WebViewActivity::class.java)
-            intent.putExtra("url","http://222.197.183.89:65342/user/me")
+            intent.putExtra("url","http://222.197.183.89:65342/user/me"+ APIStatics.TOKEN)
             startActivity(intent)
         }
 

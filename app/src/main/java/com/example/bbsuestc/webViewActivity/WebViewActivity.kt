@@ -15,6 +15,7 @@ class WebViewActivity : AppCompatActivity() {
         wv = findViewById(R.id.web_view_activity_wv)
 
         wv.webViewClient = WebViewClient()
-        wv.loadUrl(bundle?.getString("url","https://bbs.uestc.edu.cn")!!)
+        val URL = bundle?.getString("url","https://bbs.uestc.edu.cn")!!
+        wv.loadUrl(URL)
     }
 }

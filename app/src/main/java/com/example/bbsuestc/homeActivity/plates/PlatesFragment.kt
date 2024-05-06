@@ -18,6 +18,7 @@ class PlatesFragment : Fragment() {
 
     private lateinit var toolbar: Toolbar
     private lateinit var toolbarTitleTextView: TextView
+    private val platesViewModel by lazy { ViewModelProvider(this)[PlatesViewModel::class.java] }
 
 
     override fun onCreateView(
@@ -25,9 +26,6 @@ class PlatesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val platesViewModel =
-            ViewModelProvider(this)[PlatesViewModel::class.java]
-
         val root: View = inflater.inflate(R.layout.fragment_plates,container,false)
 
         toolbar = root.findViewById(R.id.app_bar)
